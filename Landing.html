@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Laundry — Sistem Transaksi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-text">Smart Laundry</div>
+          <div class="brand-sub">Point of Sale</div>
+        </div>
+      </div>
+
+      <div class="nav-group-label">Menu Utama</div>
+      <div class="nav-item active" data-page="dashboard">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+        </svg>
+        <span>Dashboard</span>
+      </div>
+      <div class="nav-item" data-page="transaksi">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M3 6h18M3 6l1.5 12a2 2 0 002 2h11a2 2 0 002-2L21 6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+        </svg>
+        <span>Transaksi</span>
+      </div>
+      <div class="nav-item" data-page="riwayat">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Riwayat</span>
+      </div>
+      <div class="nav-item" data-page="produk">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <span>Produk & Stok</span>
+      </div>
+
+      <div class="sidebar-foot">
+        Smart Laundry v1.0<br>
+        Data tersimpan selama sesi berjalan.
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <section class="page active" id="page-dashboard">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Dashboard</div>
+            <div class="page-desc">Ringkasan operasional laundry hari ini</div>
+          </div>
+          <div class="clock">
+            <div id="dateNow"></div>
+            <div class="time" id="timeNow">--:--:--</div>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <div class="card stat-card">
+            <div class="stat-icon" style="background:rgba(111,207,151,0.15);">
+              <svg stroke="var(--mint)" fill="none" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+              </svg>
+            </div>
+            <div class="stat-value" id="statOmzet">Rp 0</div>
+            <div class="stat-label">Pendapatan Hari Ini</div>
+            <div class="stat-trend" id="statOmzetTrend">Belum ada transaksi</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-icon" style="background:rgba(242,201,76,0.15);">
+              <svg stroke="var(--citrus)" fill="none" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+            </div>
+            <div class="stat-value" id="statTrx">0</div>
+            <div class="stat-label">Jumlah Transaksi</div>
+            <div class="stat-trend">Hari ini</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-icon" style="background:rgba(45,67,86,0.5);">
+              <svg stroke="#9fd6c2" fill="none" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 3h18v18H3V3zm4 14V9m5 8V5m5 12v-4" />
+              </svg>
+            </div>
+            <div class="stat-value" id="statKg">0 kg</div>
+            <div class="stat-label">Total Cucian Diproses</div>
+            <div class="stat-trend">Estimasi berat</div>
+          </div>
+          <div class="card stat-card">
+            <div class="stat-icon" style="background:rgba(235,87,87,0.15);">
+              <svg stroke="var(--danger)" fill="none" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                  d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+              </svg>
+            </div>
+            <div class="stat-value" id="statLow">0</div>
+            <div class="stat-label">Produk Stok Menipis</div>
+            <div class="stat-trend" style="color:var(--danger)">Perlu restock</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="section-title">🧾 Transaksi Terbaru</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Struk</th>
+                  <th>Pelanggan</th>
+                  <th>Tipe</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="dashboardRecentBody"></tbody>
+            </table>
+            <div id="dashboardEmpty" class="empty-state" style="display:none;">
+              <div>Belum ada transaksi hari ini. Mulai dari menu <b>Transaksi</b>.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="section-title">📦 Stok Perlu Perhatian</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Produk</th>
+                  <th>Stok</th>
+                </tr>
+              </thead>
+              <tbody id="lowStockBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-transaksi">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Transaksi Baru</div>
+            <div class="page-desc">Tambahkan jasa cuci atau produk yang dibeli pelanggan</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <div class="catalog-tabs">
+              <div class="tab-btn active" data-cat="jasa">🧺 Jasa Cuci</div>
+              <div class="tab-btn" data-cat="produk">🛍️ Jual Beli Produk</div>
+            </div>
+
+            <div class="card" style="margin-bottom:18px;">
+              <div class="item-grid" id="catalogGrid"></div>
+            </div>
+
+            <div class="card">
+              <div class="section-title">👤 Data Pelanggan</div>
+              <div class="grid-4" style="grid-template-columns:1fr 1fr; margin-bottom:0;">
+                <div class="field">
+                  <label>Nama Pelanggan</label>
+                  <input id="custName" placeholder="cth: Budi Santoso">
+                </div>
+                <div class="field">
+                  <label>No. HP</label>
+                  <input id="custPhone" placeholder="cth: 0812xxxxxxx">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-title">🧾 Keranjang Transaksi</div>
+            <div class="receipt">
+              <h3>SMART LAUNDRY</h3>
+              <div class="sub">Jl. Bersih Cerah No. 88</div>
+              <hr>
+              <div id="cartLines"></div>
+              <div id="cartEmpty" class="empty-cart">Belum ada item. Pilih jasa atau produk di sebelah kiri.</div>
+              <hr>
+              <div class="rline"><span>Subtotal</span><span id="sumSubtotal">Rp 0</span></div>
+              <div class="rline"><span>Diskon</span><span id="sumDiscount">Rp 0</span></div>
+              <div class="rline total"><span>TOTAL</span><span id="sumTotal">Rp 0</span></div>
+            </div>
+
+            <div class="field" style="margin-top:16px;">
+              <label>Diskon (Rp)</label>
+              <input id="discountInput" type="number" min="0" value="0" placeholder="0">
+            </div>
+            <div class="field">
+              <label>Metode Pembayaran</label>
+              <select id="paymentMethod">
+                <option>Tunai</option>
+                <option>QRIS</option>
+                <option>Transfer Bank</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" id="checkoutBtn" disabled>Proses & Cetak Struk</button>
+            <div style="height:8px;"></div>
+            <button class="btn btn-ghost" id="clearCartBtn">Kosongkan Keranjang</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-riwayat">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Riwayat Transaksi</div>
+            <div class="page-desc">Seluruh transaksi jual-beli yang telah diproses</div>
+          </div>
+        </div>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>No. Struk</th>
+                <th>Waktu</th>
+                <th>Pelanggan</th>
+                <th>Tipe</th>
+                <th>Total</th>
+                <th>Bayar</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+          </table>
+          <div id="historyEmpty" class="empty-state">
+            <div>Belum ada riwayat transaksi.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-produk">
+        <div class="topbar">
+          <div>
+            <div class="page-title">Produk & Stok</div>
+            <div class="page-desc">Kelola daftar produk yang dijual di laundry</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:20px;">
+          <div class="section-title">➕ Tambah Produk Baru</div>
+          <div class="grid-4" style="margin-bottom:0;">
+            <div class="field"><label>Nama Produk</label><input id="newProdName" placeholder="cth: Pewangi Sachet">
+            </div>
+            <div class="field"><label>Harga (Rp)</label><input id="newProdPrice" type="number" placeholder="5000"></div>
+            <div class="field"><label>Stok Awal</label><input id="newProdStock" type="number" placeholder="20"></div>
+            <div class="field" style="display:flex; align-items:flex-end;"><button class="btn btn-primary"
+                id="addProdBtn">Tambah Produk</button></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">📋 Daftar Produk</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Produk</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="productBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="receiptModal">
+    <div class="modal-box card">
+      <div id="printArea" class="receipt"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="closeReceiptBtn">Tutup</button>
+        <button class="btn btn-primary" id="printBtn">Cetak</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
