@@ -1,145 +1,70 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Login | SmartLaundry</title>
-
+    <!-- Pemanggilan CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Google Font -->
+    <!-- Google Font & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+<body class="auth-page">
 
-<body>
-
-<section class="auth-page">
-
+<section class="auth-page-wrapper">
     <div class="auth-container">
-
-        <!-- ================= LEFT ================= -->
-
+        
+        <!-- ================= LEFT BRANDING ================= -->
         <div class="auth-left">
-
             <img src="Gambar/fun.jpg" alt="Login">
-
             <h2>Selamat Datang!</h2>
-
-            <p>
-
-                Masuk ke akun SmartLaundry untuk
-                mengelola pesanan laundry dengan
-                mudah, cepat, dan praktis.
-
-            </p>
-
+            <p>Masuk ke akun SmartLaundry untuk mengelola pesanan laundry dengan mudah, cepat, dan praktis.</p>
         </div>
 
-        <!-- ================= RIGHT ================= -->
-
+        <!-- ================= RIGHT FORM ================= -->
         <div class="auth-right">
-
             <h2>Masuk</h2>
-
-            <p>
-
-                Silakan login menggunakan akun Anda.
-
-            </p>
-
-            <form action="#">
-
+            <p>Silakan login menggunakan akun Anda.</p>
+            
+            <form>
                 <div class="form-group">
-
                     <label>Email</label>
-
-                    <input
-                    type="email"
-                    placeholder="Masukkan Email"
-                    required>
-
+                    <input type="email" placeholder="Masukkan Email" required>
                 </div>
-
+                
                 <div class="form-group">
-
                     <label>Password</label>
-
                     <div class="password-box">
-
-                        <input
-                        type="password"
-                        id="password"
-                        placeholder="Masukkan Password"
-                        required>
-
+                        <input type="password" id="password" placeholder="Masukkan Password" required>
                         <i class="fa-solid fa-eye" id="togglePassword"></i>
-
                     </div>
-
                 </div>
-
-                <button class="auth-btn">
-
-                    Login
-
-                </button>
-
+                
+                <button type="submit" class="auth-btn">Login</button>
             </form>
 
             <div class="divider">
-
                 <span>ATAU</span>
-
             </div>
 
             <div class="social-login">
-
                 <div class="social-btn">
-
-                    <i class="fa-brands fa-google"></i>
-
-                    Google
-
+                    <i class="fa-brands fa-google" style="color: #ea4335;"></i> Google
                 </div>
-
                 <div class="social-btn">
-
-                    <i class="fa-brands fa-facebook"></i>
-
-                    Facebook
-
+                    <i class="fa-brands fa-facebook" style="color: #1877f2;"></i> Facebook
                 </div>
-
             </div>
 
             <div class="auth-option">
-
-                Belum punya akun?
-
-                <a href="sigin.html">
-
-                    Daftar Sekarang
-
-                </a>
-
+                Belum punya akun? <a href="sigin.html">Daftar Sekarang</a>
             </div>
-
         </div>
 
     </div>
-
 </section>
 
 <script src="login.js"></script>
-
 </body>
-
 </html>

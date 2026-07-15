@@ -1196,3 +1196,440 @@ nav ul li a.active::after {
     font-weight: 600;
     cursor: pointer;
 }
+
+/* ==========================================================================
+   SMART LAUNDRY - CLEAN AUTHENTICATION STYLE (LOGIN & REGISTER)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. AUTH CONTAINER SYSTEM
+   -------------------------------------------------------------------------- */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #f4f7fe;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.auth-page-wrapper .auth-container {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 900px;
+    height: auto; 
+    overflow: hidden;
+}
+/* --------------------------------------------------------------------------
+   B. LEFT BRANDING SIDE
+   -------------------------------------------------------------------------- */
+.auth-page .auth-left {
+    flex: 1;
+    background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+    color: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-page .auth-left img {
+    width: 80%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 25px;
+    border-radius: 12px;
+}
+
+.auth-page .auth-left h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.auth-page .auth-left p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+/* --------------------------------------------------------------------------
+   C. RIGHT INPUT FORM SIDE (FIXED CENTER & NO CROP)
+   -------------------------------------------------------------------------- */
+.auth-page .auth-right {
+    flex: 1;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.auth-page .auth-right h2 {
+    font-size: 1.8rem;
+    color: #1f2937;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.auth-page .auth-right p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-bottom: 20px; /* Dikurangi sedikit jaraknya agar lebih compact */
+}
+
+/* Jarak antar form dibuat lebih rapat namun tetap elegan */
+.auth-page .form-group {
+    margin-bottom: 15px; 
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-page .divider {
+    text-align: center;
+    position: relative;
+    margin: 15px 0; /* Dikurangi agar area bawah naik ke atas */
+}
+
+.auth-page .social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px; /* Dikurangi sedikit agar teks daftar tidak mepet bawah */
+}
+
+/* --------------------------------------------------------------------------
+   D. EXTRA OAUTH LOGINS & LINKS
+   -------------------------------------------------------------------------- */
+.auth-page .divider {
+    text-align: center;
+    position: relative;
+    margin: 25px 0;
+}
+
+.auth-page .divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #edf2f7;
+    z-index: 1;
+}
+
+.auth-page .divider span {
+    background-color: #ffffff;
+    padding: 0 15px;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.auth-page .social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.auth-page .social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #4b5563;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.auth-page .social-btn:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.auth-page .social-btn i {
+    font-size: 1.1rem;
+}
+
+.auth-page .auth-option {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.auth-page .auth-option a {
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.auth-page .auth-option a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .auth-page .auth-container {
+        flex-direction: column;
+        max-width: 450px;
+    }
+    .auth-page .auth-left {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   SMART LAUNDRY - AUTHENTICATION PROTECTION STYLE (SUPER COMPACT)
+   ========================================================================== */
+
+body.auth-page {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fe !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.auth-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 10px; /* Diperkecil agar menghemat ruang layar */
+    box-sizing: border-box;
+}
+
+.auth-page-wrapper .auth-container {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 860px; /* Diperkecil sedikit agar proporsional */
+    height: auto; 
+    overflow: hidden;
+}
+
+/* --- SISI KIRI (GRADIENT BLUE) --- */
+.auth-page-wrapper .auth-left {
+    flex: 1;
+    background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+    color: #ffffff;
+    padding: 30px; /* Dikurangi dari 40px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-page-wrapper .auth-left img {
+    width: 65%; /* Diperkecil dari 75% agar teks di bawahnya naik */
+    max-width: 180px; 
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+.auth-page-wrapper .auth-left h2 {
+    font-size: 1.5rem; /* Diperkecil sedikit */
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.auth-page-wrapper .auth-left p {
+    font-size: 0.8rem; /* Diperkecil sedikit */
+    opacity: 0.85;
+    line-height: 1.5;
+    max-width: 260px;
+}
+
+/* --- SISI KANAN (FORM INPUT MODERN) --- */
+.auth-page-wrapper .auth-right {
+    flex: 1;
+    padding: 25px 40px; /* Dikurangi agar area bawah naik ke atas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-page-wrapper .auth-right h2 {
+    font-size: 1.5rem; /* Diperkecil sedikit */
+    color: #1f2937;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.auth-page-wrapper .auth-right p {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 15px; /* Dikurangi dari 25px */
+}
+
+.auth-page-wrapper .form-group {
+    margin-bottom: 10px; /* Diperkerpat jarak antar kolom input */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.auth-page-wrapper .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.auth-page-wrapper .form-group input {
+    width: 100%;
+    padding: 9px 12px; /* Tinggi input dikurangi agar menghemat banyak ruang vertikal */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.auth-page-wrapper .form-group input:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
+}
+
+/* --- EYE TOGGLE PASSWORD --- */
+.auth-page-wrapper .password-box {
+    position: relative;
+    width: 100%;
+}
+
+.auth-page-wrapper .password-box i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 0.9rem;
+    z-index: 5;
+}
+
+/* --- TOMBOL SUBMIT --- */
+.auth-page-wrapper .auth-btn {
+    width: 100%;
+    background-color: #0066ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px; /* Dikurangi tinggi tombolnya */
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 5px;
+    font-family: inherit;
+    transition: 0.2s;
+}
+
+.auth-page-wrapper .auth-btn:hover {
+    background-color: #0052cc;
+}
+
+/* --- PEMBATAS & MEDSOS --- */
+.auth-page-wrapper .divider {
+    text-align: center;
+    position: relative;
+    margin: 12px 0; /* Dikurangi jaraknya */
+}
+
+.auth-page-wrapper .divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #edf2f7;
+}
+
+.auth-page-wrapper .divider span {
+    background-color: #ffffff;
+    padding: 0 10px;
+    color: #9ca3af;
+    font-size: 0.7rem;
+    position: relative;
+    z-index: 2;
+    font-weight: 600;
+}
+
+.auth-page-wrapper .social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.auth-page-wrapper .social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 9px; /* Tinggi tombol sosmed diperkecil */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #4b5563;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.auth-page-wrapper .social-btn:hover {
+    background-color: #f8fafc;
+}
+
+.auth-page-wrapper .auth-option {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.auth-page-wrapper .auth-option a {
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-page-wrapper .auth-option a:hover {
+    text-decoration: underline;
+}
+
+/* --- RESPONSIF LAYAR KECIL (HP) --- */
+@media (max-width: 768px) {
+    .auth-page-wrapper .auth-container {
+        flex-direction: column;
+        max-width: 420px;
+    }
+    
+    .auth-page-wrapper .auth-left {
+        display: none;
+    }
+}
