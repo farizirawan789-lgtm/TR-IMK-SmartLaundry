@@ -2648,6 +2648,378 @@ nav ul li a {
     }
 }
 
+/* =======================================================
+                   LAYANAN SECTION (NEW STYLE)
+======================================================= */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 Kolom sejajar */
+    gap: 30px;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    /* Memotong sudut gambar agar ikut melengkung */
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    border: 1px solid #F1F5F9;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= SERVICE IMAGE ================= */
+.service-img {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Agar gambar tidak gepeng */
+    transition: 0.5s ease;
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.08);
+    /* Efek zoom saat hover */
+}
+
+/* ================= BADGE (PROMO / BEST SELLER) ================= */
+.badge-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.badge-tag.promo {
+    background: #E84118;
+    /* Merah untuk promo */
+}
+
+.badge-tag.best-seller {
+    background: #E15F41;
+    /* Oranye untuk best seller */
+}
+
+/* ================= SERVICE CONTENT ================= */
+.service-content {
+    padding: 25px;
+    flex: 1;
+    /* Mendorong footer ke bawah agar sejajar */
+}
+
+.service-content h3 {
+    font-size: 19px;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.service-content p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ================= SERVICE FOOTER ================= */
+.service-footer {
+    background: #FFF4F2;
+    /* Warna dasar footer krem/pink muda */
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #FFE4DD;
+}
+
+.price-text {
+    color: #E15F41;
+    /* Warna teks 'Mulai Dari' */
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.price-text strong {
+    color: var(--dark);
+    /* Warna teks harga */
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.icon-arrow {
+    color: #E15F41;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.service-card:hover .icon-arrow {
+    transform: translateX(5px);
+    /* Panah bergeser saat dihover */
+}
+
+/* ================= RESPONSIVE LAYANAN ================= */
+@media (max-width: 1024px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-img {
+        height: 200px;
+    }
+}
+
+/* =======================================================
+                   HARGA SECTION
+======================================================= */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: center;
+    /* Agar card yang lebih tinggi tetap di tengah */
+    padding: 20px 0;
+}
+
+.pricing-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #F1F5F9;
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Paling Laris dibuat sedikit membesar di desktop */
+.pricing-card.popular {
+    border: 2px solid var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+    z-index: 2;
+}
+
+.pricing-card.popular:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
+.badge-popular {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.pricing-card h3 {
+    font-size: 20px;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.price-box {
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+.price-box .currency {
+    font-size: 20px;
+    font-weight: 600;
+    vertical-align: top;
+}
+
+.price-box .price {
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.price-box .per {
+    color: var(--gray);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.pricing-list {
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.pricing-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: var(--dark);
+    font-size: 15px;
+}
+
+.pricing-list li i {
+    color: #10B981;
+    /* Warna hijau checklist */
+    font-size: 18px;
+}
+
+.pricing-list li.disabled {
+    color: #94A3B8;
+    text-decoration: line-through;
+}
+
+.pricing-list li.disabled i {
+    color: #94A3B8;
+}
+
+.btn-pricing {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 50px;
+    background: #EEF5FF;
+    color: var(--primary);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-pricing:hover {
+    background: #DBEAFE;
+}
+
+.btn-primary-pricing {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.btn-primary-pricing:hover {
+    background: var(--primary-dark);
+    color: #fff;
+}
+
+/* ================= RESPONSIVE HARGA ================= */
+@media (max-width: 992px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+
+    .pricing-card.popular:hover {
+        transform: translateY(-8px);
+    }
+}
+
+/* =======================================================
+                   FAQ SECTION
+======================================================= */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background: var(--light);
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: #CBD5E1;
+}
+
+.faq-item summary {
+    padding: 20px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    /* Menyembunyikan panah default di Firefox/Chrome */
+    transition: var(--transition);
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+    /* Menyembunyikan panah default khusus browser webkit (Safari dll) */
+}
+
+.faq-item summary:hover {
+    color: var(--primary);
+}
+
+.arrow-icon {
+    color: var(--gray);
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+/* Animasi saat FAQ dibuka */
+.faq-item[open] summary {
+    border-bottom: 1px solid #E2E8F0;
+    color: var(--primary);
+}
+
+.faq-item[open] .arrow-icon {
+    transform: rotate(180deg);
+    /* Memutar panah ke atas saat dibuka */
+    color: var(--primary);
+}
+
+.faq-answer {
+    padding: 20px 25px;
+    color: var(--gray);
+    line-height: 1.8;
+    font-size: 15px;
+    background: #fff;
+}
+
 /* ================= END OF FILE ================= */
 /*
 ==========================================================

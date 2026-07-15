@@ -2,7 +2,6 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,124 +9,288 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
-
     <header>
-
         <div class="container">
-
             <div class="navbar">
-
-                <!-- Logo -->
-
                 <div class="logo">
-
                     <i class="fa-solid fa-shirt"></i>
-
                     <h2>SmartLaundry</h2>
-
                 </div>
-
-                <!-- Menu -->
 
                 <nav>
-
                     <ul>
-
                         <li><a href="#">Beranda</a></li>
-                        <li><a href="#">Layanan</a></li>
-                        <li><a href="#">Cara Kerja</a></li>
-                        <li><a href="#">Harga</a></li>
-                        <li><a href="#">FAQ</a></li>
-
+                        <li><a href="#layanan">Layanan</a></li>
+                        <li><a href="#harga">Harga</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
-
                 </nav>
 
-                <!-- Button -->
-
                 <div class="nav-button">
-
-                    <a href="login.html" class="btn-login">
-
-                        Login
-
-                    </a>
-
-                    <a href="register.html" class="btn-register">
-
-                        Sign Up
-
-                    </a>
-
+                    <a href="login.html" class="btn-login">Login</a>
+                    <a href="register.html" class="btn-register">Sign Up</a>
                 </div>
-
             </div>
-
         </div>
-
     </header>
 
-    <!-- ================= HERO ================= -->
-
     <section class="hero">
-
         <div class="container hero-content">
-
-            <!-- Kiri -->
-
             <div class="hero-text">
-
                 <h1>
-
                     Laundry Jadi
                     <span>Lebih Mudah,</span>
                     Bersih & Cepat
-
                 </h1>
-
                 <p>
-
-                    Layanan laundry Ambatukam profesional dengan
-                    sistem antar jembut.
-                    Praktis, bersih, cepat,
-                    dan terpercaya.
-
+                    Layanan laundry profesional dengan sistem antar jemput.
+                    Praktis, bersih, cepat, dan terpercaya.
                 </p>
-
-                <a href="#" class="btn-order">
-
-                    Pesan Sekarang
-
-                </a>
-
+                <a href="#layanan" class="btn-order">Pesan Sekarang</a>
             </div>
-
-            <!-- Kanan -->
 
             <div class="hero-image">
+                <img src="Gambar/mbape.jpg" alt="Hero SmartLaundry">
+            </div>
+        </div>
+    </section>
 
-                <img src="Gambar/mbape.jpg"
-                alt="Hero SmartLaundry">
+    <section id="layanan">
+        <div class="container">
 
+            <div class="section-title">
+                <h2>All Services</h2>
+                <p>Pilih layanan laundry terbaik yang sesuai dengan kebutuhan Anda.</p>
             </div>
 
-        </div>
+            <div class="service-grid">
 
+                <div class="service-card">
+                    <div class="service-img">
+                        <span class="badge-tag promo">PROMO</span>
+                        <img src="Gambar/cuci-komplit.jpg" alt="Laundry Cuci Komplit">
+                    </div>
+                    <div class="service-content">
+                        <h3>Laundry Cuci Komplit</h3>
+                        <p>Pakaian dicuci bersih, dikeringkan, disetrika rapi, dan diberi pewangi. Tinggal masuk lemari.
+                        </p>
+                    </div>
+                    <div class="service-footer">
+                        <span class="price-text">Mulai Dari <strong>Rp 35.000</strong></span>
+                        <i class="fa-solid fa-chevron-right icon-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <span class="badge-tag best-seller">BEST SELLER</span>
+                        <img src="Gambar/laundry-express.jpg" alt="Laundry Express">
+                    </div>
+                    <div class="service-content">
+                        <h3>Laundry Express</h3>
+                        <p>Layanan laundry express untuk kamu yang butuh hasil cepat dan bersih dalam waktu 24 jam.</p>
+                    </div>
+                    <div class="service-footer">
+                        <span class="price-text">Mulai Dari <strong>Rp 30.000</strong></span>
+                        <i class="fa-solid fa-chevron-right icon-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <span class="badge-tag promo">PROMO</span>
+                        <img src="Gambar/jaket-suede.jpg" alt="Laundry Jaket Suede">
+                    </div>
+                    <div class="service-content">
+                        <h3>Laundry Jaket Suede</h3>
+                        <p>Teknik pencucian manual secara detail oleh ahli, memberikan hasil maksimal untuk jaket
+                            kesayangan.</p>
+                    </div>
+                    <div class="service-footer">
+                        <span class="price-text">Mulai Dari <strong>Rp 175.000</strong></span>
+                        <i class="fa-solid fa-chevron-right icon-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="Gambar/reparasi-sepatu.jpg" alt="Reparasi Sepatu">
+                    </div>
+                    <div class="service-content">
+                        <h3>Reparasi & Cuci Sepatu</h3>
+                        <p>Layanan khusus pembersihan mendalam (deep clean) untuk mengembalikan warna asli sepatu Anda.
+                        </p>
+                    </div>
+                    <div class="service-footer">
+                        <span class="price-text">Mulai Dari <strong>Rp 50.000</strong></span>
+                        <i class="fa-solid fa-chevron-right icon-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <span class="badge-tag best-seller">BEST SELLER</span>
+                        <img src="Gambar/noda-karat.jpg" alt="Noda Karat dan Tinta">
+                    </div>
+                    <div class="service-content">
+                        <h3>Penghilang Noda Spesialis</h3>
+                        <p>Menghilangkan noda membandel seperti karat, tinta, atau luntur menggunakan formula khusus
+                            kain.</p>
+                    </div>
+                    <div class="service-footer">
+                        <span class="price-text">Mulai Dari <strong>Rp 50.000</strong></span>
+                        <i class="fa-solid fa-chevron-right icon-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="Gambar/bedcover.jpg" alt="Laundry Bedcover">
+                    </div>
+                    <div class="service-content">
+                        <h3>Laundry Bedcover & Selimut</h3>
+                        <p>Proses pencucian item besar dengan mesin kapasitas tinggi agar higienis dan wangi menyeluruh.
+                        </p>
+                    </div>
+                    <div class="service-footer">
+                        <span class="price-text">Mulai Dari <strong>Rp 60.000</strong></span>
+                        <i class="fa-solid fa-chevron-right icon-arrow"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="harga">
+        <div class="container">
+            <div class="section-title">
+                <h2>Paket Harga</h2>
+                <p>Pilih paket laundry yang paling sesuai dengan kebutuhan dan waktu Anda.</p>
+            </div>
+
+            <div class="pricing-grid">
+
+                <div class="pricing-card">
+                    <h3>Cuci Reguler</h3>
+                    <div class="price-box">
+                        <span class="currency">Rp</span>
+                        <strong class="price">6.000</strong>
+                        <span class="per">/ kg</span>
+                    </div>
+                    <ul class="pricing-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Cuci bersih & wangi</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Setrika rapi & lipat</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Selesai dalam 3 hari</li>
+                        <li class="disabled"><i class="fa-solid fa-times-circle"></i> Antar jemput gratis</li>
+                    </ul>
+                    <a href="#" class="btn-pricing">Pilih Reguler</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <span class="badge-popular">Paling Laris</span>
+                    <h3>Cuci Kilat</h3>
+                    <div class="price-box">
+                        <span class="currency">Rp</span>
+                        <strong class="price">10.000</strong>
+                        <span class="per">/ kg</span>
+                    </div>
+                    <ul class="pricing-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Cuci bersih & parfum premium</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Setrika rapi & lipat</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Selesai dalam 24 jam</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Antar jemput gratis (Min. 5kg)</li>
+                    </ul>
+                    <a href="#" class="btn-pricing btn-primary-pricing">Pilih Kilat</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Cuci Express</h3>
+                    <div class="price-box">
+                        <span class="currency">Rp</span>
+                        <strong class="price">15.000</strong>
+                        <span class="per">/ kg</span>
+                    </div>
+                    <ul class="pricing-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Cuci bersih & parfum premium</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Setrika rapi & lipat</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Selesai dalam 6 jam</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Prioritas antar jemput</li>
+                    </ul>
+                    <a href="#" class="btn-pricing">Pilih Express</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" style="background: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pertanyaan Umum (FAQ)</h2>
+                <p>Temukan jawaban cepat untuk pertanyaan yang paling sering diajukan oleh pelanggan kami.</p>
+            </div>
+
+            <div class="faq-container">
+
+                <details class="faq-item" open>
+                    <summary>
+                        Bagaimana cara memesan layanan antar jemput?
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Anda bisa memesan langsung melalui tombol "Pesan Sekarang" di website ini, atau menghubungi
+                            kami via WhatsApp. Kurir kami akan datang menjemput pakaian kotor di lokasi Anda (khusus
+                            area Salatiga dan sekitarnya).</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>
+                        Apakah ada minimal berat untuk layanan antar jemput?
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Ya, untuk menikmati layanan antar jemput gratis, minimal berat laundry adalah 5 kg. Jika di
+                            bawah 5 kg, akan dikenakan biaya transportasi flat sebesar Rp 10.000.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>
+                        Bagaimana jika ada pakaian yang luntur atau rusak?
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Kami selalu menyortir pakaian sebelum dicuci. Namun, kami sangat menyarankan Anda memisahkan
+                            pakaian yang berisiko luntur. Jika terjadi kerusakan murni akibat kesalahan sistem kami,
+                            kami memberikan garansi cuci ulang atau kompensasi sesuai syarat dan ketentuan.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>
+                        Metode pembayaran apa saja yang diterima?
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Kami menerima berbagai macam metode pembayaran. Anda dapat membayar tunai (COD) kepada kurir,
+                            transfer bank (BCA, BNI, Mandiri, BRI), maupun E-Wallet (GoPay, OVO, DANA, ShopeePay).</p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
     </section>
 
     <script src="landing.js"></script>
