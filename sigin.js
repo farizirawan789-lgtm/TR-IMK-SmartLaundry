@@ -105,11 +105,39 @@ document.addEventListener("DOMContentLoaded", function(){
 
         btn.innerHTML="Membuat Akun...";
 
-        setTimeout(function(){
+       setTimeout(function(){
 
-            alert("Registrasi Berhasil!");
+const akunBaru = {
 
-            window.location.href="Login.html";
+    nama: nama.value.trim(),
+    email: email.value.trim(),
+    password: password.value
+
+};
+
+    // Ambil semua akun
+    let daftarUser = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Cek apakah email sudah dipakai
+    const sudahAda = daftarUser.find(user => user.email === akunBaru.email);
+
+    if(sudahAda){
+
+        alert("Email sudah digunakan.");
+
+        return;
+
+    }
+
+    // Tambahkan akun baru
+    daftarUser.push(akunBaru);
+
+    // Simpan kembali
+    localStorage.setItem("users", JSON.stringify(daftarUser));
+
+    alert("Registrasi Berhasil!");
+
+    window.location.href="Login.html";
 
         },1500);
 

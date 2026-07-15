@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | SmartLaundry</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-shirt"></i>
+
+            <h2>SmartLaundry</h2>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="order.html">
+                    <i class="fa-solid fa-file-lines"></i>
+                    Pesanan
+                </a>
+            </li>
+
+            <li>
+                <a href="riwayat.html">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Riwayat
+                </a>
+            </li>
+
+            <li>
+                <a href="payment.html">
+                    <i class="fa-solid fa-wallet"></i>
+                    Wallet
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    Profil
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-question"></i>
+                    Bantuan
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Pengaturan
+                </a>
+            </li>
+
+        </ul>
+
+        <button class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Keluar
+
+        </button>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <div>  
+                <h2 id="welcomeName">
+
+             Halo!
+            </h2>
+
+            <p>Selamat datang kembali.</p>
+            </div>
+
+            <div class="profile-top">
+
+                <i class="fa-regular fa-bell"></i>
+
+                <img src="assets/images/profile.jpg" alt="Profile">
+
+                <span id="profileName"></span>
+
+            </div>
+
+        </header>
+
+        <!-- ================= WALLET ================= -->
+
+        <div class="wallet-card">
+
+            <div>
+
+                <span>Saldo Smart Wallet</span>
+
+                <h2>Rp 150.000</h2>
+
+            </div>
+
+            <button class="btn-save" id="topupBtn">
+
+                Top Up
+
+            </button>
+
+        </div>
+
+        <!-- ================= MENU CEPAT ================= -->
+
+        <section>
+
+            <h3 class="mb-2">Menu Cepat</h3>
+
+            <div class="quick-menu">
+
+                <div class="menu-card">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <h4>Buat Pesanan</h4>
+
+                </div>
+
+                <div class="menu-card">
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <h4>Riwayat</h4>
+
+                </div>
+
+                <div class="menu-card">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <h4>Alamat</h4>
+
+                </div>
+
+                <div class="menu-card">
+
+                    <i class="fa-solid fa-percent"></i>
+
+                    <h4>Promo</h4>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ================= PESANAN TERAKHIR ================= -->
+
+        <section class="mt-3">
+
+            <h3 class="mb-2">Pesanan Terakhir</h3>
+
+            <div class="detail-card">
+
+                <div class="d-flex justify-between align-center">
+
+                    <div>
+
+                        <h4>#SL-240501</h4>
+
+                        <p>Regular • 5 Kg</p>
+
+                        <p>Jumat, 3 Mei 2024 • 10.00</p>
+
+                        <p>Jl. Merdeka No.10, Salatiga</p>
+
+                    </div>
+
+                    <div>
+
+                        <span class="badge badge-success">
+
+                            Dijemput
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <hr class="mt-2 mb-2">
+
+                <div class="d-flex justify-between align-center">
+
+                    <button class="btn-save" id="detailBtn">
+
+                        Lihat Detail
+
+                    </button>
+
+                    <img src="assets/images/delivery.png"
+                    alt="Kurir"
+                    style="width:180px;">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= PROMO ================= -->
+
+        <section class="mt-3">
+
+            <div class="wallet-card">
+
+                <div>
+
+                    <h3>Diskon 20%</h3>
+
+                    <p>
+
+                        Gunakan kode promo
+
+                        <strong>SMART20</strong>
+
+                        untuk pelanggan baru.
+
+                    </p>
+
+                </div>
+
+                <img src="assets/images/promo.png"
+                alt="Promo"
+                style="width:130px;">
+
+            </div>
+
+        </section>
+
+        <!-- ================= RIWAYAT ================= -->
+
+        <section class="mt-3">
+
+            <h3 class="mb-2">
+
+                Riwayat Terakhir
+
+            </h3>
+
+            <div class="detail-card">
+
+                <table class="history-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Layanan</th>
+                            <th>Status</th>
+                            <th>Tanggal</th>
+                            <th>Total</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>#SL-240430</td>
+
+                            <td>Regular • 3 Kg</td>
+
+                            <td>
+
+                                <span class="badge badge-success">
+
+                                    Selesai
+
+                                </span>
+
+                            </td>
+
+                            <td>30 Apr 2024</td>
+
+                            <td>Rp30.000</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>#SL-240427</td>
+
+                            <td>Express • 4 Kg</td>
+
+                            <td>
+
+                                <span class="badge badge-success">
+
+                                    Selesai
+
+                                </span>
+
+                            </td>
+
+                            <td>27 Apr 2024</td>
+
+                            <td>Rp60.000</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>#SL-240420</td>
+
+                            <td>Regular • 6 Kg</td>
+
+                            <td>
+
+                                <span class="badge badge-success">
+
+                                    Selesai
+
+                                </span>
+
+                            </td>
+
+                            <td>20 Apr 2024</td>
+
+                            <td>Rp60.000</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="text-center mt-3">
+
+                    <button class="btn-login" id="historyBtn">
+
+                        Lihat Semua Riwayat
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= MODAL TOP UP ================= -->
+
+        <div class="modal" id="topupModal">
+
+            <div class="modal-content">
+
+                <span class="close" id="closeTopup">&times;</span>
+
+                <h2>Top Up Smart Wallet</h2>
+
+                <p>Pilih nominal top up.</p>
+
+                <div class="quick-menu">
+
+                    <button class="btn-save nominal" data-value="50000">
+                        Rp 50.000
+                    </button>
+
+                    <button class="btn-save nominal" data-value="100000">
+                        Rp 100.000
+                    </button>
+
+                    <button class="btn-save nominal" data-value="150000">
+                        Rp 150.000
+                    </button>
+
+                    <button class="btn-save nominal" data-value="200000">
+                        Rp 200.000
+                    </button>
+
+                </div>
+
+                <br>
+
+                <button class="auth-btn" id="confirmTopup">
+
+                    Konfirmasi Top Up
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================= MODAL LOGOUT ================= -->
+
+        <div class="modal" id="logoutModal">
+
+            <div class="modal-content">
+
+                <h2>Keluar?</h2>
+
+                <p>
+
+                    Apakah Anda yakin ingin keluar dari akun?
+
+                </p>
+
+                <div class="d-flex gap-20 justify-center">
+
+                    <button class="btn-login" id="cancelLogout">
+
+                        Batal
+
+                    </button>
+
+                    <button class="btn-save" id="confirmLogout">
+
+                        Keluar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- ================= DASHBOARD JS ================= -->
+
+<script src="Dashboard.js"></script>
+
+</body>
+
+</html>

@@ -90,16 +90,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // ================= LOADING =================
 
+        const daftarUser = JSON.parse(localStorage.getItem("users")) || [];
+
+        const userLogin = daftarUser.find(function(user){
+
+    return user.email === emailValue &&
+           user.password === passwordValue;
+
+        });
+
+        if(!userLogin){
+
+            alert("Email atau Password salah.");
+
+            return;
+
+        }
+
         loginButton.disabled = true;
         loginButton.innerHTML = "Memproses...";
 
-        setTimeout(function () {
+        setTimeout(function(){
+
+            localStorage.setItem("loginUser", userLogin.nama);
 
             alert("Login Berhasil!");
 
             window.location.href = "Dashboard.html";
 
-        }, 1500);
+        },1500);
 
     });
 
