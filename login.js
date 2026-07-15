@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             alert("Login Berhasil!");
 
-            window.location.href = "dashboard.html";
+            window.location.href = "Dashboard.html";
 
         }, 1500);
 
