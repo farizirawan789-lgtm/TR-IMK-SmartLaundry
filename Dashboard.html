@@ -158,7 +158,9 @@
                 </div>
 
             </div>
-        </main>
+
+    </div>
+    </main>
     </div>
 
     <!-- ================= MODAL REGION ================= -->
@@ -167,7 +169,7 @@
     <div class="modal" id="topupModal">
         <div class="modal-content">
             <span class="close" id="closeTopup">&times;</span>
-            <h2>Top Up Smart Wallet</h2>
+            <h2>Top Up Smart Payment</h2>
             <p>Pilih nominal top up.</p>
             <div class="quick-menu text-dark">
                 <button class="btn-save nominal" data-value="50000">Rp 50.000</button>
@@ -177,49 +179,65 @@
             </div>
             <br>
             <button class="auth-btn" id="confirmTopup">Konfirmasi Top Up</button>
+            >>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
         </div>
-    </div>
 
-    <!-- MODAL LOGOUT -->
-    <div class="modal" id="logoutModal">
-        <div class="modal-content">
-            <h2>Keluar?</h2>
-            <p>Apakah Anda yakin ingin keluar dari akun?</p>
-            <div class="d-flex gap-20 justify-center">
-                <button class="btn-login-cancel" id="cancelLogout">Batal</button>
-                <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL NOTA / STRUK -->
-    <div class="modal" id="notaModal">
-        <div class="modal-content nota-content">
-            <div class="nota-header">
-                <span class="close nota-close">&times;</span>
-                <i class="fa-solid fa-circle-check" id="nota-icon"></i>
-                <h3>Total Transaksi</h3>
-                <span class="nota-nominal-value" id="nota-nominal">Rp 0</span>
-            </div>
-            <div class="nota-body">
-                <div class="nota-row"><span>ID Transaksi</span><strong id="nota-id">-</strong></div>
-                <div class="nota-row"><span>Waktu</span><span id="nota-tanggal">-</span></div>
-                <hr class="nota-dashed">
-                <div class="nota-row"><span>Keterangan</span><span id="nota-keterangan">-</span></div>
-                <div class="nota-row"><span>Metode</span><span id="nota-metode">-</span></div>
-                <hr class="nota-dashed">
-                <div class="nota-row"><span>Sisa Saldo Wallet</span><strong id="nota-saldo">-</strong></div>
-            </div>
-            <div class="nota-footer">
-                <button class="nota-btn-print" id="nota-print-btn"><i class="fa-solid fa-print"></i> Cetak</button>
-                <button class="nota-btn-close nota-close">Tutup</button>
+        <!-- MODAL TOP UP -->
+        <div class="modal" id="topupModal">
+            <div class="modal-content">
+                <span class="close" id="closeTopup">&times;</span>
+                <h2>Top Up Smart Wallet</h2>
+                <p>Pilih nominal top up.</p>
+                <div class="quick-menu text-dark">
+                    <button class="btn-save nominal" data-value="50000">Rp 50.000</button>
+                    <button class="btn-save nominal" data-value="100000">Rp 100.000</button>
+                    <button class="btn-save nominal" data-value="150000">Rp 150.000</button>
+                    <button class="btn-save nominal" data-value="200000">Rp 200.000</button>
+                </div>
+                <br>
+                <button class="auth-btn" id="confirmTopup">Konfirmasi Top Up</button>
             </div>
         </div>
-    </div>
 
-    <!-- SCRIPTS -->
-    <script src="Nota.js"></script>
-    <script src="Dashboard.js"></script>
+        <!-- MODAL LOGOUT -->
+        <div class="modal" id="logoutModal">
+            <div class="modal-content">
+                <h2>Keluar?</h2>
+                <p>Apakah Anda yakin ingin keluar dari akun?</p>
+                <div class="d-flex gap-20 justify-center">
+                    <button class="btn-login-cancel" id="cancelLogout">Batal</button>
+                    <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL NOTA / STRUK -->
+        <div class="modal" id="notaModal">
+            <div class="modal-content nota-content">
+                <div class="nota-header">
+                    <span class="close nota-close">&times;</span>
+                    <i class="fa-solid fa-circle-check" id="nota-icon"></i>
+                    <h3>Total Transaksi</h3>
+                    <span class="nota-nominal-value" id="nota-nominal">Rp 0</span>
+                </div>
+                <div class="nota-body">
+                    <div class="nota-row"><span>ID Transaksi</span><strong id="nota-id">-</strong></div>
+                    <div class="nota-row"><span>Waktu</span><span id="nota-tanggal">-</span></div>
+                    <hr class="nota-dashed">
+                    <div class="nota-row"><span>Keterangan</span><span id="nota-keterangan">-</span></div>
+                    <div class="nota-row"><span>Metode</span><span id="nota-metode">-</span></div>
+                    <hr class="nota-dashed">
+                    <div class="nota-row"><span>Sisa Saldo Wallet</span><strong id="nota-saldo">-</strong></div>
+                </div>
+                <div class="nota-footer">
+                    <button class="nota-btn-print" id="nota-print-btn"><i class="fa-solid fa-print"></i> Cetak</button>
+                    <button class="nota-btn-close nota-close">Tutup</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="Nota.js"></script>
+        <script src="Dashboard.js"></script>
 </body>
 
 </html>
