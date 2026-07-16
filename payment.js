@@ -10,26 +10,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ekstrak data pesanan dari localStorage
     const dataOrder = JSON.parse(dataAktifRaw);
-
-    // Dapatkan data ID secara fleksibel (mengantisipasi id atau idPesanan)
     const orderId = dataOrder.id || dataOrder.idPesanan || '#SL-000000';
 
     document.getElementById('no-order-message').style.display = 'none';
     document.getElementById('active-payment-area').style.display = 'block';
 
-    // Cetak data ke elemen HTML di halaman Payment
+    // Cetak data awal ke elemen HTML di halaman Payment
     document.getElementById('header-order-id').innerText = orderId;
     document.getElementById('summary-id').innerText = orderId;
 
-    // Memastikan format tampilan paket dan berat rapi
     const tampilkanBerat = dataOrder.berat ? ` (${dataOrder.berat})` : '';
     document.getElementById('summary-paket-nama').innerText = dataOrder.paket + tampilkanBerat;
 
-    document.getElementById('summary-paket-harga').innerText = 'Rp ' + (dataOrder.subtotal || dataOrder.hargaPaket || 0).toLocaleString('id-ID');
-    document.getElementById('summary-antarjemput').innerText = 'Rp ' + (dataOrder.ongkir || dataOrder.antarJemput || 0).toLocaleString('id-ID');
-    document.getElementById('summary-layanan').innerText = 'Rp ' + (dataOrder.biayaAplikasi || dataOrder.biayaLayanan || 2000).toLocaleString('id-ID');
-    document.getElementById('summary-total-bayar').innerText = 'Rp ' + (dataOrder.totalAkhir || 0).toLocaleString('id-ID');
+    const subtotalPakaian = dataOrder.subtotal || dataOrder.hargaPaket || 0;
+    const biayaOngkir = dataOrder.ongkir || dataOrder.antarJemput || 0;
+    const biayaLayanan = dataOrder.biayaAplikasi || dataOrder.biayaLayanan || 2000;
+    const diskonAwal = dataOrder.diskon || 0;
+
+    document.getElementById('summary-paket-harga').innerText = 'Rp ' + subtotalPakaian.toLocaleString('id-ID');
+    document.getElementById('summary-antarjemput').innerText = 'Rp ' + biayaOngkir.toLocaleString('id-ID');
+    document.getElementById('summary-layanan').innerText = 'Rp ' + biayaLayanan.toLocaleString('id-ID');
+    document.getElementById('summary-diskon').innerText = '- Rp ' + diskonAwal.toLocaleString('id-ID');
+    document.getElementById('summary-total-bayar').innerText = 'Rp ' + dataOrder.totalAkhir.toLocaleString('id-ID');
     document.getElementById('summary-alamat').innerText = dataOrder.alamat || 'Alamat tidak diatur';
+
+    // ======================================================
+    // LOGIKA PROMO KODE DISKON SMART20
+    // ======================================================
+    const promoInput = document.querySelector('.promo-box input');
+    const promoBtn = document.querySelector('.promo-box button');
+
+    if (promoBtn && promoInput) {
+        promoBtn.addEventListener('click', () => {
+            const kodeMasuk = promoInput.value.trim().toUpperCase();
+
+            if (kodeMasuk === 'SMART20') {
+                // Hitung potongan 20% dari subtotal pakaian
+                const potonganDiskon = Math.round(subtotalPakaian * 0.2);
+
+                // Hitung ulang total akhir setelah dikurangi diskon
+                const totalBaru = (subtotalPakaian + biayaOngkir + biayaLayanan) - potonganDiskon;
+
+                // Perbarui objek dataOrder di dalam memori
+                dataOrder.diskon = potonganDiskon;
+                dataOrder.totalAkhir = totalBaru;
+
+                // Simpan kembali data yang sudah dipotong ke localStorage
+                localStorage.setItem('pesananAktif', JSON.stringify(dataOrder));
+
+                // Perbarui Tampilan UI di Layar secara Real-Time
+                document.getElementById('summary-diskon').innerText = '- Rp ' + potonganDiskon.toLocaleString('id-ID');
+                document.getElementById('summary-diskon').style.color = '#16A34A'; // Beri warna hijau sukses
+                document.getElementById('summary-total-bayar').innerText = 'Rp ' + totalBaru.toLocaleString('id-ID');
+
+                // Kunci input agar tidak bisa memasukkan kode berkali-kali
+                promoInput.disabled = true;
+                promoBtn.disabled = true;
+                promoBtn.innerText = 'Dipakai';
+                promoBtn.style.backgroundColor = '#16A34A';
+                promoBtn.style.color = '#fff';
+
+                alert('Selamat! Kode promo SMART20 berhasil digunakan. Anda mendapatkan diskon 20%.');
+            } else {
+                alert('Kode promo tidak valid atau salah! Silakan coba lagi.');
+            }
+        });
+    }
 });
 
 // Fungsi Interaktif Klik Metode Pembayaran
@@ -51,39 +97,36 @@ function prosesBayar() {
     const totalBayar = dataOrder.totalAkhir || 0;
     const kurirOpsi = (dataOrder.ongkir > 0 || dataOrder.antarJemput > 0) ? 'Antar Jemput Kurir' : 'Ambil Sendiri';
 
-    // Siapkan data untuk disuntikkan ke Riwayat Pesanan
+    // Siapkan data final untuk disuntikkan ke Riwayat Pesanan
     const dataRiwayat = {
         id: orderId,
         tanggal: dataOrder.tanggal || new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }),
         paket: dataOrder.paket,
         qty: dataOrder.berat || '1 Kg',
-        total: totalBayar,
+        total: totalBayar, // Nilai total di sini otomatis sudah terpotong diskon jika promo aktif
         status: 'Proses',
         kurir: kurirOpsi,
         payment: 'Smart Payment'
     };
 
-    // Ambil riwayat lama dari localStorage, lalu masukkan yang baru ke baris paling atas
     let riwayatLama = JSON.parse(localStorage.getItem('riwayatPesanan')) || [];
     riwayatLama.unshift(dataRiwayat);
 
-    // Simpan permanen ke localStorage riwayatPesanan
     localStorage.setItem('riwayatPesanan', JSON.stringify(riwayatLama));
-
-    // Hapus pesanan aktif karena transaksi sudah dibayar
     localStorage.removeItem('pesananAktif');
 
     // Tampilkan Modal Sukses Pembayaran
     document.getElementById('paymentSuccessModal').style.display = 'flex';
 }
 
-// Jalankan fungsi cetak struk kasir
+// Fungsi cetak struk kasir yang mengambil nilai ter-update
 const btnCetak = document.getElementById('btnCetakStruk');
 if (btnCetak) {
     btnCetak.addEventListener('click', () => {
         const idPesanan = document.getElementById('summary-id').innerText;
         const paketNama = document.getElementById('summary-paket-nama').innerText;
         const paketHarga = document.getElementById('summary-paket-harga').innerText;
+        const diskonTeks = document.getElementById('summary-diskon').innerText;
         const ongkir = document.getElementById('summary-antarjemput').innerText;
         const layanan = document.getElementById('summary-layanan').innerText;
         const total = document.getElementById('summary-total-bayar').innerText;
@@ -129,6 +172,7 @@ if (btnCetak) {
                     <tr><td style="width: 60%;">${paketNama}</td><td class="col-right" style="width: 40%;">${paketHarga}</td></tr>
                     <tr><td>Layanan Antar Jemput</td><td class="col-right">${ongkir}</td></tr>
                     <tr><td>Biaya Admin</td><td class="col-right">${layanan}</td></tr>
+                    <tr><td>Diskon Promo</td><td class="col-right" style="color: #000;">${diskonTeks}</td></tr>
                 </table>
                 <div class="dashed-line"></div>
                 <table>
