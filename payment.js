@@ -1,21 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dataAktifRaw = localStorage.getItem('pesananAktif');
 
-    // Jika tidak ada pesanan, tampilkan pesan kosong
     if (!dataAktifRaw) {
         document.getElementById('no-order-message').style.display = 'block';
         document.getElementById('active-payment-area').style.display = 'none';
         return;
     }
 
-    // Ekstrak data pesanan dari localStorage
     const dataOrder = JSON.parse(dataAktifRaw);
     const orderId = dataOrder.id || dataOrder.idPesanan || '#SL-000000';
 
     document.getElementById('no-order-message').style.display = 'none';
     document.getElementById('active-payment-area').style.display = 'block';
 
-    // Cetak data awal ke elemen HTML di halaman Payment
     document.getElementById('header-order-id').innerText = orderId;
     document.getElementById('summary-id').innerText = orderId;
 
@@ -34,9 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('summary-total-bayar').innerText = 'Rp ' + dataOrder.totalAkhir.toLocaleString('id-ID');
     document.getElementById('summary-alamat').innerText = dataOrder.alamat || 'Alamat tidak diatur';
 
-    // ======================================================
-    // LOGIKA PROMO KODE DISKON SMART20
-    // ======================================================
     const promoInput = document.querySelector('.promo-box input');
     const promoBtn = document.querySelector('.promo-box button');
 
@@ -45,25 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const kodeMasuk = promoInput.value.trim().toUpperCase();
 
             if (kodeMasuk === 'SMART20') {
-                // Hitung potongan 20% dari subtotal pakaian
                 const potonganDiskon = Math.round(subtotalPakaian * 0.2);
-
-                // Hitung ulang total akhir setelah dikurangi diskon
                 const totalBaru = (subtotalPakaian + biayaOngkir + biayaLayanan) - potonganDiskon;
 
-                // Perbarui objek dataOrder di dalam memori
                 dataOrder.diskon = potonganDiskon;
                 dataOrder.totalAkhir = totalBaru;
 
-                // Simpan kembali data yang sudah dipotong ke localStorage
                 localStorage.setItem('pesananAktif', JSON.stringify(dataOrder));
 
-                // Perbarui Tampilan UI di Layar secara Real-Time
                 document.getElementById('summary-diskon').innerText = '- Rp ' + potonganDiskon.toLocaleString('id-ID');
-                document.getElementById('summary-diskon').style.color = '#16A34A'; // Beri warna hijau sukses
+                document.getElementById('summary-diskon').style.color = '#16A34A';
                 document.getElementById('summary-total-bayar').innerText = 'Rp ' + totalBaru.toLocaleString('id-ID');
 
-                // Kunci input agar tidak bisa memasukkan kode berkali-kali
                 promoInput.disabled = true;
                 promoBtn.disabled = true;
                 promoBtn.innerText = 'Dipakai';
@@ -78,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Fungsi Interaktif Klik Metode Pembayaran
 function selectMethod(tipe, element) {
     document.querySelectorAll('.method-card').forEach(card => card.classList.remove('active'));
     element.classList.add('active');
@@ -87,7 +73,6 @@ function selectMethod(tipe, element) {
     document.getElementById('detail-' + tipe).classList.add('show');
 }
 
-// Fungsi Eksekusi Tombol Konfirmasi Pembayaran
 function prosesBayar() {
     const dataAktifRaw = localStorage.getItem('pesananAktif');
     if (!dataAktifRaw) return;
@@ -97,13 +82,12 @@ function prosesBayar() {
     const totalBayar = dataOrder.totalAkhir || 0;
     const kurirOpsi = (dataOrder.ongkir > 0 || dataOrder.antarJemput > 0) ? 'Antar Jemput Kurir' : 'Ambil Sendiri';
 
-    // Siapkan data final untuk disuntikkan ke Riwayat Pesanan
     const dataRiwayat = {
         id: orderId,
         tanggal: dataOrder.tanggal || new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }),
         paket: dataOrder.paket,
         qty: dataOrder.berat || '1 Kg',
-        total: totalBayar, // Nilai total di sini otomatis sudah terpotong diskon jika promo aktif
+        total: totalBayar,
         status: 'Proses',
         kurir: kurirOpsi,
         payment: 'Smart Payment'
@@ -115,11 +99,9 @@ function prosesBayar() {
     localStorage.setItem('riwayatPesanan', JSON.stringify(riwayatLama));
     localStorage.removeItem('pesananAktif');
 
-    // Tampilkan Modal Sukses Pembayaran
     document.getElementById('paymentSuccessModal').style.display = 'flex';
 }
 
-// Fungsi cetak struk kasir yang mengambil nilai ter-update
 const btnCetak = document.getElementById('btnCetakStruk');
 if (btnCetak) {
     btnCetak.addEventListener('click', () => {
@@ -194,7 +176,6 @@ if (btnCetak) {
     });
 }
 
-// Navigasi Kembali ke Riwayat Pesanan
 const btnDashboard = document.getElementById('btnKeDashboard');
 if (btnDashboard) {
     btnDashboard.addEventListener('click', () => {

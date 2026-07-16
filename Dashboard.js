@@ -1,11 +1,3 @@
-// ======================================================
-// SMART LAUNDRY
-// DASHBOARD.JS (Updated for Desktop Version)
-// ======================================================
-
-// ======================================================
-// SHARED DATA LAYER (harus identik dengan yang ada di riwayat.js & order.js)
-// ======================================================
 const RIWAYAT_STORAGE_KEY = 'riwayatPesanan';
 
 const defaultRiwayat = [
@@ -33,15 +25,13 @@ function getRiwayatData() {
 function badgeClassForStatus(status) {
     if (status === 'Proses') return 'badge-process';
     if (status === 'Dijemput') return 'badge-pickup';
-    return 'badge-success'; // Selesai (memakai class asli yg sudah ada di style.css Dashboard)
+    return 'badge-success';
 }
 
-// Isi kartu "Pesanan Terakhir" + tabel "Riwayat Terakhir" pakai data localStorage bersama
 function renderDashboardRiwayat() {
     const data = getRiwayatData();
     if (data.length === 0) return;
 
-    // --- Kartu Pesanan Terakhir (item paling baru = index 0) ---
     const terakhir = data[0];
     const cardTerakhir = document.querySelector('.grid-left .detail-card');
     if (cardTerakhir) {
@@ -58,7 +48,6 @@ function renderDashboardRiwayat() {
         }
     }
 
-    // --- Tabel Riwayat Terakhir (3 teratas) ---
     const tbody = document.querySelector('.history-table tbody');
     if (tbody) {
         tbody.innerHTML = data.slice(0, 3).map(item => `
@@ -72,7 +61,6 @@ function renderDashboardRiwayat() {
     }
 }
 
-// Menampilkan saldo Smart Wallet terkini pada kartu wallet Dashboard (sinkron dgn halaman Wallet)
 function updateWalletCardSaldo() {
     const saldoEl = document.querySelector('.wallet-card h2');
     if (saldoEl && typeof getWalletSaldo === 'function') {
@@ -81,14 +69,10 @@ function updateWalletCardSaldo() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    // Tampilkan pesanan terakhir & riwayat singkat dari localStorage (sinkron dgn order.js & riwayat.js)
     renderDashboardRiwayat();
     updateWalletCardSaldo();
 
-    // ================= USER LOGIN (SINKRON DENGAN GLOBAL & PROFILE) =================
     const namaUser = localStorage.getItem("laundry_user_name");
-
     if (namaUser) {
         const welcomeNameEl = document.getElementById("welcomeName");
         if (welcomeNameEl) {
@@ -101,13 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // ================= MENU AKTIF SIDEBAR =================
     const menuItems = document.querySelectorAll(".sidebar ul li");
-
     menuItems.forEach(function (item) {
         item.addEventListener("click", function (e) {
-            // Catatan: Jika tag <a> memiliki href ke halaman lain (misal: order.html), 
-            // biarkan browser berpindah halaman. Tapi kita pastikan status active tetap pindah.
             menuItems.forEach(function (i) {
                 i.classList.remove("active");
             });
@@ -115,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ================= TOP UP MODAL SYSTEM =================
     const topupBtn = document.getElementById("topupBtn");
     const topupModal = document.getElementById("topupModal");
     const closeTopup = document.getElementById("closeTopup");
@@ -125,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (topupBtn) {
         topupBtn.addEventListener("click", function () {
-            topupModal.style.display = "flex"; // Membuka modal dengan flex centering
+            topupModal.style.display = "flex";
         });
     }
 
@@ -135,17 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Memilih nominal Top Up di dalam modal
     const nominalButtons = document.querySelectorAll(".nominal");
-
     nominalButtons.forEach(function (btn) {
         btn.addEventListener("click", function (e) {
-            e.preventDefault(); // Mencegah aksi submit default form/button
-
+            e.preventDefault();
             nominalButtons.forEach(function (b) {
                 b.classList.remove("active");
             });
-
             this.classList.add("active");
             nominalTopup = this.dataset.value;
         });
@@ -157,22 +132,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Silakan pilih nominal Top Up.");
                 return;
             }
-
-            // Catat transaksi ke wallet bersama (sinkron dengan halaman Wallet) via nota.js
             const transaksi = catatTransaksiWallet('masuk', 'Top Up Smart Wallet', Number(nominalTopup), 'Transfer Bank');
-
             topupModal.style.display = "none";
             updateWalletCardSaldo();
-
-            // Opsional reset pilihan setelah sukses
             nominalButtons.forEach(b => b.classList.remove("active"));
             nominalTopup = 0;
-
             tampilkanNota(transaksi);
         });
     }
 
-    // ================= LOGOUT MODAL SYSTEM =================
     const logoutBtn = document.getElementById("sidebarLogoutBtn") || document.querySelector(".logout-btn");
     const logoutModal = document.getElementById("logoutModal");
     const cancelLogout = document.getElementById("cancelLogout");
@@ -192,19 +160,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (confirmLogout) {
         confirmLogout.addEventListener("click", function () {
-            // Bersihkan data sesi laundry saat keluar
             localStorage.removeItem("is_logged_in");
             localStorage.removeItem("laundry_user_name");
             localStorage.removeItem("laundry_user_email");
             localStorage.removeItem("laundry_user_wallet");
-            localStorage.removeItem("loginUser"); // Bersihkan sisa key usang jika ada
-            
             alert("Berhasil Logout");
             window.location.href = "login.html";
         });
     }
 
-    // ================= NAVIGASI BUTTON & MENU CEPAT =================
     const detailBtn = document.getElementById("detailBtn");
     if (detailBtn) {
         detailBtn.addEventListener("click", function () {
@@ -223,40 +187,31 @@ document.addEventListener("DOMContentLoaded", function () {
     quickMenu.forEach(function (menu) {
         menu.addEventListener("click", function () {
             const nama = this.innerText.trim();
-
             if (nama.includes("Pesanan") || nama.includes("Buat Pesanan")) {
                 window.location.href = "order.html";
-            }
-            else if (nama.includes("Riwayat")) {
+            } else if (nama.includes("Riwayat")) {
                 window.location.href = "riwayat.html";
-            }
-            else if (nama.includes("Alamat")) {
+            } else if (nama.includes("Alamat")) {
                 window.location.href = "profile.html";
-            }
-            else if (nama.includes("Promo")) {
+            } else if (nama.includes("Promo")) {
                 alert("Belum ada promo baru.");
             }
         });
     });
 
-    // ================= ADJUSTMENT: SMOOTH DESKTOP CARD HOVER =================
     const cards = document.querySelectorAll(".menu-card, .payment-card, .detail-card");
-
     cards.forEach(function (card) {
         card.style.transition = "all 0.3s ease";
-
         card.addEventListener("mouseenter", function () {
             this.style.transform = "translateY(-6px)";
             this.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.05)";
         });
-
         card.addEventListener("mouseleave", function () {
             this.style.transform = "translateY(0px)";
             this.style.boxShadow = "none";
         });
     });
 
-    // ================= TUTUP MODAL KETIKA KLIK DI LUAR BOX =================
     window.addEventListener("click", function (event) {
         if (event.target == topupModal) {
             topupModal.style.display = "none";
@@ -265,5 +220,4 @@ document.addEventListener("DOMContentLoaded", function () {
             logoutModal.style.display = "none";
         }
     });
-
 });
