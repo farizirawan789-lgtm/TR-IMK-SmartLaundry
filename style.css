@@ -1,8 +1,8 @@
 /* ==========================================================================
-   SMART LAUNDRY - HORIZONTAL PAGE TRANSITION (Pindah ke Samping)
+   SMART LAUNDRY - MAIN STYLESHEET
    ========================================================================== */
 
-/* 1. RESET & BASE STYLES */
+/* --- Reset & Base --- */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -10,13 +10,13 @@
 }
 
 :root {
-    --primary-color: #1a73e8; /* Biru khas SmartLaundry */
+    --primary-color: #1a73e8; 
     --primary-hover: #155cb4;
-    --secondary-color: #34a853; /* Hijau sukses */
-    --accent-color: #f9ab00; /* Oranye/Kuning promo */
-    --text-color: #202124; /* Hitam abu-abu gelap */
-    --text-muted: #5f6368; /* Abu-abu */
-    --bg-light: #f8f9fa; /* Latar terang */
+    --secondary-color: #34a853; 
+    --accent-color: #f9ab00; 
+    --text-color: #202124; 
+    --text-muted: #5f6368; 
+    --bg-light: #f8f9fa; 
     --bg-white: #ffffff;
     --border-color: #dadce0;
     --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -56,7 +56,6 @@ img {
     display: block;
 }
 
-/* Container */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -64,17 +63,12 @@ img {
     padding: 0 24px;
 }
 
-/* ==========================================================================
-   LAYOUT STRUKTUR TRANSISI HORIZONTAL (KE SAMPING)
-   ========================================================================== */
-
-/* Membungkus semua section agar berjejer ke samping */
+/* --- Transisi Horizontal --- */
 body {
     display: flex;
     flex-direction: column;
 }
 
-/* Satukan seluruh section di bawah header */
 .hero, #layanan, #harga, #faq {
     display: inline-block;
     width: 100vw;
@@ -82,23 +76,21 @@ body {
     flex-shrink: 0;
     scroll-snap-align: start;
     box-sizing: border-box;
-    overflow-y: auto; /* Memungkinkan scroll internal jika konten melebihi tinggi layar */
-    padding-top: 100px; /* Jarak aman agar tidak tertutup navbar */
+    overflow-y: auto; 
+    padding-top: 100px; 
 }
 
-/* Container pembungkus halaman samping */
 body {
-    overflow-y: hidden; /* Mengunci scroll vertikal utama */
+    overflow-y: hidden; 
 }
 
-/* Membuat scroll-behavior horizontal pada window */
 html {
     scroll-snap-type: x mandatory;
     overflow-y: hidden;
     overflow-x: auto;
 }
 
-/* 2. HEADER & NAVBAR */
+/* --- Header & Navbar --- */
 header {
     position: fixed;
     top: 0;
@@ -197,7 +189,7 @@ nav ul li a.active::after {
     box-shadow: 0 6px 15px rgba(26, 115, 232, 0.3);
 }
 
-/* 3. HERO SECTION */
+/* --- Hero Section --- */
 .hero {
     background: linear-gradient(135deg, #f1f7ff 0%, #ffffff 100%);
     display: flex;
@@ -281,7 +273,7 @@ nav ul li a.active::after {
     transition: var(--transition-fast);
 }
 
-/* 4. SECTION GENERIC */
+/* --- Section Judul --- */
 .section-title {
     text-align: center;
     margin-bottom: 40px;
@@ -302,7 +294,7 @@ nav ul li a.active::after {
     margin: 0 auto;
 }
 
-/* 5. SERVICES SECTION */
+/* --- Layanan --- */
 #layanan {
     background-color: var(--bg-light);
 }
@@ -413,7 +405,7 @@ nav ul li a.active::after {
     transform: translateX(5px);
 }
 
-/* 6. PRICING SECTION */
+/* --- Harga --- */
 #harga {
     background-color: var(--bg-white);
 }
@@ -551,7 +543,7 @@ nav ul li a.active::after {
     box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
 }
 
-/* 7. FAQ SECTION */
+/* --- FAQ Accordion --- */
 #faq {
     background-color: var(--bg-white);
 }
@@ -609,10 +601,10 @@ nav ul li a.active::after {
     line-height: 1.6;
 }
 
-/* 8. RESPONSIVE MEDIA QUERIES */
+/* --- Responsive Utama --- */
 @media (max-width: 992px) {
     .hero, #layanan, #harga, #faq {
-        overflow-y: auto; /* Membantu scroll vertikal internal di layar tablet/HP */
+        overflow-y: auto; 
     }
 
     .hero-content {
@@ -640,7 +632,7 @@ nav ul li a.active::after {
     }
 
     nav {
-        display: none; /* Menu standar disembunyikan di device kecil */
+        display: none; 
     }
 }
 
@@ -663,9 +655,7 @@ nav ul li a.active::after {
     }
 }
 
-/* ==========================================================================
-   SMART LAUNDRY - REAL DESKTOP ONE-SCREEN DASHBOARD STYLE (CLEAN & TIDY)
-   ========================================================================== */
+/* --- Dashboard --- */
 .dashboard-container * {
     box-sizing: border-box;
     margin: 0;
@@ -700,9 +690,6 @@ nav ul li a.active::after {
     text-align: center;
 }
 
-/* --------------------------------------------------------------------------
-   B. MAIN CONTAINER SCANNABLE LAYOUT
-   -------------------------------------------------------------------------- */
 .dashboard-container {
     display: flex !important;
     min-height: 100vh;
@@ -711,9 +698,7 @@ nav ul li a.active::after {
     font-family: 'Poppins', sans-serif;
 }
 
-/* --------------------------------------------------------------------------
-   C. SIDEBAR STYLING
-   -------------------------------------------------------------------------- */
+/* --- Sidebar Dashboard --- */
 .dashboard-container .sidebar {
     width: 260px;
     background-color: #ffffff;
@@ -800,9 +785,7 @@ nav ul li a.active::after {
     background-color: #fff5f5;
 }
 
-/* --------------------------------------------------------------------------
-   D. MAIN CONTENT SECTIONS
-   -------------------------------------------------------------------------- */
+/* --- Konten Utama Dashboard --- */
 .dashboard-container .main-content {
     flex-grow: 1;
     padding: 25px 35px;
@@ -812,7 +795,6 @@ nav ul li a.active::after {
     overflow-y: auto;
 }
 
-/* Topbar Header styling */
 .dashboard-container .topbar {
     display: flex !important;
     position: static !important;
@@ -862,9 +844,7 @@ nav ul li a.active::after {
     font-size: 0.9rem;
 }
 
-/* --------------------------------------------------------------------------
-   E. TWO COLUMN GRID MECHANISM (DESKTOP VIEW)
-   -------------------------------------------------------------------------- */
+/* --- Layout Grid Dashboard --- */
 .dashboard-container .dashboard-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -887,10 +867,7 @@ nav ul li a.active::after {
     margin-bottom: 8px;
 }
 
-/* --------------------------------------------------------------------------
-   F. DASHBOARD CARDS STYLING
-   -------------------------------------------------------------------------- */
-/* Wallet Card Custom Blue Line Gradient */
+/* --- Kartu & Komponen Dashboard --- */
 .dashboard-container .wallet-card {
     background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
     border-radius: 16px;
@@ -929,7 +906,6 @@ nav ul li a.active::after {
     transform: translateY(-1px);
 }
 
-/* Quick Navigation Menu Cards */
 .dashboard-container .quick-menu {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -967,7 +943,6 @@ nav ul li a.active::after {
     font-weight: 500;
 }
 
-/* Detail & Standard Container Cards */
 .dashboard-container .detail-card {
     background: #ffffff;
     border-radius: 16px;
@@ -1008,7 +983,6 @@ nav ul li a.active::after {
     object-fit: contain;
 }
 
-/* Badges Status Config */
 .dashboard-container .badge {
     padding: 4px 10px;
     border-radius: 20px;
@@ -1021,7 +995,6 @@ nav ul li a.active::after {
     color: #10b981;
 }
 
-/* Promo Compact Banner Layout */
 .dashboard-container .promo-card {
     background: #e6f0ff;
     border-radius: 16px;
@@ -1048,9 +1021,7 @@ nav ul li a.active::after {
     object-fit: contain;
 }
 
-/* --------------------------------------------------------------------------
-   G. DATA TABLE AREA
-   -------------------------------------------------------------------------- */
+/* --- Tabel Dashboard --- */
 .dashboard-container .table-card {
     padding: 15px;
     display: flex;
@@ -1097,9 +1068,7 @@ nav ul li a.active::after {
     text-decoration: underline;
 }
 
-/* --------------------------------------------------------------------------
-   H. INTERACTIVE MODAL INTERFACE
-   -------------------------------------------------------------------------- */
+/* --- Modal Dashboard --- */
 .dashboard-container .modal {
     display: none;
     position: fixed;
@@ -1197,13 +1166,7 @@ nav ul li a.active::after {
     cursor: pointer;
 }
 
-/* ==========================================================================
-   SMART LAUNDRY - CLEAN AUTHENTICATION STYLE (LOGIN & REGISTER)
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   A. AUTH CONTAINER SYSTEM
-   -------------------------------------------------------------------------- */
+/* --- Auth (Login & Register) --- */
 .auth-page {
     display: flex;
     justify-content: center;
@@ -1227,9 +1190,7 @@ nav ul li a.active::after {
     height: auto; 
     overflow: hidden;
 }
-/* --------------------------------------------------------------------------
-   B. LEFT BRANDING SIDE
-   -------------------------------------------------------------------------- */
+
 .auth-page .auth-left {
     flex: 1;
     background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
@@ -1264,9 +1225,6 @@ nav ul li a.active::after {
     max-width: 320px;
 }
 
-/* --------------------------------------------------------------------------
-   C. RIGHT INPUT FORM SIDE (FIXED CENTER & NO CROP)
-   -------------------------------------------------------------------------- */
 .auth-page .auth-right {
     flex: 1;
     padding: 30px 40px;
@@ -1286,10 +1244,9 @@ nav ul li a.active::after {
 .auth-page .auth-right p {
     font-size: 0.9rem;
     color: #9ca3af;
-    margin-bottom: 20px; /* Dikurangi sedikit jaraknya agar lebih compact */
+    margin-bottom: 20px; 
 }
 
-/* Jarak antar form dibuat lebih rapat namun tetap elegan */
 .auth-page .form-group {
     margin-bottom: 15px; 
     display: flex;
@@ -1300,19 +1257,16 @@ nav ul li a.active::after {
 .auth-page .divider {
     text-align: center;
     position: relative;
-    margin: 15px 0; /* Dikurangi agar area bawah naik ke atas */
+    margin: 15px 0; 
 }
 
 .auth-page .social-login {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin-bottom: 15px; /* Dikurangi sedikit agar teks daftar tidak mepet bawah */
+    margin-bottom: 15px; 
 }
 
-/* --------------------------------------------------------------------------
-   D. EXTRA OAUTH LOGINS & LINKS
-   -------------------------------------------------------------------------- */
 .auth-page .divider {
     text-align: center;
     position: relative;
@@ -1398,10 +1352,7 @@ nav ul li a.active::after {
     }
 }
 
-/* ==========================================================================
-   SMART LAUNDRY - AUTHENTICATION PROTECTION STYLE (SUPER COMPACT)
-   ========================================================================== */
-
+/* --- Auth Wrapper --- */
 body.auth-page {
     margin: 0;
     padding: 0;
@@ -1415,7 +1366,7 @@ body.auth-page {
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    padding: 10px; /* Diperkecil agar menghemat ruang layar */
+    padding: 10px; 
     box-sizing: border-box;
 }
 
@@ -1425,17 +1376,16 @@ body.auth-page {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     width: 100%;
-    max-width: 860px; /* Diperkecil sedikit agar proporsional */
+    max-width: 860px; 
     height: auto; 
     overflow: hidden;
 }
 
-/* --- SISI KIRI (GRADIENT BLUE) --- */
 .auth-page-wrapper .auth-left {
     flex: 1;
     background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
     color: #ffffff;
-    padding: 30px; /* Dikurangi dari 40px */
+    padding: 30px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1444,7 +1394,7 @@ body.auth-page {
 }
 
 .auth-page-wrapper .auth-left img {
-    width: 65%; /* Diperkecil dari 75% agar teks di bawahnya naik */
+    width: 65%; 
     max-width: 180px; 
     height: auto;
     margin-bottom: 15px;
@@ -1452,29 +1402,28 @@ body.auth-page {
 }
 
 .auth-page-wrapper .auth-left h2 {
-    font-size: 1.5rem; /* Diperkecil sedikit */
+    font-size: 1.5rem; 
     font-weight: 700;
     margin-bottom: 6px;
 }
 
 .auth-page-wrapper .auth-left p {
-    font-size: 0.8rem; /* Diperkecil sedikit */
+    font-size: 0.8rem; 
     opacity: 0.85;
     line-height: 1.5;
     max-width: 260px;
 }
 
-/* --- SISI KANAN (FORM INPUT MODERN) --- */
 .auth-page-wrapper .auth-right {
     flex: 1;
-    padding: 25px 40px; /* Dikurangi agar area bawah naik ke atas */
+    padding: 25px 40px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .auth-page-wrapper .auth-right h2 {
-    font-size: 1.5rem; /* Diperkecil sedikit */
+    font-size: 1.5rem; 
     color: #1f2937;
     font-weight: 700;
     margin-bottom: 2px;
@@ -1483,11 +1432,11 @@ body.auth-page {
 .auth-page-wrapper .auth-right p {
     font-size: 0.8rem;
     color: #9ca3af;
-    margin-bottom: 15px; /* Dikurangi dari 25px */
+    margin-bottom: 15px; 
 }
 
 .auth-page-wrapper .form-group {
-    margin-bottom: 10px; /* Diperkerpat jarak antar kolom input */
+    margin-bottom: 10px; 
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -1501,7 +1450,7 @@ body.auth-page {
 
 .auth-page-wrapper .form-group input {
     width: 100%;
-    padding: 9px 12px; /* Tinggi input dikurangi agar menghemat banyak ruang vertikal */
+    padding: 9px 12px; 
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -1516,7 +1465,6 @@ body.auth-page {
     box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
 }
 
-/* --- EYE TOGGLE PASSWORD --- */
 .auth-page-wrapper .password-box {
     position: relative;
     width: 100%;
@@ -1533,13 +1481,12 @@ body.auth-page {
     z-index: 5;
 }
 
-/* --- TOMBOL SUBMIT --- */
 .auth-page-wrapper .auth-btn {
     width: 100%;
     background-color: #0066ff;
     color: #ffffff;
     border: none;
-    padding: 10px; /* Dikurangi tinggi tombolnya */
+    padding: 10px; 
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
@@ -1553,11 +1500,10 @@ body.auth-page {
     background-color: #0052cc;
 }
 
-/* --- PEMBATAS & MEDSOS --- */
 .auth-page-wrapper .divider {
     text-align: center;
     position: relative;
-    margin: 12px 0; /* Dikurangi jaraknya */
+    margin: 12px 0; 
 }
 
 .auth-page-wrapper .divider::before {
@@ -1592,7 +1538,7 @@ body.auth-page {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    padding: 9px; /* Tinggi tombol sosmed diperkecil */
+    padding: 9px; 
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -1622,7 +1568,6 @@ body.auth-page {
     text-decoration: underline;
 }
 
-/* --- RESPONSIF LAYAR KECIL (HP) --- */
 @media (max-width: 768px) {
     .auth-page-wrapper .auth-container {
         flex-direction: column;
@@ -1634,11 +1579,7 @@ body.auth-page {
     }
 }
 
-/* ==========================================================================
-   SMART LAUNDRY - PAYMENT PAGE STYLES (ANTI-TABRAKAN)
-   ========================================================================== */
-
-/* --- ROOT COLORS VARIANT --- */
+/* --- Halaman Payment --- */
 :root {
     --primary-blue: #0066ff;
     --dark-blue: #0052cc;
@@ -1650,12 +1591,11 @@ body.auth-page {
     --status-wait-text: #d97706;
 }
 
-/* --- GLOBAL LAYOUT FOR PAYMENT --- */
 .payment-page {
     background-color: var(--light-bg);
     padding: 40px 0 80px 0;
     font-family: 'Poppins', sans-serif;
-    min-height: calc(100vh - 80px); /* Menyesuaikan sisa tinggi setelah header */
+    min-height: calc(100vh - 80px); 
 }
 
 .payment-page .container {
@@ -1664,7 +1604,6 @@ body.auth-page {
     padding: 0 20px;
 }
 
-/* --- HEADER TITLE & STATUS --- */
 .payment-page .page-title {
     display: flex;
     justify-content: space-between;
@@ -1702,7 +1641,6 @@ body.auth-page {
     color: var(--status-wait-text);
 }
 
-/* --- COUNTDOWN TIMER --- */
 .payment-page .countdown {
     background-color: #ffffff;
     border-left: 4px solid var(--status-wait-text);
@@ -1721,7 +1659,6 @@ body.auth-page {
     color: var(--status-wait-text);
 }
 
-/* --- TWO COLUMN WRAPPER --- */
 .payment-page .payment-wrapper {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
@@ -1729,7 +1666,6 @@ body.auth-page {
     align-items: start;
 }
 
-/* --- DETAIL CARD BASE --- */
 .payment-page .detail-card {
     background-color: #ffffff;
     border-radius: 16px;
@@ -1748,7 +1684,6 @@ body.auth-page {
     padding-bottom: 12px;
 }
 
-/* --- METODE PEMBAYARAN TABS --- */
 .payment-page .method-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1795,7 +1730,6 @@ body.auth-page {
     color: var(--primary-blue);
 }
 
-/* --- METHOD DETAILS CONTROLLER --- */
 .payment-page .method-detail {
     display: none;
     background-color: #f8fafc;
@@ -1809,7 +1743,6 @@ body.auth-page {
     display: block;
 }
 
-/* --- VIRTUAL ACCOUNT BOX --- */
 .payment-page .va-box {
     display: flex;
     justify-content: space-between;
@@ -1855,7 +1788,6 @@ body.auth-page {
     color: #ffffff;
 }
 
-/* --- LIST BANK & EWALLET BUTTONS --- */
 .payment-page .social-login {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1885,7 +1817,6 @@ body.auth-page {
     box-shadow: 0 2px 8px rgba(0, 102, 255, 0.05);
 }
 
-/* --- PROMO & INPUT BOX --- */
 .payment-page .promo-box {
     display: flex;
     gap: 10px;
@@ -1922,7 +1853,6 @@ body.auth-page {
     background-color: #cbd5e1;
 }
 
-/* --- MAIN CONFIRMATION BUTTON --- */
 .payment-page .btn-order {
     background-color: var(--primary-blue);
     color: #ffffff;
@@ -1948,7 +1878,6 @@ body.auth-page {
 
 .payment-page .w-100 { width: 100%; box-sizing: border-box; }
 
-/* --- ALERT COD BOX --- */
 .payment-page .alert {
     padding: 12px 15px;
     border-radius: 8px;
@@ -1965,7 +1894,6 @@ body.auth-page {
     border: 1px solid rgba(0, 102, 255, 0.1);
 }
 
-/* --- SUMMARY SIDEBAR ITEMS --- */
 .payment-page .detail-item, 
 .payment-page .summary-item {
     display: flex;
@@ -2025,19 +1953,21 @@ body.auth-page {
 .payment-page-inside {
     padding: 20px 0;
 }
+
 .page-title-inline {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .page-title-inline p {
     font-size: 1rem;
     color: #4b5563;
     margin: 0;
 }
 
-/* --- CSS Khusus Perbaikan Tampilan Bank & Ringkasan Halaman Payment --- */
+/* --- Detail Bank & Ringkasan --- */
 .payment-page-inside .payment-social-login {
     display: grid !important;
     grid-template-columns: repeat(4, 1fr) !important;
@@ -2093,19 +2023,17 @@ body.auth-page {
     line-height: 1.5;
 }
 
-/* --- UTILITY CSS CLASS --- */
 .payment-page .mb-2 { margin-bottom: 10px; }
 
-/* Pastikan modal menutup layar dan kontennya berada di tengah-tengah */
 .modal {
     display: none; 
     position: fixed;
-    z-index: 9999; /* Sangat atas agar tidak tertutup elemen lain */
+    z-index: 9999; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Efek gelap di belakang */
+    background-color: rgba(0, 0, 0, 0.5); 
     justify-content: center;
     align-items: center;
 }
@@ -2114,14 +2042,12 @@ body.auth-page {
     text-align: center;
 }
 
-/* Responsif untuk Layar HP */
 @media (max-width: 600px) {
     .payment-page-inside .payment-social-login {
         grid-template-columns: repeat(2, 1fr) !important;
     }
 }
 
-/* --- RESPONSIVE LAYOUT BREAKPOINTS --- */
 @media (max-width: 992px) {
     .payment-page .payment-wrapper {
         grid-template-columns: 1fr;
@@ -2141,9 +2067,7 @@ body.auth-page {
     }
 }
 
-/* ==========================================================================
-   SMART LAUNDRY - ORDER PAGE LAYOUT EXTENSION
-   ========================================================================== */
+/* --- Halaman Order --- */
 .order-page-wrapper {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -2197,18 +2121,13 @@ body.auth-page {
     border: 1px solid #e2e8f0;
 }
 
-/* Responsif untuk Layar Tablet dan HP */
 @media (max-width: 992px) {
     .order-page-wrapper {
         grid-template-columns: 1fr;
     }
 }
 
-/* ==========================================================================
-   STYLE KHUSUS HALAMAN RIWAYAT PESANAN
-   ========================================================================== */
-
-/* 1. Layout Grid Utama Halaman Riwayat */
+/* --- Riwayat Pesanan --- */
 .history-page-grid {
     display: flex;
     flex-direction: column;
@@ -2217,7 +2136,6 @@ body.auth-page {
     animation: fadeIn 0.4s ease-in-out;
 }
 
-/* 2. Panel Filter & Kotak Pencarian */
 .filter-card-container {
     background: #ffffff;
     padding: 20px;
@@ -2230,7 +2148,6 @@ body.auth-page {
     gap: 15px;
 }
 
-/* Pembungkus Bar Pencarian */
 .search-box-wrapper {
     position: relative;
     flex: 1;
@@ -2265,7 +2182,6 @@ body.auth-page {
     font-size: 1rem;
 }
 
-/* Grup Tombol Filter Status */
 .filter-buttons-group {
     display: flex;
     gap: 10px;
@@ -2296,7 +2212,6 @@ body.auth-page {
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
-/* 3. Pembungkus Tabel & Desain Tabel */
 .history-table-wrapper {
     background: #ffffff;
     padding: 20px;
@@ -2336,7 +2251,6 @@ body.auth-page {
     background-color: #f8fafc;
 }
 
-/* Komponen Kecil di Dalam Tabel */
 .invoice-id {
     font-family: monospace;
     font-weight: 700;
@@ -2351,7 +2265,6 @@ body.auth-page {
     color: #0f172a;
 }
 
-/* 4. Sistem Pewarnaan Badge Status Terintegrasi */
 .badge {
     display: inline-block;
     padding: 6px 14px;
@@ -2377,7 +2290,6 @@ body.auth-page {
     color: #16a34a;
 }
 
-/* Tombol Aksi Detail */
 .btn-action-view {
     background-color: #ffffff;
     color: #3b82f6;
@@ -2397,7 +2309,6 @@ body.auth-page {
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
 }
 
-/* 5. Keadaan Data Kosong (No Data State) */
 .no-data-msg {
     text-align: center;
     padding: 50px 20px;
@@ -2415,7 +2326,7 @@ body.auth-page {
     font-weight: 400;
 }
 
-/* 6. Gaya Desain Khusus Modal Detail Riwayat */
+/* --- Modal Riwayat --- */
 .text-left-modal {
     text-align: left;
     max-width: 480px !important;
@@ -2466,13 +2377,11 @@ body.auth-page {
     color: #16a34a !important;
 }
 
-/* Animasi Masuk Halaman */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsif untuk Layar Handphone/Tablet Kecil */
 @media (max-width: 768px) {
     .filter-card-container {
         flex-direction: column;
@@ -2484,11 +2393,7 @@ body.auth-page {
     }
 }
 
-/* ==========================================================================
-   STYLE HALAMAN BANTUAN (FAQ) | SMARTLAUNDRY
-   ========================================================================== */
-
-/* 1. Layout Grid Bantuan */
+/* --- Halaman Bantuan --- */
 .help-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -2498,7 +2403,6 @@ body.auth-page {
     animation: fadeIn 0.4s ease-in-out;
 }
 
-/* 2. Kartu Kontak Dukungan (Kiri) */
 .support-channels-card {
     text-align: center;
     padding: 30px 24px;
@@ -2537,7 +2441,6 @@ body.auth-page {
     line-height: 1.5;
 }
 
-/* Tombol Kontak WhatsApp & Email */
 .channels-list {
     display: flex;
     flex-direction: column;
@@ -2580,7 +2483,6 @@ body.auth-page {
     transform: translateY(-2px);
 }
 
-/* Jam Operasional */
 .help-divider {
     border: none;
     border-top: 1px solid #f1f5f9;
@@ -2600,7 +2502,7 @@ body.auth-page {
     margin: 0;
 }
 
-/* 3. Panel FAQ Akordeon (Kanan) */
+/* --- FAQ Accordion Wrapper --- */
 .section-sub-title {
     font-size: 1.2rem;
     font-weight: 600;
@@ -2617,7 +2519,6 @@ body.auth-page {
     gap: 14px;
 }
 
-/* Baris FAQ */
 .faq-row-item {
     border: 1px solid #e2e8f0;
     border-radius: 12px;
@@ -2630,7 +2531,6 @@ body.auth-page {
     border-color: #cbd5e1;
 }
 
-/* Judul Pertanyaan */
 .faq-header {
     padding: 18px 20px;
     display: flex;
@@ -2650,18 +2550,16 @@ body.auth-page {
     transition: color 0.2s ease;
 }
 
-/* Indikator Panah */
 .faq-arrow {
     font-size: 0.85rem;
     color: #94a3b8;
     transition: transform 0.3s ease;
 }
 
-/* Isi Jawaban (Tersembunyi secara Default) */
 .faq-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1); /* Efek slide up-down dinamis */
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1); 
     background-color: #f8fafc;
 }
 
@@ -2674,7 +2572,6 @@ body.auth-page {
     border-top: 1px solid #edf2f7;
 }
 
-/* Keadaan Aktif (Saat Diklik Terbuka) */
 .faq-row-item.active {
     border-color: #3b82f6;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.05);
@@ -2695,22 +2592,17 @@ body.auth-page {
 }
 
 .faq-row-item.active .faq-body {
-    max-height: 500px; /* Batas tinggi maksimal saat terbuka */
+    max-height: 500px; 
     transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
 }
 
-/* 4. Responsif Mobile & Tablet */
 @media (max-width: 992px) {
     .help-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* ==========================================================================
-   STYLE HALAMAN PENGATURAN | SMARTLAUNDRY
-   ========================================================================== */
-
-/* 1. Layout Grid Pengaturan */
+/* --- Halaman Pengaturan --- */
 .setting-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -2727,7 +2619,6 @@ body.auth-page {
     line-height: 1.5;
 }
 
-/* 2. Daftar Pilihan Sakelar (Switch Options) */
 .switch-options-list {
     display: flex;
     flex-direction: column;
@@ -2761,7 +2652,7 @@ body.auth-page {
     margin: 0;
 }
 
-/* 3. Sakelar Switch iOS Style (Toggle Switch) */
+/* --- Toggle Switch iOS --- */
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -2801,7 +2692,6 @@ body.auth-page {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Kondisi Saat Switch Aktif (Checked) */
 .toggle-switch input:checked + .switch-slider {
     background-color: #3b82f6;
 }
@@ -2810,7 +2700,6 @@ body.auth-page {
     transform: translateX(24px);
 }
 
-/* 4. Form Keamanan & Ganti Password */
 .btn-save-settings {
     width: 100%;
     background-color: #3b82f6;
@@ -2835,14 +2724,13 @@ body.auth-page {
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
-/* 5. Modifikasi Responsif */
 @media (max-width: 992px) {
     .setting-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/*Style input kata sandi*/
+/* --- Form Input Modern --- */
 .form-order-group {
     display: flex;
     flex-direction: column;
@@ -2851,14 +2739,12 @@ body.auth-page {
     text-align: left;
 }
 
-/* Mengatur gaya teks label */
 .form-order-group label {
     font-size: 0.9rem;
     font-weight: 500;
     color: #475569;
 }
 
-/* Mengubah tampilan kolom input menjadi modern & responsif */
 .form-order-group input {
     width: 100%;
     padding: 12px 16px;
@@ -2872,7 +2758,6 @@ body.auth-page {
     transition: all 0.2s ease;
 }
 
-/* Efek saat kolom input diklik (fokus) */
 .form-order-group input:focus {
     outline: none;
     border-color: #3b82f6;
@@ -2880,8 +2765,51 @@ body.auth-page {
     background-color: #f8fafc;
 }
 
-/* Merapikan placeholder (teks bantuan di dalam input) */
 .form-order-group input::placeholder {
     color: #94a3b8;
     font-size: 0.85rem;
+}
+
+/* Nota Row */
+.nota-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.nota-footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;           /* Memberi spasi antar tombol */
+    margin-top: 20px;
+}
+
+.nota-btn-print, .nota-btn-close {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;            /* Jarak ikon printer ke teks Cetak */
+    transition: background 0.2s ease;
+}
+
+.nota-btn-print:hover, .nota-btn-close:hover {
+    background-color: #f5f5f5;
+}
+
+.nota-btn-print {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.nota-btn-print:hover {
+    background-color: #0056b3;
 }
