@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Font & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
     <div class="dashboard-container">
-        <!-- ================= SIDEBAR ================= -->
         <aside class="sidebar">
             <div class="logo">
                 <i class="fa-solid fa-shirt"></i>
@@ -34,12 +33,10 @@
             </button>
         </aside>
 
-        <!-- ================= MAIN CONTENT ================= -->
         <main class="main-content">
-            
-            <!-- TOPBAR -->
+
             <header class="topbar">
-                <div>  
+                <div>
                     <h2 id="welcomeName"></h2>
                     <p>Selamat datang kembali.</p>
                 </div>
@@ -50,12 +47,9 @@
                 </div>
             </header>
 
-            <!-- GRID SYSTEM (2 KOLOM KHUSUS DESKTOP ONE-PAGE) -->
             <div class="dashboard-grid">
 
-                <!-- KOLOM KIRI (Wallet, Menu Cepat, Pesanan Aktif) -->
                 <div class="grid-left">
-                    <!-- WALLET CARD -->
                     <div class="wallet-card">
                         <div>
                             <span>Saldo Smart Wallet</span>
@@ -64,7 +58,6 @@
                         <button class="btn-save" id="topupBtn">Top Up</button>
                     </div>
 
-                    <!-- MENU CEPAT -->
                     <section class="dashboard-section">
                         <h3 class="section-title">Menu Cepat</h3>
                         <div class="quick-menu">
@@ -84,7 +77,6 @@
                         </div>
                     </section>
 
-                    <!-- PESANAN TERAKHIR -->
                     <section class="dashboard-section">
                         <h3 class="section-title">Pesanan Terakhir</h3>
                         <div class="detail-card">
@@ -105,9 +97,7 @@
                     </section>
                 </div>
 
-                <!-- KOLOM KANAN (Promo & Riwayat Terakhir) -->
                 <div class="grid-right">
-                    <!-- BANNER PROMO COMPACT -->
                     <div class="promo-card">
                         <div class="promo-text">
                             <h3>Diskon 20%</h3>
@@ -116,7 +106,6 @@
                         <img src="Gambar/promo.png" alt="Promo">
                     </div>
 
-                    <!-- RIWAYAT TABEL COMPACT -->
                     <section class="dashboard-section flex-grow-section">
                         <h3 class="section-title">Riwayat Terakhir</h3>
                         <div class="detail-card table-card">
@@ -156,38 +145,15 @@
                         </div>
                     </section>
                 </div>
-
             </div>
+        </main>
 
-    </div>
-    </main>
-    </div>
-
-    <!-- ================= MODAL REGION ================= -->
-    
-    <!-- MODAL TOP UP -->
-    <div class="modal" id="topupModal">
-        <div class="modal-content">
-            <span class="close" id="closeTopup">&times;</span>
-            <h2>Top Up Smart Payment</h2>
-            <p>Pilih nominal top up.</p>
-            <div class="quick-menu text-dark">
-                <button class="btn-save nominal" data-value="50000">Rp 50.000</button>
-                <button class="btn-save nominal" data-value="100000">Rp 100.000</button>
-                <button class="btn-save nominal" data-value="150000">Rp 150.000</button>
-                <button class="btn-save nominal" data-value="200000">Rp 200.000</button>
-            </div>
-            <br>
-            <button class="auth-btn" id="confirmTopup">Konfirmasi Top Up</button>
-            >>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
-        </div>
-
-        <!-- MODAL TOP UP -->
         <div class="modal" id="topupModal">
             <div class="modal-content">
                 <span class="close" id="closeTopup">&times;</span>
                 <h2>Top Up Smart Wallet</h2>
                 <p>Pilih nominal top up.</p>
+
                 <div class="quick-menu text-dark">
                     <button class="btn-save nominal" data-value="50000">Rp 50.000</button>
                     <button class="btn-save nominal" data-value="100000">Rp 100.000</button>
@@ -199,7 +165,6 @@
             </div>
         </div>
 
-        <!-- MODAL LOGOUT -->
         <div class="modal" id="logoutModal">
             <div class="modal-content">
                 <h2>Keluar?</h2>
@@ -211,7 +176,6 @@
             </div>
         </div>
 
-        <!-- MODAL NOTA / STRUK -->
         <div class="modal" id="notaModal">
             <div class="modal-content nota-content">
                 <div class="nota-header">
@@ -236,8 +200,9 @@
             </div>
         </div>
 
-        <script src="Nota.js"></script>
-        <script src="Dashboard.js"></script>
+    </div>
+    <script src="Nota.js"></script>
+    <script src="Dashboard.js"></script>
 </body>
 
 </html>
