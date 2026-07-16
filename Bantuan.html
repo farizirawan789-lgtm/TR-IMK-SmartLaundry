@@ -1,173 +1,155 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bantuan | SmartLaundry</title>
+    <title>Pusat Bantuan | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="bantuan.css">
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
 <body>
 
-    <div class="dashboard-container">
+<div class="dashboard-container">
 
-        <!-- ================= SIDEBAR ================= -->
-        <aside class="sidebar">
-            <div class="logo">
-                <i class="fa-solid fa-shirt"></i>
-                <h2>SmartLaundry</h2>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-shirt"></i>
+            <h2>SmartLaundry</h2>
+        </div>
+        <ul>
+            <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+            <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+            <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+            <li class="active"><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+            <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+        </ul>
+        <button class="logout-btn" id="sidebarLogoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Keluar
+        </button>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>  
+                <h2>Pusat Bantuan (FAQ)</h2>
+                <p>Temukan jawaban instan dari pertanyaan Anda atau hubungi dukungan kurir kami.</p>
             </div>
-            <ul>
-                <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-                <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
-                <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
-                <li><a href="wallet.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
-                <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
-                <li class="active"><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
-                <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
-            </ul>
-            <button class="logout-btn" id="sidebarLogoutBtn">
-                <i class="fa-solid fa-right-from-bracket"></i> Keluar
-            </button>
-        </aside>
+            <div class="profile-top">
+                <i class="fa-regular fa-bell"></i>
+                <img src="Gambar/Jokowi.jpg" alt="Profile">
+                <span>namasiapaaaa</span>
+            </div>
+        </header>
 
-        <!-- ================= MAIN CONTENT ================= -->
-        <main class="main-content">
-
-            <!-- TOPBAR -->
-            <header class="topbar">
-                <div>
-                    <h2>Pusat Bantuan</h2>
-                    <p>Temukan jawaban cepat atau hubungi tim kami.</p>
+        <!-- KONTEN BANTUAN -->
+        <div class="help-grid">
+            
+            <!-- KARTU UTAMA LAYANAN HUBUNGI KAMI -->
+            <div class="help-left-col">
+                <div class="detail-card support-channels-card text-center">
+                    <div class="support-icon-wrapper">
+                        <i class="fa-solid fa-headset text-blue"></i>
+                    </div>
+                    <h4>Butuh Bantuan Cepat?</h4>
+                    <p>Tim admin & driver SmartLaundry Salatiga siap melayani Anda.</p>
+                    
+                    <div class="channels-list">
+                        <a href="https://wa.me/6281234567890" target="_blank" class="channel-btn whatsapp-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Hubungi via WhatsApp
+                        </a>
+                        <a href="mailto:support@smartlaundry.com" class="channel-btn email-btn">
+                            <i class="fa-regular fa-envelope"></i> Kirim Email Dukungan
+                        </a>
+                    </div>
+                    
+                    <hr class="help-divider">
+                    <div class="operational-hours">
+                        <h5>Jam Operasional Outlet:</h5>
+                        <p>Senin - Minggu: 07.00 - 21.00 WIB</p>
+                    </div>
                 </div>
-                <div class="profile-top">
-                    <i class="fa-regular fa-bell"></i>
-                    <img src="Gambar/Jokowi.jpg" alt="Profile">
-                    <span id="profileName">Pengguna</span>
-                </div>
-            </header>
+            </div>
 
-            <!-- KONTAK CEPAT -->
-            <section class="dashboard-section">
-                <h3 class="section-title">Hubungi Kami</h3>
+            <!-- FAQ COMPACT ACCORDION -->
+            <div class="help-right-col">
                 <div class="detail-card">
-                    <div class="help-contact-grid">
-                        <a href="https://wa.me/6281234567890" target="_blank" class="help-contact-card"
-                            style="color:inherit;">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <h4>WhatsApp</h4>
-                            <p>Respon cepat 24 jam</p>
-                        </a>
-                        <a href="mailto:cs@smartlaundry.id" class="help-contact-card" style="color:inherit;">
-                            <i class="fa-solid fa-envelope"></i>
-                            <h4>Email</h4>
-                            <p>cs@smartlaundry.id</p>
-                        </a>
-                        <div class="help-contact-card" id="liveChatCard">
-                            <i class="fa-solid fa-comments"></i>
-                            <h4>Live Chat</h4>
-                            <p>Chat langsung dengan CS</p>
+                    <h4 class="section-sub-title"><i class="fa-solid fa-circle-question text-blue"></i> Pertanyaan Sering Diajukan (FAQ)</h4>
+                    
+                    <div class="faq-accordion-wrapper">
+                        
+                        <!-- FAQ 1 -->
+                        <div class="faq-row-item">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <h5>Berapa lama estimasi pengerjaan Laundry Express?</h5>
+                                <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                            </div>
+                            <div class="faq-body">
+                                <p>Layanan Laundry Express dijamin selesai bersih, wangi, dan rapi dalam waktu maksimal 24 jam terhitung sejak pakaian diterima oleh kurir atau outlet kami.</p>
+                            </div>
                         </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-row-item">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <h5>Bagaimana cara melakukan pengisian saldo Smart Wallet?</h5>
+                                <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                            </div>
+                            <div class="faq-body">
+                                <p>Anda bisa menuju menu Wallet, klik tombol Top Up, lalu pilih nominal transfer. Anda dapat melakukan pembayaran via Transfer Bank Virtual Account atau QRIS outlet.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-row-item">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <h5>Apakah pewangi yang digunakan bisa disesuaikan?</h5>
+                                <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                            </div>
+                            <div class="faq-body">
+                                <p>Tentu saja. Anda bisa menetapkan pewangi default (seperti <strong>Avicenna Magnitude</strong>) langsung di halaman Profil Anda, atau menuliskan catatan khusus saat membuat order baru.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-row-item">
+                            <div class="faq-header" onclick="toggleFaq(this)">
+                                <h5>Bagaimana jika pakaian saya mengalami kerusakan atau luntur?</h5>
+                                <i class="fa-solid fa-chevron-down faq-arrow"></i>
+                            </div>
+                            <div class="faq-body">
+                                <p>SmartLaundry menjamin keamanan penuh. Kami memiliki formula spesialis pemisah noda dan luntur. Jika terjadi kelalaian sistem operasional, Anda berhak mengajukan klaim garansi ganti rugi maksimal 3x biaya laundry.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </section>
-
-            <!-- FAQ -->
-            <section class="dashboard-section">
-                <h3 class="section-title">Pertanyaan yang Sering Diajukan</h3>
-                <div class="detail-card">
-
-                    <div class="help-search-box">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" id="searchFaq" placeholder="Cari pertanyaan, cth: pembayaran, pengiriman..."
-                            oninput="filterFaq()">
-                    </div>
-
-                    <div id="faqList" style="margin-top: 8px;">
-
-                        <p class="help-faq-category" style="margin-top:16px;">Pesanan &amp; Pengiriman</p>
-                        <details class="help-faq-item">
-                            <summary>Bagaimana cara membuat pesanan baru? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Buka menu "Pesanan" pada sidebar, pilih layanan yang
-                                diinginkan, isi berat/jumlah dan alamat penjemputan, lalu konfirmasi pesanan.</div>
-                        </details>
-                        <details class="help-faq-item">
-                            <summary>Berapa lama proses laundry selesai? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Layanan Reguler selesai dalam 3 hari, Kilat dalam 24 jam, dan
-                                Express dalam 6 jam sejak pakaian dijemput.</div>
-                        </details>
-                        <details class="help-faq-item">
-                            <summary>Apakah bisa membatalkan pesanan yang sudah dibuat? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Pembatalan dapat dilakukan selama status pesanan masih "Proses"
-                                dengan menghubungi tim CS melalui WhatsApp.</div>
-                        </details>
-
-                        <p class="help-faq-category" style="margin-top:20px;">Pembayaran &amp; Wallet</p>
-                        <details class="help-faq-item">
-                            <summary>Metode pembayaran apa saja yang tersedia? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Anda dapat membayar menggunakan Smart Wallet atau Cash on
-                                Delivery (COD) kepada kurir.</div>
-                        </details>
-                        <details class="help-faq-item">
-                            <summary>Bagaimana cara top up Smart Wallet? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Buka menu "Wallet", tekan tombol "Top Up", pilih nominal yang
-                                diinginkan, lalu konfirmasi. Nota transaksi akan langsung muncul.</div>
-                        </details>
-                        <details class="help-faq-item">
-                            <summary>Kemana saya bisa melihat nota transaksi wallet? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Setiap transaksi top up maupun pembayaran tercatat di halaman
-                                "Wallet". Tekan "Lihat Nota" pada baris transaksi untuk melihat rinciannya.</div>
-                        </details>
-
-                        <p class="help-faq-category" style="margin-top:20px;">Akun</p>
-                        <details class="help-faq-item">
-                            <summary>Bagaimana cara mengubah data profil saya? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Buka menu "Profil", ubah data yang diinginkan pada formulir
-                                Data Diri, lalu tekan "Simpan Perubahan".</div>
-                        </details>
-                        <details class="help-faq-item">
-                            <summary>Bagaimana jika saya lupa password? <i
-                                    class="fa-solid fa-chevron-down arrow-icon"></i></summary>
-                            <div class="help-faq-answer">Hubungi tim CS kami melalui WhatsApp atau Email untuk bantuan
-                                reset password akun Anda.</div>
-                        </details>
-
-                    </div>
-
-                    <div class="wallet-empty-state" id="noFaqResult" style="display:none;">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <p>Tidak ditemukan pertanyaan yang cocok.</p>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </div>
-
-    <!-- MODAL LOGOUT -->
-    <div class="modal" id="logoutModal">
-        <div class="modal-content">
-            <h2>Keluar?</h2>
-            <p>Apakah Anda yakin ingin keluar dari akun?</p>
-            <div class="d-flex gap-20 justify-center">
-                <button class="btn-login-cancel" id="cancelLogout">Batal</button>
-                <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
             </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- MODAL LOGOUT -->
+<div class="modal" id="logoutModalHelp">
+    <div class="modal-content">
+        <h2>Keluar?</h2>
+        <p>Apakah Anda yakin ingin keluar dari akun?</p>
+        <div class="d-flex gap-20 justify-center">
+            <button class="btn-login-cancel" id="cancelLogoutHelp">Batal</button>
+            <button class="btn-logout-confirm" id="confirmLogoutHelp">Keluar</button>
         </div>
     </div>
+</div>
 
-    <script src="bantuan.js"></script>
+<script src="bantuan.js"></script>
 </body>
-
 </html>
