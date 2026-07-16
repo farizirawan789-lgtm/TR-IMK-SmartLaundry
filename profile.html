@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil | SmartLaundry</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shirt"></i>
+                <h2>SmartLaundry</h2>
+            </div>
+            <ul>
+                <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+                <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+                <li><a href="wallet.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+                <li class="active"><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+                <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+            </ul>
+            <button class="logout-btn" id="sidebarLogoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> Keluar
+            </button>
+        </aside>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div>
+                    <h2>Profil Saya</h2>
+                    <p>Kelola data diri dan keamanan akun Anda.</p>
+                </div>
+                <div class="profile-top">
+                    <i class="fa-regular fa-bell"></i>
+                    <img src="Gambar/Jokowi.jpg" alt="Profile">
+                    <span id="topbarProfileName">Pengguna</span>
+                </div>
+            </header>
+
+            <!-- HEADER PROFIL -->
+            <section class="dashboard-section">
+                <div class="detail-card profile-header-card">
+                    <div class="profile-avatar-wrapper">
+                        <img src="Gambar/Jokowi.jpg" alt="Foto Profil">
+                        <div class="profile-avatar-edit"><i class="fa-solid fa-camera"></i></div>
+                    </div>
+                    <div class="profile-header-info">
+                        <h2 id="profileHeaderName">Pengguna SmartLaundry</h2>
+                        <p id="profileHeaderEmail">-</p>
+                        <span class="profile-tag"><i class="fa-solid fa-star"></i> Member Aktif</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORM DATA DIRI -->
+            <section class="dashboard-section">
+                <h3 class="section-title">Data Diri</h3>
+                <div class="detail-card">
+                    <div class="profile-form-grid">
+                        <div class="form-order-group">
+                            <label for="inputNama">Nama Lengkap</label>
+                            <input type="text" id="inputNama" placeholder="Nama lengkap Anda">
+                        </div>
+                        <div class="form-order-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" id="inputEmail" placeholder="Alamat email">
+                        </div>
+                        <div class="form-order-group">
+                            <label for="inputTelepon">Nomor Telepon</label>
+                            <input type="text" id="inputTelepon" placeholder="Contoh: 0812xxxxxxx">
+                        </div>
+                        <div class="form-order-group">
+                            <label for="inputTanggalLahir">Tanggal Lahir</label>
+                            <input type="date" id="inputTanggalLahir">
+                        </div>
+                        <div class="form-order-group full-width">
+                            <label for="inputAlamat">Alamat Utama</label>
+                            <textarea id="inputAlamat" rows="2"
+                                placeholder="Alamat lengkap untuk penjemputan"></textarea>
+                        </div>
+                    </div>
+                    <div class="profile-save-row">
+                        <button class="btn-save-profile" id="saveProfileBtn">Simpan Perubahan</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KEAMANAN -->
+            <section class="dashboard-section">
+                <h3 class="section-title">Keamanan Akun</h3>
+                <div class="detail-card">
+                    <div class="profile-form-grid">
+                        <div class="form-order-group">
+                            <label for="passwordLama">Password Saat Ini</label>
+                            <input type="password" id="passwordLama" placeholder="Masukkan password saat ini">
+                        </div>
+                        <div class="form-order-group">
+                            <label for="passwordBaru">Password Baru</label>
+                            <input type="password" id="passwordBaru" placeholder="Minimal 6 karakter">
+                        </div>
+                    </div>
+                    <div class="profile-save-row">
+                        <button class="btn-save-profile" id="changePasswordBtn">Ubah Password</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DANGER ZONE -->
+            <section class="dashboard-section">
+                <div class="profile-danger-zone">
+                    <div>
+                        <h4>Hapus Akun</h4>
+                        <p>Semua data pesanan dan wallet Anda akan dihapus secara permanen.</p>
+                    </div>
+                    <button class="btn-danger-outline" id="deleteAccountBtn">Hapus Akun</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL LOGOUT -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <h2>Keluar?</h2>
+            <p>Apakah Anda yakin ingin keluar dari akun?</p>
+            <div class="d-flex gap-20 justify-center">
+                <button class="btn-login-cancel" id="cancelLogout">Batal</button>
+                <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL HAPUS AKUN -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <h2>Hapus Akun?</h2>
+            <p>Tindakan ini tidak dapat dibatalkan. Seluruh data Anda akan dihapus permanen.</p>
+            <div class="d-flex gap-20 justify-center">
+                <button class="btn-login-cancel" id="cancelDeleteAccount">Batal</button>
+                <button class="btn-logout-confirm" id="confirmDeleteAccount">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+
+</html>

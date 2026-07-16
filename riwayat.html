@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pesanan | SmartLaundry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="riwayat.css">
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shirt"></i>
+                <h2>SmartLaundry</h2>
+            </div>
+            <ul>
+                <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+                <li class="active"><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+                <li><a href="wallet.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+                <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+            </ul>
+            <button class="logout-btn" id="sidebarLogoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> Keluar
+            </button>
+        </aside>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div>
+                    <h2>Riwayat Transaksi</h2>
+                    <p>Pantau status pengerjaan pakaian dan rekam transaksi Anda.</p>
+                </div>
+                <div class="profile-top">
+                    <i class="fa-regular fa-bell"></i>
+                    <img src="Gambar/Jokowi.jpg" alt="Profile">
+                    <span>Kris Tri Timotius</span>
+                </div>
+            </header>
+
+            <!-- KONTEN UTAMA RIWAYAT -->
+            <div class="history-page-grid">
+
+                <!-- PANEL FILTER AKTIF -->
+                <div class="filter-card-container">
+                    <div class="search-box-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="searchInvoice" placeholder="Cari ID Pesanan (cth: #SL-24)..."
+                            oninput="filterHistory()">
+                    </div>
+                    <div class="filter-buttons-group">
+                        <button class="filter-btn active" onclick="filterStatus('all', this)">Semua</button>
+                        <button class="filter-btn" onclick="filterStatus('Proses', this)">Proses</button>
+                        <button class="filter-btn" onclick="filterStatus('Dijemput', this)">Dijemput</button>
+                        <button class="filter-btn" onclick="filterStatus('Selesai', this)">Selesai</button>
+                    </div>
+                </div>
+
+                <!-- TABEL DATA RIWAYAT JAUH LEBIH DETAIL & RAPI -->
+                <div class="detail-card history-table-wrapper">
+                    <table class="history-page-table">
+                        <thead>
+                            <tr>
+                                <th>ID Transaksi</th>
+                                <th>Tanggal</th>
+                                <th>Layanan Laundry</th>
+                                <th>Jumlah / Berat</th>
+                                <th>Total Bayar</th>
+                                <th>Status</th>
+                                <th style="text-align: center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Baris diisi otomatis oleh riwayat.js dari data localStorage (sinkron dgn Dashboard & order) -->
+                        </tbody>
+                    </table>
+                    <div class="no-data-msg" id="noDataMessage" style="display: none;">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <p>Tidak ada riwayat pesanan yang cocok.</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL DETAIL TRANSAKSI -->
+    <div class="modal" id="historyDetailModal">
+        <div class="modal-content text-left-modal">
+            <span class="close" id="closeDetailModal">&times;</span>
+            <h2 style="font-size: 1.2rem; margin-bottom: 15px;"><i class="fa-solid fa-receipt text-blue"></i> Rincian
+                Nota Transaksi</h2>
+
+            <div class="modal-detail-list">
+                <div class="md-item"><span>ID Transaksi</span><strong id="m-id">-</strong></div>
+                <div class="md-item"><span>Tanggal Transaksi</span><span id="m-tgl">-</span></div>
+                <hr class="modal-divider">
+                <div class="md-item"><span>Layanan</span><strong id="m-paket">-</strong></div>
+                <div class="md-item"><span>Volume Muatan</span><span id="m-qty">-</span></div>
+                <div class="md-item"><span>Metode Pengiriman</span><span id="m-kurir">-</span></div>
+                <div class="md-item"><span>Metode Bayar</span><span id="m-payment">-</span></div>
+                <hr class="modal-divider">
+                <div class="md-item"><span>Status Pengerjaan</span><span id="m-status">-</span></div>
+                <div class="md-item total-highlight"><span>Total Biaya</span><strong id="m-total"
+                        class="text-blue">-</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LOGOUT -->
+    <div class="modal" id="logoutModalHistory">
+        <div class="modal-content">
+            <h2>Keluar?</h2>
+            <p>Apakah Anda yakin ingin keluar dari akun?</p>
+            <div class="d-flex gap-20 justify-center">
+                <button class="btn-login-cancel" id="cancelLogoutHistory">Batal</button>
+                <button class="btn-logout-confirm" id="confirmLogoutHistory">Keluar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="riwayat.js"></script>
+</body>
+
+</html>
