@@ -1,20 +1,11 @@
 // ======================================================
-// SMART LAUNDRY - GLOBAL.JS (SINKRONISASI & PROTEKSI)
+// SMART LAUNDRY - GLOBAL.JS (SINKRONISASI TANPA PROTEKSI)
 // ======================================================
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Dapatkan lokasi halaman saat ini untuk menghindari perulangan pengalihan (loop redirect)
-    const currentPath = window.location.pathname;
-    const isLoginPage = currentPath.includes("login.html") || currentPath.includes("register.html");
+    // PROTEKSI DIHAPUS: Kamu bebas akses semua halaman tanpa harus login terlebih dahulu.
 
-    // 2. PROTEKSI HALAMAN: Jika tidak di halaman login dan belum masuk, tendang ke login.html
-    if (!isLoginPage && localStorage.getItem("is_logged_in") !== "true") {
-        alert("Silakan login terlebih dahulu untuk mengakses aplikasi!");
-        window.location.href = "login.html";
-        return;
-    }
-
-    // Jika sudah login, ambil data terbaru dari storage
+    // Ambil data terbaru dari storage jika ada
     const currentName = localStorage.getItem("laundry_user_name");
     const currentEmail = localStorage.getItem("laundry_user_email");
     const currentWallet = parseInt(localStorage.getItem("laundry_user_wallet")) || 0;

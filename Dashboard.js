@@ -86,15 +86,19 @@ document.addEventListener("DOMContentLoaded", function () {
     renderDashboardRiwayat();
     updateWalletCardSaldo();
 
-    // ================= USER LOGIN =================
-    const namaUser = localStorage.getItem("loginUser");
+    // ================= USER LOGIN (SINKRON DENGAN GLOBAL & PROFILE) =================
+    const namaUser = localStorage.getItem("laundry_user_name");
 
     if (namaUser) {
-        document.getElementById("welcomeName").innerHTML =
-            "Halo, " + namaUser + "! 👋";
+        const welcomeNameEl = document.getElementById("welcomeName");
+        if (welcomeNameEl) {
+            welcomeNameEl.innerHTML = "Halo, " + namaUser + "! 👋";
+        }
 
-        document.getElementById("profileName").innerHTML =
-            namaUser;
+        const profileNameEl = document.getElementById("profileName");
+        if (profileNameEl) {
+            profileNameEl.innerHTML = namaUser;
+        }
     }
 
     // ================= MENU AKTIF SIDEBAR =================
@@ -167,3 +171,99 @@ document.addEventListener("DOMContentLoaded", function () {
             tampilkanNota(transaksi);
         });
     }
+
+    // ================= LOGOUT MODAL SYSTEM =================
+    const logoutBtn = document.getElementById("sidebarLogoutBtn") || document.querySelector(".logout-btn");
+    const logoutModal = document.getElementById("logoutModal");
+    const cancelLogout = document.getElementById("cancelLogout");
+    const confirmLogout = document.getElementById("confirmLogout");
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+            logoutModal.style.display = "flex";
+        });
+    }
+
+    if (cancelLogout) {
+        cancelLogout.addEventListener("click", function () {
+            logoutModal.style.display = "none";
+        });
+    }
+
+    if (confirmLogout) {
+        confirmLogout.addEventListener("click", function () {
+            // Bersihkan data sesi laundry saat keluar
+            localStorage.removeItem("is_logged_in");
+            localStorage.removeItem("laundry_user_name");
+            localStorage.removeItem("laundry_user_email");
+            localStorage.removeItem("laundry_user_wallet");
+            localStorage.removeItem("loginUser"); // Bersihkan sisa key usang jika ada
+            
+            alert("Berhasil Logout");
+            window.location.href = "login.html";
+        });
+    }
+
+    // ================= NAVIGASI BUTTON & MENU CEPAT =================
+    const detailBtn = document.getElementById("detailBtn");
+    if (detailBtn) {
+        detailBtn.addEventListener("click", function () {
+            window.location.href = "detail.html";
+        });
+    }
+
+    const historyBtn = document.getElementById("historyBtn");
+    if (historyBtn) {
+        historyBtn.addEventListener("click", function () {
+            window.location.href = "riwayat.html";
+        });
+    }
+
+    const quickMenu = document.querySelectorAll(".menu-card");
+    quickMenu.forEach(function (menu) {
+        menu.addEventListener("click", function () {
+            const nama = this.innerText.trim();
+
+            if (nama.includes("Pesanan") || nama.includes("Buat Pesanan")) {
+                window.location.href = "order.html";
+            }
+            else if (nama.includes("Riwayat")) {
+                window.location.href = "riwayat.html";
+            }
+            else if (nama.includes("Alamat")) {
+                window.location.href = "profile.html";
+            }
+            else if (nama.includes("Promo")) {
+                alert("Belum ada promo baru.");
+            }
+        });
+    });
+
+    // ================= ADJUSTMENT: SMOOTH DESKTOP CARD HOVER =================
+    const cards = document.querySelectorAll(".menu-card, .payment-card, .detail-card");
+
+    cards.forEach(function (card) {
+        card.style.transition = "all 0.3s ease";
+
+        card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-6px)";
+            this.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.05)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0px)";
+            this.style.boxShadow = "none";
+        });
+    });
+
+    // ================= TUTUP MODAL KETIKA KLIK DI LUAR BOX =================
+    window.addEventListener("click", function (event) {
+        if (event.target == topupModal) {
+            topupModal.style.display = "none";
+        }
+        if (event.target == logoutModal) {
+            logoutModal.style.display = "none";
+        }
+    });
+
+});
