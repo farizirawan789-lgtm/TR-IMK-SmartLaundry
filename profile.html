@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya | SmartLaundry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-shirt"></i>
+            <h2>SmartLaundry</h2>
+        </div>
+        <ul>
+            <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+            <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+            <li class="active"><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+            <li><a href="#"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+            <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+        </ul>
+        <button class="logout-btn" id="sidebarLogoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Keluar
+        </button>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>  
+                <h2>Profil Pengguna</h2>
+                <p>Kelola informasi pribadi dan pengaturan akun Anda.</p>
+            </div>
+            <div class="profile-top">
+                <i class="fa-regular fa-bell"></i>
+                <img src="Gambar/Jokowi.jpg" alt="Profile">
+                <span>Trenggillig</span>
+            </div>
+        </header>
+
+        <!-- KONTEN PROFIL 2 KOLOM KONSISTEN -->
+        <div class="profile-grid">
+            
+            <!-- KOLOM KIRI: KARTU PROFIL UTAMA & STATISTIK RINGKAS -->
+            <div class="profile-left-col">
+                <div class="detail-card profile-main-card text-center">
+                    <div class="avatar-wrapper">
+                        <img src="Gambar/Jokowi.jpg" alt="Avatar Utama" class="profile-avatar-large">
+                        <button class="change-avatar-btn"><i class="fa-solid fa-camera"></i></button>
+                    </div>
+                    <h3 class="user-fullname"> Trenggiling bakar</h3>
+                    <p class="user-role-text">Member Premium</p>
+                    
+                    <hr class="profile-card-divider">
+                    
+                    <div class="profile-stats-grid">
+                        <div class="stat-box">
+                            <h4>12</h4>
+                            <p>Total Order</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>50 Kg</h4>
+                            <p>Total Pakaian</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KARTU ALAMAT UTAMA -->
+                <div class="detail-card mt-20">
+                    <div class="d-flex justify-between align-center">
+                        <h4 style="font-size: 0.95rem; font-weight: 700; color: #1f2937;"><i class="fa-solid fa-location-dot text-blue"></i> Alamat Rumah</h4>
+                        <button class="btn-view-all" style="font-size: 0.8rem;">Ubah</button>
+                    </div>
+                    <p style="font-size: 0.82rem; color: #4b5563; margin-top: 10px; line-height: 1.5;">
+                        Jl. Diponegoro No. 52, Sidorejo, Kecamatan Sidorejo, Kota Salatiga, Jawa Tengah, 50711.
+                    </p>
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN: FORM DETAIL DATA PRIBADI -->
+            <div class="profile-right-col">
+                <div class="detail-card">
+                    <h4 style="font-size: 1rem; color: #1f2937; font-weight: 700; margin-bottom: 20px;">Informasi Pribadi</h4>
+                    
+                    <form id="profileForm" onsubmit="saveProfile(event)">
+                        <div class="form-profile-row">
+                            <div class="form-order-group">
+                                <label for="pf-firstname">Nama Depan</label>
+                                <input type="text" id="pf-firstname" value="Kris Tri">
+                            </div>
+                            <div class="form-order-group">
+                                <label for="pf-lastname">Nama Belakang</label>
+                                <input type="text" id="pf-lastname" value="Timotius">
+                            </div>
+                        </div>
+
+                        <div class="form-order-group">
+                            <label for="pf-email">Alamat Email</label>
+                            <input type="email" id="pf-email" value="kualaila.@gmail.com" disabled>
+                            <span style="font-size: 0.72rem; color: #9ca3af; margin-top: 2px;">Email utama terverifikasi UKSW tidak dapat diubah.</span>
+                        </div>
+
+                        <div class="form-order-group">
+                            <label for="pf-phone">Nomor WhatsApp</label>
+                            <input type="tel" id="pf-phone" value="081234567890">
+                        </div>
+
+                        <div class="form-order-group">
+                            <label for="pf-gender">Jenis Kelamin</label>
+                            <select id="pf-gender">
+                                <option value="Laki-laki" selected>Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-save-profile">
+                            <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- MODAL SAVE SUCCESS -->
+<div class="modal" id="saveSuccessModal">
+    <div class="modal-content">
+        <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #34a853; margin-bottom: 15px;"></i>
+        <h2>Profil Diperbarui!</h2>
+        <p>Perubahan informasi akun Anda telah berhasil disimpan.</p>
+        <button class="auth-btn" onclick="closeSuccessModal()">Selesai</button>
+    </div>
+</div>
+
+<!-- MODAL LOGOUT -->
+<div class="modal" id="logoutModalProfile">
+    <div class="modal-content">
+        <h2>Keluar?</h2>
+        <p>Apakah Anda yakin ingin keluar dari akun?</p>
+        <div class="d-flex gap-20 justify-center">
+            <button class="btn-login-cancel" id="cancelLogoutProfile">Batal</button>
+            <button class="btn-logout-confirm" id="confirmLogoutProfile">Keluar</button>
+        </div>
+    </div>
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>
