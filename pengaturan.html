@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan | SmartLaundry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pengaturan.css">
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-shirt"></i>
+            <h2>SmartLaundry</h2>
+        </div>
+        <ul>
+            <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+            <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Payment</a></li>
+            <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+            <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+            <li class="active"><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+        </ul>
+        <button class="logout-btn" id="sidebarLogoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Keluar
+        </button>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>  
+                <h2>Pengaturan Sistem</h2>
+                <p>Kelola notifikasi, privasi akun, dan ubah kata sandi keamanan Anda.</p>
+            </div>
+            <div class="profile-top">
+                <i class="fa-regular fa-bell"></i>
+                <img src="Gambar/Jokowi.jpg" alt="Profile">
+                <span>sipanamaaaa</span>
+            </div>
+        </header>
+
+        <!-- KONTEN PENGATURAN GRID GRID -->
+        <div class="setting-grid">
+            
+            <!-- SISI KIRI: SWITCH NOTIFIKASI & PRIVASI -->
+            <div class="setting-left-col">
+                <div class="detail-card">
+                    <h4 class="section-sub-title"><i class="fa-solid fa-bell text-blue"></i> Preferensi Notifikasi</h4>
+                    <p class="setting-section-desc">Pilih saluran informasi aktivitas laundry yang ingin Anda dapatkan.</p>
+                    
+                    <div class="switch-options-list">
+                        <div class="switch-row-item">
+                            <div>
+                                <h5>Notifikasi WhatsApp</h5>
+                                <p>Kirim update penjemputan pakaian otomatis via WA.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="switch-row-item">
+                            <div>
+                                <h5>Email Nota & Kuitansi</h5>
+                                <p>Kirim file PDF tanda terima digital ke inbox email.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="switch-row-item">
+                            <div>
+                                <h5>Info Promo Khusus</h5>
+                                <p>Dapatkan info berkala kupon diskon member Premium.</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="switch-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SISI KANAN: GANTI PASSWORD AMAN -->
+            <div class="setting-right-col">
+                <div class="detail-card">
+                    <h4 class="section-sub-title"><i class="fa-solid fa-lock text-blue"></i> Keamanan & Kata Sandi</h4>
+                    
+                    <form id="passwordForm" onsubmit="changePassword(event)">
+                        <div class="form-order-group">
+                            <label for="st-oldpass">Kata Sandi Saat Ini</label>
+                            <input type="password" id="st-oldpass" placeholder="••••••••" required>
+                        </div>
+                        
+                        <div class="form-order-group">
+                            <label for="st-newpass">Kata Sandi Baru</label>
+                            <input type="password" id="st-newpass" placeholder="Minimal 8 karakter" required>
+                        </div>
+
+                        <div class="form-order-group">
+                            <label for="st-confirmpass">Konfirmasi Kata Sandi Baru</label>
+                            <input type="password" id="st-confirmpass" placeholder="Ulangi kata sandi baru" required>
+                        </div>
+
+                        <button type="submit" class="btn-save-settings">
+                            <i class="fa-solid fa-shield-check"></i> Perbarui Kata Sandi
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- MODAL SAVE SUCCESS -->
+<div class="modal" id="settingsSuccessModal">
+    <div class="modal-content">
+        <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #34a853; margin-bottom: 15px;"></i>
+        <h2>Kata Sandi Diperbarui!</h2>
+        <p>Sistem keamanan akun Anda telah disinkronkan dengan kata sandi yang baru.</p>
+        <button class="auth-btn" onclick="closeSettingsModal()">Selesai</button>
+    </div>
+</div>
+
+<!-- MODAL LOGOUT -->
+<div class="modal" id="logoutModalSettings">
+    <div class="modal-content">
+        <h2>Keluar?</h2>
+        <p>Apakah Anda yakin ingin keluar dari akun?</p>
+        <div class="d-flex gap-20 justify-center">
+            <button class="btn-login-cancel" id="cancelLogoutSettings">Batal</button>
+            <button class="btn-logout-confirm" id="confirmLogoutSettings">Keluar</button>
+        </div>
+    </div>
+</div>
+
+<script src="global.js"></script>
+<script src="pengaturan.js"></script>
+</body>
+</html>
