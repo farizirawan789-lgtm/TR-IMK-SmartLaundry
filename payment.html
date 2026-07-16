@@ -1,176 +1,207 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembayaran - SmartLaundry</title>
-
+    <title>Payment | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
 <body>
 
-    <header>
-        <div class="container">
-            <div class="navbar">
-                <div class="logo">
-                    <i class="fa-solid fa-shirt"></i>
-                    <h2>SmartLaundry</h2>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="Landing.html">Beranda</a></li>
-                        <li><a href="Landing.html#layanan">Layanan</a></li>
-                        <li><a href="Landing.html#cara-kerja">Cara Kerja</a></li>
-                        <li><a href="Landing.html#harga">Harga</a></li>
-                        <li><a href="Landing.html#faq">FAQ</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-button">
-                    <a href="riwayat.html" class="btn-login">Riwayat</a>
-                    <a href="profile.html" class="btn-register">Profile</a>
-                </div>
-            </div>
+<div class="dashboard-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-shirt"></i>
+            <h2>SmartLaundry</h2>
         </div>
-    </header>
+        <ul>
+            <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+            <li class="active"><a href="payment.html"><i class="fa-solid fa-wallet"></i> Payment</a></li>
+            <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+            <li><a href="#"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+            <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+        </ul>
+        <button class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i> Keluar
+        </button>
+    </aside>
 
-    <section class="payment-page">
-        <div class="container">
-            <div class="page-title">
-                <div>
-                    <h2>Pembayaran</h2>
-                    <p>Selesaikan pembayaran untuk pesanan <strong>#LND-00231</strong></p>
-                </div>
-                <span class="status status-menunggu">
-                    <i class="fa-solid fa-hourglass-half"></i> Menunggu Pembayaran
-                </span>
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>  
+                <h2>Pembayaran Pesanan</h2>
+                <p>Selesaikan pembayaran Anda dengan aman</p>
+            </div>
+            <div class="profile-top">
+                <i class="fa-regular fa-bell"></i>
+                <img src="Gambar/Jokowi.jpg" alt="Profile">
+                <span id="profileName"></span>
+            </div>
+        </header>
+
+        <!-- KONTEN UTAMA Halaman Payment -->
+        <section class="payment-page-inside">
+            
+            <!-- PESAN JIKA TIDAK ADA ORDERAN -->
+            <div id="no-order-message" class="detail-card text-center" style="display: none; padding: 40px 20px;">
+                <i class="fa-solid fa-basket-shopping" style="font-size: 3rem; color: #9ca3af; margin-bottom: 15px;"></i>
+                <h3>Belum Ada Pesanan Aktif</h3>
+                <p style="color: #6b7280; margin-bottom: 20px;">Anda belum melakukan pemesanan layanan laundry apa pun saat ini.</p>
+                <a href="order.html" class="btn-save" style="text-decoration: none; display: inline-block;">Buat Pesanan Sekarang</a>
             </div>
 
-            <div class="countdown">
-                <i class="fa-solid fa-clock"></i>
-                Selesaikan pembayaran dalam <strong id="timer">23:59:12</strong> sebelum pesanan dibatalkan otomatis
-            </div>
-
-            <div class="payment-wrapper">
-
-                <div class="detail-card">
-                    <h3>Pilih Metode Pembayaran</h3>
-
-                    <div class="method-list">
-                        <div class="method-card active" onclick="selectMethod('va', this)">
-                            <i class="fa-solid fa-building-columns"></i>
-                            <h4>Transfer Bank</h4>
-                        </div>
-                        <div class="method-card" onclick="selectMethod('ewallet', this)">
-                            <i class="fa-solid fa-wallet"></i>
-                            <h4>E-Wallet</h4>
-                        </div>
-                        <div class="method-card" onclick="selectMethod('cod', this)">
-                            <i class="fa-solid fa-hand-holding-dollar"></i>
-                            <h4>Bayar di Tempat</h4>
-                        </div>
+            <!-- AREA KONTEN PEMBAYARAN (Hanya muncul jika ada order) -->
+            <div id="active-payment-area" style="display: none;">
+                <div class="page-title-inline">
+                    <div>
+                        <p>Selesaikan pembayaran untuk pesanan <strong id="header-order-id">#LND-00000</strong></p>
                     </div>
+                    <span class="status status-menunggu">
+                        <i class="fa-solid fa-hourglass-half"></i> Menunggu Pembayaran
+                    </span>
+                </div>
 
-                    <div class="method-detail show" id="detail-va">
-                        <div class="va-box">
-                            <div>
-                                <span>Bank BCA Virtual Account</span>
-                                <strong>8808 1234 5678 9012</strong>
+                <div class="countdown">
+                    <i class="fa-solid fa-clock"></i>
+                    Selesaikan pembayaran dalam <strong id="timer">23:59:12</strong> sebelum pesanan dibatalkan otomatis
+                </div>
+
+                <div class="payment-wrapper">
+                    <!-- KARTU KIRI: METODE PEMBAYARAN -->
+                    <div class="detail-card">
+                        <h3>Pilih Metode Pembayaran</h3>
+
+                        <div class="method-list">
+                            <div class="method-card active" onclick="selectMethod('va', this)">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <h4>Transfer Bank</h4>
                             </div>
-                            <button class="btn-copy" onclick="copyVA()">
-                                <i class="fa-solid fa-copy"></i> Salin
-                            </button>
+                            <div class="method-card" onclick="selectMethod('ewallet', this)">
+                                <i class="fa-solid fa-wallet"></i>
+                                <h4>E-Wallet</h4>
+                            </div>
+                            <div class="method-card" onclick="selectMethod('cod', this)">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                                <h4>Bayar di Tempat</h4>
+                            </div>
                         </div>
-                        <div class="social-login">
-                            <div class="social-btn"><i class="fa-solid fa-building-columns"></i> BCA</div>
-                            <div class="social-btn"><i class="fa-solid fa-building-columns"></i> Mandiri</div>
-                            <div class="social-btn"><i class="fa-solid fa-building-columns"></i> BNI</div>
-                            <div class="social-btn"><i class="fa-solid fa-building-columns"></i> BRI</div>
+
+                        <div class="method-detail show" id="detail-va">
+                            <div class="va-box">
+                                <div>
+                                    <span>Bank BCA Virtual Account</span>
+                                    <strong id="va-number-text">880812345678902</strong>
+                                </div>
+                                <button class="btn-copy" onclick="copyVA()">
+                                    <i class="fa-solid fa-copy"></i> Salin
+                                </button>
+                            </div>
+                            <div class="payment-social-login">
+                                <div class="payment-social-btn active-bank"><i class="fa-solid fa-building-columns"></i> BCA</div>
+                                <div class="payment-social-btn"><i class="fa-solid fa-building-columns"></i> Mandiri</div>
+                                <div class="payment-social-btn"><i class="fa-solid fa-building-columns"></i> BNI</div>
+                                <div class="payment-social-btn"><i class="fa-solid fa-building-columns"></i> BRI</div>
+                            </div>
                         </div>
+
+                        <div class="method-detail" id="detail-ewallet">
+                            <p class="mb-2" style="color:var(--gray-text); font-size: 0.85rem;">
+                                Pilih penyedia e-wallet untuk melanjutkan pembayaran
+                            </p>
+                            <div class="payment-social-login">
+                                <div class="payment-social-btn"><i class="fa-solid fa-wallet"></i> GoPay</div>
+                                <div class="payment-social-btn"><i class="fa-solid fa-wallet"></i> OVO</div>
+                                <div class="payment-social-btn"><i class="fa-solid fa-wallet"></i> DANA</div>
+                                <div class="payment-social-btn"><i class="fa-solid fa-wallet"></i> ShopeePay</div>
+                            </div>
+                        </div>
+
+                        <div class="method-detail" id="detail-cod">
+                            <div class="alert alert-info">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Pembayaran dilakukan langsung kepada kurir saat pesanan diantar ke alamat Anda.
+                            </div>
+                        </div>
+
+                        <div class="promo-box">
+                            <input type="text" placeholder="Masukkan kode promo">
+                            <button class="btn-save">Gunakan</button>
+                        </div>
+
+                        <button class="auth-btn w-100" onclick="prosesBayar()">
+                            <i class="fa-solid fa-lock"></i> Konfirmasi Pembayaran
+                        </button>
                     </div>
 
-                    <div class="method-detail" id="detail-ewallet">
-                        <p class="mb-2" style="color:var(--gray);">
-                            Pilih penyedia e-wallet untuk melanjutkan pembayaran
-                        </p>
-                        <div class="social-login">
-                            <div class="social-btn"><i class="fa-solid fa-wallet"></i> GoPay</div>
-                            <div class="social-btn"><i class="fa-solid fa-wallet"></i> OVO</div>
-                            <div class="social-btn"><i class="fa-solid fa-wallet"></i> DANA</div>
-                            <div class="social-btn"><i class="fa-solid fa-wallet"></i> ShopeePay</div>
+                    <!-- KARTU KANAN: RINGKASAN HARGA -->
+                    <div>
+                        <div class="detail-card">
+                            <h3>Ringkasan Pesanan</h3>
+                            <div class="detail-item-row">
+                                <span>ID Pesanan</span>
+                                <strong id="summary-id">#LND-00000</strong>
+                            </div>
+                            <div class="detail-item-row">
+                                <span id="summary-paket-nama">Nama Paket</span>
+                                <strong id="summary-paket-harga">Rp 0</strong>
+                            </div>
+                            <div class="detail-item-row">
+                                <span>Layanan Antar Jemput</span>
+                                <strong id="summary-antarjemput">Rp 0</strong>
+                            </div>
+                            <div class="detail-item-row">
+                                <span>Diskon Pelanggan Baru</span>
+                                <strong id="summary-diskon" style="color:#16A34A;">- Rp 0</strong>
+                            </div>
+                            <div class="detail-item-row" style="border-bottom:none; margin-bottom: 15px;">
+                                <span>Biaya Layanan</span>
+                                <strong id="summary-layanan">Rp 0</strong>
+                            </div>
+                            <div class="summary-total">
+                                <span>Total Pembayaran</span>
+                                <strong id="summary-total-bayar">Rp 0</strong>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <h3>Alamat Pengiriman</h3>
+                            <div class="address-box">
+                                <i class="fa-solid fa-location-dot" style="color: #0066ff; margin-top: 3px;"></i>
+                                <strong id="summary-alamat">Alamat belum diatur</strong>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="method-detail" id="detail-cod">
-                        <div class="alert alert-info">
-                            <i class="fa-solid fa-circle-info"></i>
-                            Pembayaran dilakukan langsung kepada kurir saat pesanan diantar ke alamat Anda.
-                        </div>
-                    </div>
-
-                    <div class="promo-box">
-                        <input type="text" placeholder="Masukkan kode promo">
-                        <button>Gunakan</button>
-                    </div>
-
-                    <a href="#" class="btn-order w-100 text-center" style="display:block;">
-                        <i class="fa-solid fa-lock"></i> Konfirmasi Pembayaran
-                    </a>
                 </div>
-
-                <div>
-                    <div class="detail-card">
-                        <h3>Ringkasan Pesanan</h3>
-                        <div class="detail-item mb-2">
-                            <span>ID Pesanan</span>
-                            <strong>#LND-00231</strong>
-                        </div>
-                        <div class="summary-item">
-                            <span>Cuci + Setrika (5kg)</span>
-                            <strong>Rp 35.000</strong>
-                        </div>
-                        <div class="summary-item">
-                            <span>Layanan Antar Jemput</span>
-                            <strong>Rp 10.000</strong>
-                        </div>
-                        <div class="summary-item">
-                            <span>Diskon Pelanggan Baru</span>
-                            <strong style="color:#16A34A;">- Rp 5.000</strong>
-                        </div>
-                        <div class="summary-item" style="border-bottom:none;">
-                            <span>Biaya Layanan</span>
-                            <strong>Rp 2.000</strong>
-                        </div>
-                        <div class="summary-total">
-                            <span>Total Pembayaran</span>
-                            <strong>Rp 42.000</strong>
-                        </div>
-                    </div>
-
-                    <div class="detail-card">
-                        <h3>Alamat Pengiriman</h3>
-                        <div class="detail-item">
-                            <span>Dikirim ke</span>
-                            <strong>Jl. Merdeka No. 12, Salatiga, Jawa Tengah</strong>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+        </section>
+    </main>
+</div>
+
+<script src="payment.js"></script>
+<!-- ================= MODAL SUKSES PEMBAYARAN ================= -->
+<div class="modal" id="paymentSuccessModal">
+    <div class="modal-content text-center" style="max-width: 400px; padding: 30px 20px;">
+        <div style="font-size: 4rem; color: #16A34A; margin-bottom: 15px;">
+            <i class="fa-solid fa-circle-check animate__animated animate__bounceIn"></i>
         </div>
-    </section>
-
-    <script src="landing.js"></script>
-    <script src="payment.js"></script>
-
+        <h2>Pembayaran Berhasil!</h2>
+        <p style="color: #6b7280; margin-bottom: 25px; font-size: 0.95rem;">
+            Terima kasih! Pembayaran Anda telah kami terima dan pesanan akan segera diproses oleh kurir kami.
+        </p>
+        <button class="auth-btn w-100" id="btnKeDashboard" style="margin-top: 0;">
+            Ke Dashboard
+        </button>
+    </div>
+</div>
 </body>
-
 </html>

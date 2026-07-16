@@ -1633,3 +1633,511 @@ body.auth-page {
         display: none;
     }
 }
+
+/* ==========================================================================
+   SMART LAUNDRY - PAYMENT PAGE STYLES (ANTI-TABRAKAN)
+   ========================================================================== */
+
+/* --- ROOT COLORS VARIANT --- */
+:root {
+    --primary-blue: #0066ff;
+    --dark-blue: #0052cc;
+    --light-bg: #f4f7fe;
+    --dark-text: #1f2937;
+    --gray-text: #6b7280;
+    --border-color: #e2e8f0;
+    --status-wait-bg: #fef3c7;
+    --status-wait-text: #d97706;
+}
+
+/* --- GLOBAL LAYOUT FOR PAYMENT --- */
+.payment-page {
+    background-color: var(--light-bg);
+    padding: 40px 0 80px 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: calc(100vh - 80px); /* Menyesuaikan sisa tinggi setelah header */
+}
+
+.payment-page .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER TITLE & STATUS --- */
+.payment-page .page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.payment-page .page-title h2 {
+    font-size: 1.8rem;
+    color: var(--dark-text);
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+.payment-page .page-title p {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    margin: 0;
+}
+
+.payment-page .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.payment-page .status-menunggu {
+    background-color: var(--status-wait-bg);
+    color: var(--status-wait-text);
+}
+
+/* --- COUNTDOWN TIMER --- */
+.payment-page .countdown {
+    background-color: #ffffff;
+    border-left: 4px solid var(--status-wait-text);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    color: var(--dark-text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.payment-page .countdown i {
+    color: var(--status-wait-text);
+}
+
+/* --- TWO COLUMN WRAPPER --- */
+.payment-page .payment-wrapper {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- DETAIL CARD BASE --- */
+.payment-page .detail-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.payment-page .detail-card h3 {
+    font-size: 1.15rem;
+    color: var(--dark-text);
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #f8fafc;
+    padding-bottom: 12px;
+}
+
+/* --- METODE PEMBAYARAN TABS --- */
+.payment-page .method-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.payment-page .method-card {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.payment-page .method-card i {
+    font-size: 1.4rem;
+    color: var(--gray-text);
+}
+
+.payment-page .method-card h4 {
+    font-size: 0.85rem;
+    margin: 0;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.payment-page .method-card:hover {
+    border-color: var(--primary-blue);
+    background-color: #f8fafc;
+}
+
+.payment-page .method-card.active {
+    border-color: var(--primary-blue);
+    background-color: rgba(0, 102, 255, 0.04);
+}
+
+.payment-page .method-card.active i {
+    color: var(--primary-blue);
+}
+
+/* --- METHOD DETAILS CONTROLLER --- */
+.payment-page .method-detail {
+    display: none;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px dashed var(--border-color);
+}
+
+.payment-page .method-detail.show {
+    display: block;
+}
+
+/* --- VIRTUAL ACCOUNT BOX --- */
+.payment-page .va-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.payment-page .va-box span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gray-text);
+    margin-bottom: 4px;
+}
+
+.payment-page .va-box strong {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    color: var(--dark-text);
+    font-weight: 700;
+}
+
+.payment-page .btn-copy {
+    background-color: #f1f5f9;
+    color: var(--primary-blue);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.payment-page .btn-copy:hover {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+}
+
+/* --- LIST BANK & EWALLET BUTTONS --- */
+.payment-page .social-login {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.payment-page .social-btn {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.payment-page .social-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    box-shadow: 0 2px 8px rgba(0, 102, 255, 0.05);
+}
+
+/* --- PROMO & INPUT BOX --- */
+.payment-page .promo-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.payment-page .promo-box input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    outline: none;
+    font-family: inherit;
+}
+
+.payment-page .promo-box input:focus {
+    border-color: var(--primary-blue);
+}
+
+.payment-page .promo-box button {
+    background-color: #e2e8f0;
+    color: var(--dark-text);
+    border: none;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.payment-page .promo-box button:hover {
+    background-color: #cbd5e1;
+}
+
+/* --- MAIN CONFIRMATION BUTTON --- */
+.payment-page .btn-order {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+    transition: 0.2s;
+}
+
+.payment-page .btn-order:hover {
+    background-color: var(--dark-blue);
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
+}
+
+.payment-page .w-100 { width: 100%; box-sizing: border-box; }
+
+/* --- ALERT COD BOX --- */
+.payment-page .alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.payment-page .alert-info {
+    background-color: rgba(0, 102, 255, 0.05);
+    color: var(--primary-blue);
+    border: 1px solid rgba(0, 102, 255, 0.1);
+}
+
+/* --- SUMMARY SIDEBAR ITEMS --- */
+.payment-page .detail-item, 
+.payment-page .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+.payment-page .summary-item span {
+    color: var(--gray-text);
+}
+
+.payment-page .summary-item strong {
+    color: var(--dark-text);
+    font-weight: 500;
+}
+
+.payment-page .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.payment-page .detail-item span {
+    font-size: 0.8rem;
+    color: var(--gray-text);
+}
+
+.payment-page .detail-item strong {
+    color: var(--dark-text);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.payment-page .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed var(--border-color);
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.payment-page .summary-total span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.payment-page .summary-total strong {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
+.payment-page-inside {
+    padding: 20px 0;
+}
+.page-title-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.page-title-inline p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin: 0;
+}
+
+/* --- CSS Khusus Perbaikan Tampilan Bank & Ringkasan Halaman Payment --- */
+.payment-page-inside .payment-social-login {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 15px;
+}
+
+.payment-page-inside .payment-social-btn {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 12px 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.payment-page-inside .payment-social-btn:hover {
+    border-color: #0066ff;
+    color: #0066ff;
+}
+
+.payment-page-inside .detail-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.9rem;
+}
+
+.payment-page-inside .detail-item-row span {
+    color: #6b7280;
+}
+
+.payment-page-inside .detail-item-row strong {
+    color: #1f2937;
+}
+
+.payment-page-inside .address-box {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: #1f2937;
+    line-height: 1.5;
+}
+
+/* --- UTILITY CSS CLASS --- */
+.payment-page .mb-2 { margin-bottom: 10px; }
+
+/* Pastikan modal menutup layar dan kontennya berada di tengah-tengah */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999; /* Sangat atas agar tidak tertutup elemen lain */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Efek gelap di belakang */
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Responsif untuk Layar HP */
+@media (max-width: 600px) {
+    .payment-page-inside .payment-social-login {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* --- RESPONSIVE LAYOUT BREAKPOINTS --- */
+@media (max-width: 992px) {
+    .payment-page .payment-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .payment-page .method-list {
+        grid-template-columns: 1fr;
+    }
+    .payment-page .social-login {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .payment-page .page-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+

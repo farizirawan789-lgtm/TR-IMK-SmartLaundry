@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ================= ADJUSTMENT: SMOOTH DESKTOP CARD HOVER =================
     // Mengubah inline style menjadi class manipulation agar transisi CSS dari style.css bekerja maksimal
-    const cards = document.querySelectorAll(".menu-card, .wallet-card, .detail-card");
+    const cards = document.querySelectorAll(".menu-card, .payment-card, .detail-card");
 
     cards.forEach(function (card) {
         card.style.transition = "all 0.3s ease"; // Memastikan efek transisi desktop halus
