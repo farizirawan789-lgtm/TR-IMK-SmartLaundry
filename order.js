@@ -1,78 +1,109 @@
-// State Management untuk Order Form
-let selectedPackageName = "Laundry Cuci Komplit";
-let selectedPackagePrice = 35000;
+// ======================================================
+// SMART LAUNDRY - ORDER.JS (CALCULATION & ROUTING)
+// ======================================================
 
-// Fungsi memilih paket layanan laundry (Mengganti kelas active & update nilai dasar)
-function selectPackage(element, name, price) {
-    document.querySelectorAll('.package-row-card').forEach(card => {
-        card.classList.remove('selected');
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("laundryOrderForm");
+    const selectPaket = document.getElementById("selectPaket");
+    const inputBerat = document.getElementById("inputBerat");
+    const selectEkspedisi = document.getElementById("selectEkspedisi");
+    const inputAlamat = document.getElementById("inputAlamat");
+
+    // Element Live Preview Right Side
+    const pPaket = document.getElementById("preview-paket");
+    const pHargaKg = document.getElementById("preview-harga-per-kg");
+    const pSubtotal = document.getElementById("preview-subtotal-pakaian");
+    const pOngkir = document.getElementById("preview-ongkir");
+    const pTotal = document.getElementById("preview-total-akhir");
+
+    const biayaAplikasi = 2000;
+
+    // 1. FUNGSI HITUNG REALTIME
+    function hitungEstimasi() {
+        const paketTerpilih = selectPaket.value;
+        const hargaPerKg = parseInt(selectPaket.options[selectPaket.selectedIndex]?.getAttribute("data-harga")) || 0;
+        const berat = parseInt(inputBerat.value) || 0;
+        const ongkir = parseInt(selectEkspedisi.options[selectEkspedisi.selectedIndex]?.getAttribute("data-ongkir")) || 0;
+
+        const subtotalPakaian = hargaPerKg * berat;
+        const totalAkhir = subtotalPakaian + ongkir + biayaAplikasi;
+
+        // GANTI BAGIAN RENDER UI KANAN DI order.js MENJADI SEPERTI INI
+    const satuan = (paketTerpilih.includes("Sepatu") || paketTerpilih.includes("Jaket") || paketTerpilih.includes("Bedcover") || paketTerpilih.includes("Noda")) ? "Pcs/Pasang" : "Kg";
+
+    pPaket.innerText = paketTerpilih ? `${paketTerpilih} (${berat} ${satuan})` : "-";
+    pHargaKg.innerText = "Rp " + hargaPerKg.toLocaleString('id-ID');
+    pSubtotal.innerText = "Rp " + subtotalPakaian.toLocaleString('id-ID');
+    pOngkir.innerText = "Rp " + ongkir.toLocaleString('id-ID');
+    pTotal.innerText = "Rp " + (paketTerpilih && berat > 0 ? totalAkhir.toLocaleString('id-ID') : "0");
+    }
+
+    // Pasang Event Listener trigger hitung otomatis
+    selectPaket.addEventListener("change", hitungEstimasi);
+    inputBerat.addEventListener("input", hitungEstimasi);
+    selectEkspedisi.addEventListener("change", hitungEstimasi);
+
+    // 2. KIRIM DATA KE PAYMENT SAAT SUBMIT
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const hargaPerKg = parseInt(selectPaket.options[selectPaket.selectedIndex].getAttribute("data-harga"));
+        const berat = parseInt(inputBerat.value);
+        const ongkir = parseInt(selectEkspedisi.options[selectEkspedisi.selectedIndex].getAttribute("data-ongkir"));
+        
+        // Buat ID pesanan acak yang unik
+        const generatedID = "#SL-" + Math.floor(100000 + Math.random() * 900000);
+
+        // Struktur data objek order untuk ditangkap oleh payment.js
+        // GANTI BAGIAN PENGIRIMAN DATA OBJECT DI order.js MENJADI SEPERTI INI
+        const dataPemesanan = {
+            idPesanan: generatedID,
+            paket: `${selectPaket.value} • ${berat} ${satuan}`, // Menyesuaikan satuan otomatis (Kg/Pcs)
+            hargaPaket: hargaPerKg * berat,
+            antarJemput: ongkir,
+            diskon: 0,
+            biayaLayanan: biayaAplikasi,
+            alamat: inputAlamat.value
+        };
+
+        // Simpan data ke dalam cache browser (localStorage)
+        localStorage.setItem("pesananAktif", JSON.stringify(dataPemesanan));
+
+        // Pindahkan user secara otomatis ke halaman pembayaran
+        window.location.href = "payment.html";
     });
-    element.classList.add('selected');
-    
-    selectedPackageName = name;
-    selectedPackagePrice = price;
-    
-    calculateTotal();
-}
+});
 
-// Fungsi menghitung subtotal pesanan secara real-time
-function calculateTotal() {
-    const qtyInput = document.getElementById('beratJumlah');
-    let qty = parseInt(qtyInput.value) || 1;
-    
-    // Mencegah nilai minus atau nol
-    if (qty < 1) {
-        qty = 1;
-        qtyInput.value = 1;
-    }
-    
-    const serviceOption = document.getElementById('opsiAntarJemput').value;
-    const ongkir = serviceOption === 'antar-jemput' ? 10000 : 0;
-    
-    const subtotal = selectedPackagePrice * qty;
-    const total = subtotal + ongkir;
-    
-    // Update data ke panel ringkasan (Summary)
-    document.getElementById('summaryPaket').innerText = selectedPackageName;
-    document.getElementById('summaryHargaDasar').innerText = 'Rp ' + selectedPackagePrice.toLocaleString('id-ID');
-    document.getElementById('summaryQty').innerText = qty;
-    document.getElementById('summaryOngkir').innerText = 'Rp ' + ongkir.toLocaleString('id-ID');
-    document.getElementById('summaryTotalText').innerText = 'Rp ' + total.toLocaleString('id-ID');
-}
+// ======================================================
+// DI DALAM FILE order.js (Bagian Bawah)
+// ======================================================
 
-// Validasi Form & Trigger Modal Sukses Checkout
-function prosesCheckout() {
-    const alamat = document.getElementById('alamatLengkap').value.trim();
-    if(!alamat) {
-        alert('Silakan masukkan alamat penjemputan terlebih dahulu.');
-        document.getElementById('alamatLengkap').focus();
-        return;
-    }
+// 2. KIRIM DATA KE PAYMENT SAAT FORMULIR DI-SUBMIT
+form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Mencegah halaman reload/segarkan otomatis
+
+    // Mengambil harga asli secara dinamis dari pilihan user di formulir
+    const hargaPerKg = parseInt(selectPaket.options[selectPaket.selectedIndex].getAttribute("data-harga"));
+    const berat = parseInt(inputBerat.value);
+    const ongkir = parseInt(selectEkspedisi.options[selectEkspedisi.selectedIndex].getAttribute("data-ongkir"));
     
-    // Menampilkan popup modal sukses jika valid
-    document.getElementById('successModal').style.display = 'flex';
-}
+    // Generate ID otomatis (Contoh: #SL-482910)
+    const generatedID = "#SL-" + Math.floor(100000 + Math.random() * 900000);
 
-// Fungsionalitas Modal Keluar / Logout
-document.addEventListener("DOMContentLoaded", function() {
-    const logoutBtn = document.getElementById('sidebarLogoutBtn');
-    const logoutModal = document.getElementById('logoutModalOrder');
-    const cancelLogout = document.getElementById('cancelLogoutOrder');
-    const confirmLogout = document.getElementById('confirmLogoutOrder');
+    // [DI SINI TEMPATNYA!] Objek data pesanan dibentuk secara otomatis dari input formulir
+    const dataPemesanan = {
+        idPesanan: generatedID,
+        paket: `${selectPaket.value} • ${berat} Kg`, // Hasil input jenis paket dan berat
+        hargaPaket: hargaPerKg * berat,            // Hasil hitungan matematika asli
+        antarJemput: ongkir,                       // Ongkir sesuai pilihan pengiriman
+        diskon: 0, 
+        biayaLayanan: biayaAplikasi,               // Rp 2.000
+        alamat: inputAlamat.value                  // Hasil input teks alamat user
+    };
 
-    if(logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            logoutModal.style.display = 'flex';
-        });
-    }
-    if(cancelLogout) {
-        cancelLogout.addEventListener('click', () => {
-            logoutModal.style.display = 'none';
-        });
-    }
-    if(confirmLogout) {
-        confirmLogout.addEventListener('click', () => {
-            window.location.href = 'login.html'; // Pindah halaman
-        });
-    }
+    // Menyimpan data riil ke dalam memori lokal browser
+    localStorage.setItem("pesananAktif", JSON.stringify(dataPemesanan));
+
+    // Mengarahkan user langsung ke halaman payment.html
+    window.location.href = "payment.html";
 });

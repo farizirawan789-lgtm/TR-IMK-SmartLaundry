@@ -1,230 +1,163 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Saya | SmartLaundry</title>
+    <title>Profil | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="profile-v2.css">
-    <!-- Google Font & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
 
-<div class="dashboard-container">
+    <div class="dashboard-container">
 
-    <!-- ================= SIDEBAR ================= -->
-    <aside class="sidebar">
-        <div class="logo">
-            <i class="fa-solid fa-shirt"></i>
-            <h2>SmartLaundry</h2>
-        </div>
-        <ul>
-            <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-            <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
-            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
-            <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
-            <li class="active"><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
-            <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
-            <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
-        </ul>
-        <button class="logout-btn" id="sidebarLogoutBtn">
-            <i class="fa-solid fa-right-from-bracket"></i> Keluar
-        </button>
-    </aside>
-
-    <!-- ================= MAIN CONTENT ================= -->
-    <main class="main-content">
-        
-        <!-- TOPBAR -->
-        <header class="topbar">
-            <div>  
-                <h2>Profil & Pengaturan Akun</h2>
-                <p>Kelola program loyalitas, voucher, tingkatan tier, dan detail data pribadi Anda.</p>
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shirt"></i>
+                <h2>SmartLaundry</h2>
             </div>
-            <div class="profile-top">
-                <i class="fa-regular fa-bell"></i>
-                <img src="Gambar/Jokowi.jpg" alt="Profile">
-                <span>nama mu siapaaa</span>
-            </div>
-        </header>
+            <ul>
+                <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+                <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+                <li><a href="wallet.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+                <li class="active"><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+                <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+            </ul>
+            <button class="logout-btn" id="sidebarLogoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> Keluar
+            </button>
+        </aside>
 
-        <!-- KONTEN PROFIL GRID -->
-        <div class="profile-grid">
-            
-            <!-- KOLOM KIRI: KARTU PROFIL UTAMA & TIER SYSTEM -->
-            <div class="profile-left-col">
-                <!-- MAIN AVATAR CARD -->
-                <div class="detail-card profile-main-card text-center">
-                    <div class="avatar-wrapper">
-                        <img src="Gambar/Jokowi.jpg" alt="Avatar" class="profile-avatar-large">
-                        <button class="change-avatar-btn"><i class="fa-solid fa-camera"></i></button>
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div>
+                    <h2>Profil Saya</h2>
+                    <p>Kelola data diri dan keamanan akun Anda.</p>
+                </div>
+                <div class="profile-top">
+                    <i class="fa-regular fa-bell"></i>
+                    <img src="Gambar/Jokowi.jpg" alt="Profile">
+                    <span id="topbarProfileName">Pengguna</span>
+                </div>
+            </header>
+
+            <!-- HEADER PROFIL -->
+            <section class="dashboard-section">
+                <div class="detail-card profile-header-card">
+                    <div class="profile-avatar-wrapper">
+                        <img src="Gambar/Jokowi.jpg" alt="Foto Profil">
+                        <div class="profile-avatar-edit"><i class="fa-solid fa-camera"></i></div>
                     </div>
-                    <h3 class="user-fullname">nama mu siapaaa</h3>
-                    <p class="user-role-text"><i class="fa-solid fa-crown"></i> Member Premium</p>
-                    
-                    <hr class="profile-card-divider">
-                    
-                    <div class="profile-stats-grid">
-                        <div class="stat-box">
-                            <h4>12</h4>
-                            <p>Total Order</p>
-                        </div>
-                        <div class="stat-box">
-                            <h4>50 Kg</h4>
-                            <p>Total Pakaian</p>
-                        </div>
+                    <div class="profile-header-info">
+                        <h2 id="profileHeaderName">Pengguna SmartLaundry</h2>
+                        <p id="profileHeaderEmail">-</p>
+                        <span class="profile-tag"><i class="fa-solid fa-star"></i> Member Aktif</span>
                     </div>
                 </div>
+            </section>
 
-                <!-- TIER REWARDS PROGRESS CARD (BARU) -->
-                <div class="detail-card mt-20 tier-progress-card">
-                    <div class="d-flex justify-between align-center">
-                        <h4>Loyalty Tier Progress</h4>
-                        <span class="badge badge-success">Gold Member</span>
-                    </div>
-                    <p class="tier-desc">Kumpulkan 500 poin lagi untuk naik ke <strong>Platinum Member</strong> dan nikmati gratis ongkir sepuasnya!</p>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar-fill" style="width: 75%;"></div>
-                    </div>
-                    <div class="d-flex justify-between points-text">
-                        <span>1.500 Poin</span>
-                        <span>2.000 Poin</span>
-                    </div>
-                </div>
-
-                <!-- VOUCHER & PROMO SAYA (BARU) -->
-                <div class="detail-card mt-20 my-vouchers-card">
-                    <h4 class="section-sub-title"><i class="fa-solid fa-ticket text-orange"></i> Voucher Saya</h4>
-                    <div class="voucher-mini-list">
-                        <div class="voucher-item-row">
-                            <div class="v-left-dots"></div>
-                            <div class="v-content">
-                                <h5>Diskon Ongkir Rp10.000</h5>
-                                <p>Berlaku s.d 31 Agu 2026</p>
-                            </div>
-                            <button class="btn-use-v">Gunakan</button>
-                        </div>
-                        <div class="voucher-item-row">
-                            <div class="v-left-dots promo-dots"></div>
-                            <div class="v-content">
-                                <h5>Potongan 15% Express</h5>
-                                <p>Klaim Spesial Premium</p>
-                            </div>
-                            <button class="btn-use-v">Gunakan</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- KOLOM KANAN: FORM DETAIL & PREFERENSI LAUNDRY -->
-            <div class="profile-right-col">
-                <!-- FORM INFORMASI PRIBADI -->
+            <!-- FORM DATA DIRI -->
+            <section class="dashboard-section">
+                <h3 class="section-title">Data Diri</h3>
                 <div class="detail-card">
-                    <h4 class="section-sub-title"><i class="fa-solid fa-user text-blue"></i> Informasi Pribadi</h4>
-                    
-                    <form id="profileForm" onsubmit="saveProfile(event)">
-                        <div class="form-profile-row">
-                            <div class="form-order-group">
-                                <label for="pf-firstname">Nama Depan</label>
-                                <input type="text" id="pf-firstname" value="nama mu">
-                            </div>
-                            <div class="form-order-group">
-                                <label for="pf-lastname">Nama Belakang</label>
-                                <input type="text" id="pf-lastname" value="ini juga isi">
-                            </div>
-                        </div>
-
+                    <div class="profile-form-grid">
                         <div class="form-order-group">
-                            <label for="pf-email">Alamat Email</label>
-                            <input type="email" id="pf-email" value="Lalall@lal.com" disabled>
-                            <span class="input-hint">Email utama terverifikasi UKSW tidak dapat diubah.</span>
+                            <label for="inputNama">Nama Lengkap</label>
+                            <input type="text" id="inputNama" placeholder="Nama lengkap Anda">
                         </div>
-
-                        <div class="form-horizontal-row">
-                            <div class="form-order-group">
-                                <label for="pf-phone">Nomor WhatsApp</label>
-                                <input type="tel" id="pf-phone" value="081234567890">
-                            </div>
-                            <div class="form-order-group">
-                                <label for="pf-gender">Jenis Kelamin</label>
-                                <select id="pf-gender">
-                                    <option value="Laki-laki" selected>Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
-                                </select>
-                            </div>
+                        <div class="form-order-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" id="inputEmail" placeholder="Alamat email">
                         </div>
-
-                        <!-- KUSTOMISASI PREFERENSI LAYANAN OTOMATIS (BARU) -->
-                        <div class="preference-section">
-                            <h5 class="preference-title"><i class="fa-solid fa-sliders text-blue"></i> Preferensi Laundry Bawaan (Default)</h5>
-                            <p class="preference-desc">Pengaturan ini akan terisi otomatis setiap kali Anda membuat pesanan baru.</p>
-                            
-                            <div class="form-horizontal-row">
-                                <div class="form-order-group">
-                                    <label for="pf-perfume">Pewangi Favorit</label>
-                                    <select id="pf-perfume">
-                                        <option value="Avicenna Magnitude" selected>Avicenna Magnitude (Rekomendasi Maskulin)</option>
-                                        <option value="Sakura Blossom">Sakura Blossom (Soft Sweet)</option>
-                                        <option value="Ocean Fresh">Ocean Fresh (Segar & Dingin)</option>
-                                        <option value="Lavender Relax">Lavender Relax (Calm)</option>
-                                    </select>
-                                </div>
-                                <div class="form-order-group">
-                                    <label for="pf-service-type">Metode Pengantaran Default</label>
-                                    <select id="pf-service-type">
-                                        <option value="antar-jemput" selected>Antar Jemput Oleh Kurir</option>
-                                        <option value="self-drop">Drop Mandiri di Outlet</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-order-group">
-                                <label for="pf-notes">Catatan Khusus Bawaan</label>
-                                <input type="text" id="pf-notes" value="Pakaian curly/bertekstur jangan disetrika terlalu panas, lipat rapi." placeholder="Contoh: Pisahkan baju putih, setrika medium">
-                            </div>
+                        <div class="form-order-group">
+                            <label for="inputTelepon">Nomor Telepon</label>
+                            <input type="text" id="inputTelepon" placeholder="Contoh: 0812xxxxxxx">
                         </div>
-
-                        <!-- ALAMAT PENJEMPUTAN UTAMA -->
-                        <div class="form-order-group mt-10">
-                            <label for="pf-address">Alamat Titik Penjemputan Utama</label>
-                            <textarea id="pf-address" rows="3">Jl. Diponegoro No. 52, Sidorejo, Kecamatan Sidorejo, Kota Salatiga, Jawa Tengah, 50711.</textarea>
+                        <div class="form-order-group">
+                            <label for="inputTanggalLahir">Tanggal Lahir</label>
+                            <input type="date" id="inputTanggalLahir">
                         </div>
-
-                        <button type="submit" class="btn-save-profile">
-                            <i class="fa-solid fa-floppy-disk"></i> Simpan Semua Perubahan
-                        </button>
-                    </form>
+                        <div class="form-order-group full-width">
+                            <label for="inputAlamat">Alamat Utama</label>
+                            <textarea id="inputAlamat" rows="2"
+                                placeholder="Alamat lengkap untuk penjemputan"></textarea>
+                        </div>
+                    </div>
+                    <div class="profile-save-row">
+                        <button class="btn-save-profile" id="saveProfileBtn">Simpan Perubahan</button>
+                    </div>
                 </div>
+            </section>
+
+            <!-- KEAMANAN -->
+            <section class="dashboard-section">
+                <h3 class="section-title">Keamanan Akun</h3>
+                <div class="detail-card">
+                    <div class="profile-form-grid">
+                        <div class="form-order-group">
+                            <label for="passwordLama">Password Saat Ini</label>
+                            <input type="password" id="passwordLama" placeholder="Masukkan password saat ini">
+                        </div>
+                        <div class="form-order-group">
+                            <label for="passwordBaru">Password Baru</label>
+                            <input type="password" id="passwordBaru" placeholder="Minimal 6 karakter">
+                        </div>
+                    </div>
+                    <div class="profile-save-row">
+                        <button class="btn-save-profile" id="changePasswordBtn">Ubah Password</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DANGER ZONE -->
+            <section class="dashboard-section">
+                <div class="profile-danger-zone">
+                    <div>
+                        <h4>Hapus Akun</h4>
+                        <p>Semua data pesanan dan wallet Anda akan dihapus secara permanen.</p>
+                    </div>
+                    <button class="btn-danger-outline" id="deleteAccountBtn">Hapus Akun</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL LOGOUT -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <h2>Keluar?</h2>
+            <p>Apakah Anda yakin ingin keluar dari akun?</p>
+            <div class="d-flex gap-20 justify-center">
+                <button class="btn-login-cancel" id="cancelLogout">Batal</button>
+                <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
             </div>
-
-        </div>
-    </main>
-</div>
-
-<!-- MODAL SAVE SUCCESS -->
-<div class="modal" id="saveSuccessModal">
-    <div class="modal-content">
-        <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #34a853; margin-bottom: 15px;"></i>
-        <h2>Profil Diperbarui!</h2>
-        <p>Perubahan informasi akun dan preferensi laundry Anda berhasil disimpan.</p>
-        <button class="auth-btn" onclick="closeSuccessModal()">Selesai</button>
-    </div>
-</div>
-
-<!-- MODAL LOGOUT -->
-<div class="modal" id="logoutModalProfile">
-    <div class="modal-content">
-        <h2>Keluar?</h2>
-        <p>Apakah Anda yakin ingin keluar dari akun?</p>
-        <div class="d-flex gap-20 justify-center">
-            <button class="btn-login-cancel" id="cancelLogoutProfile">Batal</button>
-            <button class="btn-logout-confirm" id="confirmLogoutProfile">Keluar</button>
         </div>
     </div>
-</div>
 
-<script src="profile-v2.js"></script>
+    <!-- MODAL HAPUS AKUN -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <h2>Hapus Akun?</h2>
+            <p>Tindakan ini tidak dapat dibatalkan. Seluruh data Anda akan dihapus permanen.</p>
+            <div class="d-flex gap-20 justify-center">
+                <button class="btn-login-cancel" id="cancelDeleteAccount">Batal</button>
+                <button class="btn-logout-confirm" id="confirmDeleteAccount">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
 </body>
+
 </html>
