@@ -2141,3 +2141,65 @@ body.auth-page {
     }
 }
 
+/* ==========================================================================
+   SMART LAUNDRY - ORDER PAGE LAYOUT EXTENSION
+   ========================================================================== */
+.order-page-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.form-group label i {
+    color: #0066ff;
+    margin-right: 4px;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #0066ff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.data-preview-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+/* Responsif untuk Layar Tablet dan HP */
+@media (max-width: 992px) {
+    .order-page-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
