@@ -2841,3 +2841,51 @@ body.auth-page {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================================
+   STYLE FORM INPUT KEAMANAN (KATA SANDI)
+   ========================================================================== */
+
+/* Membuat pembungkus input vertikal (atas-bawah) */
+.form-order-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Mengatur gaya teks label */
+.form-order-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #475569;
+}
+
+/* Mengubah tampilan kolom input menjadi modern & responsif */
+.form-order-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #334155;
+    background-color: #ffffff;
+    box-sizing: border-box; /* Agar padding tidak merusak lebar 100% */
+    transition: all 0.2s ease;
+}
+
+/* Efek saat kolom input diklik (fokus) */
+.form-order-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    background-color: #f8fafc;
+}
+
+/* Merapikan placeholder (teks bantuan di dalam input) */
+.form-order-group input::placeholder {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
