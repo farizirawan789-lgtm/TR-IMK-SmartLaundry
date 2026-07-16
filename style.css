@@ -2842,11 +2842,7 @@ body.auth-page {
     }
 }
 
-/* ==========================================================================
-   STYLE FORM INPUT KEAMANAN (KATA SANDI)
-   ========================================================================== */
-
-/* Membuat pembungkus input vertikal (atas-bawah) */
+/*Style input kata sandi*/
 .form-order-group {
     display: flex;
     flex-direction: column;
@@ -2872,7 +2868,7 @@ body.auth-page {
     font-size: 0.9rem;
     color: #334155;
     background-color: #ffffff;
-    box-sizing: border-box; /* Agar padding tidak merusak lebar 100% */
+    box-sizing: border-box;
     transition: all 0.2s ease;
 }
 
