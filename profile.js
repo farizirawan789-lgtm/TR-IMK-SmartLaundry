@@ -50,26 +50,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-
-    // --- LOGIKA MODAL LOGOUT BAWAANMU ---[cite: 15]
-    const logoutBtn = document.getElementById('sidebarLogoutBtn'); //[cite: 15]
-    const logoutModal = document.getElementById('logoutModalProfile'); //[cite: 15]
-    const cancelLogout = document.getElementById('cancelLogoutProfile'); //[cite: 15]
-    const confirmLogout = document.getElementById('confirmLogoutProfile'); //[cite: 15]
-
-    if(logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            logoutModal.style.display = 'flex'; //[cite: 15]
-        });
-    }
-    if(cancelLogout) {
-        cancelLogout.addEventListener('click', () => {
-            logoutModal.style.display = 'none'; //[cite: 15]
-        });
-    }
-    if(confirmLogout) {
-        confirmLogout.addEventListener('click', () => {
-            window.location.href = 'login.html'; //[cite: 15]
-        });
-    }
 });
