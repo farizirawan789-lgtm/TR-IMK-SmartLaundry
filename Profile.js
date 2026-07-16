@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const telepon = localStorage.getItem("laundry_user_phone") || "";
     const tanggal = localStorage.getItem("laundry_user_birth") || "";
     const alamat = localStorage.getItem("laundry_user_address") || "";
-    
+
     // Isi Form
     document.getElementById("inputNama").value = nama;
     document.getElementById("inputEmail").value = email;
