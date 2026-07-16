@@ -28,12 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const subtotalPakaian = hargaPerKg * berat;
         const totalAkhir = subtotalPakaian + ongkir + biayaAplikasi;
 
-        // Render ke UI Kanan
-        pPaket.innerText = paketTerpilih ? `${paketTerpilih} (${berat} Kg)` : "-";
-        pHargaKg.innerText = "Rp " + hargaPerKg.toLocaleString('id-ID');
-        pSubtotal.innerText = "Rp " + subtotalPakaian.toLocaleString('id-ID');
-        pOngkir.innerText = "Rp " + ongkir.toLocaleString('id-ID');
-        pTotal.innerText = "Rp " + (paketTerpilih && berat > 0 ? totalAkhir.toLocaleString('id-ID') : "0");
+        // GANTI BAGIAN RENDER UI KANAN DI order.js MENJADI SEPERTI INI
+    const satuan = (paketTerpilih.includes("Sepatu") || paketTerpilih.includes("Jaket") || paketTerpilih.includes("Bedcover") || paketTerpilih.includes("Noda")) ? "Pcs/Pasang" : "Kg";
+
+    pPaket.innerText = paketTerpilih ? `${paketTerpilih} (${berat} ${satuan})` : "-";
+    pHargaKg.innerText = "Rp " + hargaPerKg.toLocaleString('id-ID');
+    pSubtotal.innerText = "Rp " + subtotalPakaian.toLocaleString('id-ID');
+    pOngkir.innerText = "Rp " + ongkir.toLocaleString('id-ID');
+    pTotal.innerText = "Rp " + (paketTerpilih && berat > 0 ? totalAkhir.toLocaleString('id-ID') : "0");
     }
 
     // Pasang Event Listener trigger hitung otomatis
@@ -53,12 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const generatedID = "#SL-" + Math.floor(100000 + Math.random() * 900000);
 
         // Struktur data objek order untuk ditangkap oleh payment.js
+        // GANTI BAGIAN PENGIRIMAN DATA OBJECT DI order.js MENJADI SEPERTI INI
         const dataPemesanan = {
             idPesanan: generatedID,
-            paket: `${selectPaket.value} • ${berat} Kg`,
+            paket: `${selectPaket.value} • ${berat} ${satuan}`, // Menyesuaikan satuan otomatis (Kg/Pcs)
             hargaPaket: hargaPerKg * berat,
             antarJemput: ongkir,
-            diskon: 0, // Set 0 atau bisa dikondisikan promo nanti
+            diskon: 0,
             biayaLayanan: biayaAplikasi,
             alamat: inputAlamat.value
         };
