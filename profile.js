@@ -1,53 +1,46 @@
-// profile.js - Versi Sinkronisasi Semua Halaman (Mendukung global.js)
+document.addEventListener("DOMContentLoaded", function () {
 
-// Fungsi Trigger Simpan Perubahan Form Profil
-function saveProfile(event) {
-    event.preventDefault(); // Mencegah reload form bawaan
-    
-    const firstName = document.getElementById('pf-firstname').value;
-    const lastName = document.getElementById('pf-lastname').value;
-    const fullName = firstName + " " + lastName;
-    
-    // 1. SIMPAN NAMA BARU KE MEMORI BROWSER
-    localStorage.setItem("laundry_user_name", fullName);
-    
-    // Perbarui nama di kartu profil kiri secara real-time
-    document.querySelector('.user-fullname').innerText = fullName;
-    
-    // Perbarui juga nama di topbar kanan secara instan
-    const topbarName = document.querySelector('.profile-top span');
-    if (topbarName) {
-        topbarName.innerText = fullName;
-    }
-    
-    // Memunculkan popup notifikasi kustom sukses[cite: 15]
-    document.getElementById('saveSuccessModal').style.display = 'flex'; //[cite: 15]
-}
+    // Ambil data dari Local Storage
+    const nama = localStorage.getItem("laundry_user_name") || "";
+    const email = localStorage.getItem("laundry_user_email") || "";
+    const telepon = localStorage.getItem("laundry_user_phone") || "";
+    const tanggal = localStorage.getItem("laundry_user_birth") || "";
+    const alamat = localStorage.getItem("laundry_user_address") || "";
 
-function closeSuccessModal() {
-    document.getElementById('saveSuccessModal').style.display = 'none'; //[cite: 15]
-}
+    // Isi Form
+    document.getElementById("inputNama").value = nama;
+    document.getElementById("inputEmail").value = email;
+    document.getElementById("inputTelepon").value = telepon;
+    document.getElementById("inputTanggalLahir").value = tanggal;
+    document.getElementById("inputAlamat").value = alamat;
 
-// Kontrol Event Listener untuk memuat data & modal logout[cite: 15]
-document.addEventListener("DOMContentLoaded", function() {
-    // --- AMBIL DATA DARI LOCALSTORAGE SAAT HALAMAN DIBUKA ---
-    const storedName = localStorage.getItem("laundry_user_name");
-    if (storedName) {
-        // Pasang nama di profil card kiri
-        const userFullnameEl = document.querySelector('.user-fullname');
-        if (userFullnameEl) userFullnameEl.innerText = storedName;
-        
-        // Pecah nama kembali untuk dimasukkan ke form input
-        const nameParts = storedName.split(" ");
-        if (nameParts.length > 0) {
-            const firstNameInput = document.getElementById('pf-firstname');
-            const lastNameInput = document.getElementById('pf-lastname');
-            
-            if (firstNameInput) firstNameInput.value = nameParts[0];
-            if (lastNameInput) {
-                // Gabungkan sisa kata jika nama belakangnya terdiri dari beberapa kata
-                lastNameInput.value = nameParts.slice(1).join(" ");
-            }
-        }
-    }
+    // Header Profil
+    document.getElementById("profileHeaderName").textContent = nama || "Pengguna";
+    document.getElementById("profileHeaderEmail").textContent = email || "-";
+
+    // Topbar
+    document.getElementById("topbarProfileName").textContent = nama || "Pengguna";
+
+    // Tombol Simpan
+    document.getElementById("saveProfileBtn").addEventListener("click", function () {
+
+        const namaBaru = document.getElementById("inputNama").value.trim();
+        const emailBaru = document.getElementById("inputEmail").value.trim();
+        const teleponBaru = document.getElementById("inputTelepon").value.trim();
+        const tanggalBaru = document.getElementById("inputTanggalLahir").value;
+        const alamatBaru = document.getElementById("inputAlamat").value.trim();
+
+        localStorage.setItem("laundry_user_name", namaBaru);
+        localStorage.setItem("laundry_user_email", emailBaru);
+        localStorage.setItem("laundry_user_phone", teleponBaru);
+        localStorage.setItem("laundry_user_birth", tanggalBaru);
+        localStorage.setItem("laundry_user_address", alamatBaru);
+
+        document.getElementById("profileHeaderName").textContent = namaBaru;
+        document.getElementById("profileHeaderEmail").textContent = emailBaru;
+        document.getElementById("topbarProfileName").textContent = namaBaru;
+
+        alert("Profil berhasil diperbarui.");
+    });
+
 });
