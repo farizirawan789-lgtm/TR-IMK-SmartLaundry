@@ -1,25 +1,22 @@
-// Fungsi Trigger Simpan Perubahan Form Profil
+// Sinkronisasi data form submission profil kustom
 function saveProfile(event) {
-    event.preventDefault(); // Mencegah reload form bawaan
+    event.preventDefault();
     
-    // Dapatkan data input (Bisa diekspansi untuk integrasi backend)
     const firstName = document.getElementById('pf-firstname').value;
     const lastName = document.getElementById('pf-lastname').value;
     
-    // Perbarui nama di header topbar & profil card secara real-time
     const fullName = firstName + " " + lastName;
     document.querySelector('.user-fullname').innerText = fullName;
     
-    // Tampilkan modal pop-up sukses
+    // Memunculkan popup notifikasi kustom sukses
     document.getElementById('saveSuccessModal').style.display = 'flex';
 }
 
-// Fungsi Menutup Modal Sukses
 function closeSuccessModal() {
     document.getElementById('saveSuccessModal').style.display = 'none';
 }
 
-// Fungsionalitas Kontrol Modal Logout Sidebar
+// Kontrol Event Listener Modal Logout
 document.addEventListener("DOMContentLoaded", function() {
     const logoutBtn = document.getElementById('sidebarLogoutBtn');
     const logoutModal = document.getElementById('logoutModalProfile');
