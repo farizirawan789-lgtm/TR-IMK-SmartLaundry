@@ -1,5 +1,5 @@
 // ======================================================
-// SMART LAUNDRY - LOGIN.JS (OPTIMIZED & AUTO-SYNC)
+// SMART LAUNDRY
 // ======================================================
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const togglePassword = document.getElementById("togglePassword");
     const loginButton = document.querySelector(".auth-btn");
 
-    // ================= SHOW/HIDE PASSWORD =================
     if (togglePassword && password) {
         togglePassword.addEventListener("click", function () {
             if (password.type === "password") {
@@ -23,14 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
-    // ================= EMAIL REGEX VALIDATION =================
     function validEmail(emailUser) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(emailUser);
     }
 
-    // ================= LOGIN SUBMISSION PROCESS =================
     if (form) {
         form.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -38,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const emailValue = email.value.trim();
             const passwordValue = password.value.trim();
 
-            // Validasi Input Kosong & Format
             if (emailValue === "") {
                 alert("Email masih kosong.");
                 email.focus();
@@ -63,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Pengecekan Database LocalStorage
             const daftarUser = JSON.parse(localStorage.getItem("users")) || [];
             const userLogin = daftarUser.find(function(user){
                 return user.email === emailValue && user.password === passwordValue;
@@ -74,28 +68,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Trigger State Loading Animation
             loginButton.disabled = true;
             loginButton.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Memproses...";
 
             setTimeout(function(){
-                // Memanggil fungsi sinkronisasi data akun login
                 prosesLoginSukses(userLogin.nama, userLogin.email);
             }, 1500);
         });
     }
 });
 
-// Fungsi pembantu untuk menyimpan state akun ke dalam memori browser
 function prosesLoginSukses(usernameInput, emailInput) {
-    // 1. Simpan data user yang berhasil masuk ke dalam memori browser (localStorage)
-    localStorage.setItem("laundry_user_name", usernameInput);   // Menyimpan nama user
-    localStorage.setItem("laundry_user_email", emailInput);     // Menyimpan email user
-    localStorage.setItem("laundry_user_wallet", "150000");       // Menyimpan saldo awal default Rp 150.000
-    localStorage.setItem("is_logged_in", "true");               // Penanda bahwa user sudah login
+    localStorage.setItem("laundry_user_name", usernameInput);   
+    localStorage.setItem("laundry_user_email", emailInput);     
+    localStorage.setItem("laundry_user_wallet", "150000");       
+    localStorage.setItem("is_logged_in", "true");              
     
     alert("Login Berhasil!");
     
-    // 2. Alihkan ke halaman dashboard
     window.location.href = "Dashboard.html";
 }

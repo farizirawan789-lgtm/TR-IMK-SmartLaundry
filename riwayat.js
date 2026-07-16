@@ -1,10 +1,10 @@
 // ======================================================
 // SHARED DATA LAYER (dipakai bersama oleh Dashboard.js, order.js, riwayat.js)
-// Kunci ini yang membuat riwayat di semua halaman sinkron.
+// membuat riwayat di semua halaman sinkron.
 // ======================================================
 const RIWAYAT_STORAGE_KEY = 'riwayatPesanan';
 
-// Data awal (dipakai hanya sekali saat localStorage masih kosong)
+
 const defaultRiwayat = [
     { id: '#SL-240502', tanggal: '05 Mei 2024', paket: 'Laundry Express', qty: '3 Kg', total: 40000, status: 'Proses', kurir: 'Antar Jemput Kurir', payment: 'Cash on Delivery' },
     { id: '#SL-240501', tanggal: '03 Mei 2024', paket: 'Laundry Cuci Komplit', qty: '5 Kg', total: 45000, status: 'Dijemput', kurir: 'Antar Jemput Kurir', payment: 'Smart Wallet' },
@@ -13,7 +13,7 @@ const defaultRiwayat = [
     { id: '#SL-240420', tanggal: '20 Apr 2024', paket: 'Laundry Bedcover & Selimut', qty: '1 Pcs', total: 60000, status: 'Selesai', kurir: 'Drop di Outlet', payment: 'Cash on Delivery' }
 ];
 
-// Ambil data riwayat dari localStorage. Kalau belum ada sama sekali, isi dengan data awal.
+
 function getRiwayatData() {
     const raw = localStorage.getItem(RIWAYAT_STORAGE_KEY);
     if (!raw) {
@@ -28,21 +28,19 @@ function getRiwayatData() {
     }
 }
 
-// Simpan array riwayat terbaru ke localStorage
+
 function saveRiwayatData(data) {
     localStorage.setItem(RIWAYAT_STORAGE_KEY, JSON.stringify(data));
 }
 
-// Konversi status pesanan menjadi class badge yang sesuai
+
 function badgeClassForStatus(status) {
     if (status === 'Proses') return 'badge-process';
     if (status === 'Dijemput') return 'badge-pickup';
     return 'badge-success-history'; // Selesai
 }
 
-// ======================================================
-// RENDER TABEL RIWAYAT (menggantikan baris statis dengan data localStorage)
-// ======================================================
+
 function renderRiwayatTable() {
     const tbody = document.getElementById('historyTableBody');
     if (!tbody) return;
@@ -67,7 +65,7 @@ function renderRiwayatTable() {
         </tr>
     `).join('');
 
-    // Pasang event listener tombol Detail (menggantikan onclick inline agar aman dari data dinamis)
+   
     tbody.querySelectorAll('.btn-action-view').forEach(btn => {
         btn.addEventListener('click', function () {
             const item = data.find(d => d.id === this.dataset.id);
@@ -80,14 +78,14 @@ function renderRiwayatTable() {
         });
     });
 
-    // Terapkan ulang filter & pencarian yang sedang aktif
+    
     applyFilters();
 }
 
-// Global State Filter Management
+
 let currentStatusFilter = 'all';
 
-// Fungsi Filter Berdasarkan Tombol Status Kategori
+
 function filterStatus(status, element) {
     // Kelola tombol active
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -97,7 +95,7 @@ function filterStatus(status, element) {
     applyFilters();
 }
 
-// Fungsi Utama Sinkronisasi Filter Status & Input Pencarian
+
 function applyFilters() {
     const searchValue = document.getElementById('searchInvoice').value.trim().toLowerCase();
     const rows = document.querySelectorAll('.history-row');
@@ -118,7 +116,7 @@ function applyFilters() {
         }
     });
 
-    // Menampilkan pesan data kosong jika hasil nihil
+   
     const noDataMessage = document.getElementById('noDataMessage');
     if (dynamicVisibleCounter === 0) {
         noDataMessage.style.display = 'block';
@@ -127,12 +125,12 @@ function applyFilters() {
     }
 }
 
-// Shortcut wrapper untuk event pencarian input
+
 function filterHistory() {
     applyFilters();
 }
 
-// Fungsi membuka modal info rincian detail nota laundry
+
 function openDetailModal(id, tgl, paket, qty, total, status, kurir, payment) {
     document.getElementById('m-id').innerText = id;
     document.getElementById('m-tgl').innerText = tgl;
@@ -142,7 +140,7 @@ function openDetailModal(id, tgl, paket, qty, total, status, kurir, payment) {
     document.getElementById('m-kurir').innerText = kurir;
     document.getElementById('m-payment').innerText = payment;
 
-    // Memberikan badge status di dalam modal
+  
     let badgeClass = 'badge-pickup';
     if (status === 'Proses') badgeClass = 'badge-process';
     if (status === 'Selesai') badgeClass = 'badge-success-history';
@@ -152,9 +150,9 @@ function openDetailModal(id, tgl, paket, qty, total, status, kurir, payment) {
     document.getElementById('historyDetailModal').style.display = 'flex';
 }
 
-// Inisialisasi Event Listener Modal
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Render tabel riwayat dari data localStorage (sinkron dengan Dashboard & order)
+  
     renderRiwayatTable();
 
     const closeDetailBtn = document.getElementById('closeDetailModal');
@@ -166,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Modal Keluar / Logout Sidebar
+  
     const logoutBtn = document.getElementById('sidebarLogoutBtn');
     const logoutModal = document.getElementById('logoutModalHistory');
     const cancelLogout = document.getElementById('cancelLogoutHistory');

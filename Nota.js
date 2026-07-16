@@ -1,20 +1,16 @@
 // ======================================================
-// SMART LAUNDRY - NOTA.JS
+// SMART LAUNDRY 
 // Sistem Wallet & Transaksi Terpusat
 // ======================================================
 
-// ======================================================
-// STORAGE KEYS
-// ======================================================
+
 const WALLET_SALDO_KEY = 'walletSaldo';
 const WALLET_TRANSAKSI_KEY = 'walletTransaksi';
 
 // Saldo awal
 const SALDO_AWAL = 150000;
 
-// ======================================================
-// INISIALISASI WALLET
-// ======================================================
+
 function initWallet() {
     if (!localStorage.getItem(WALLET_SALDO_KEY)) {
         localStorage.setItem(WALLET_SALDO_KEY, SALDO_AWAL.toString());
@@ -24,31 +20,22 @@ function initWallet() {
     }
 }
 
-// Jalankan inisialisasi saat script dimuat
+
 initWallet();
 
-// ======================================================
-// FUNGSI WALLET
-// ======================================================
 
-/**
- * Mendapatkan saldo wallet saat ini
- */
+
+
 function getWalletSaldo() {
     const saldo = localStorage.getItem(WALLET_SALDO_KEY);
     return saldo ? Number(saldo) : SALDO_AWAL;
 }
 
-/**
- * Mengatur saldo wallet
- */
+
 function setWalletSaldo(nominal) {
     localStorage.setItem(WALLET_SALDO_KEY, nominal.toString());
 }
 
-/**
- * Mendapatkan semua transaksi wallet
- */
 function getWalletTransaksi() {
     const raw = localStorage.getItem(WALLET_TRANSAKSI_KEY);
     if (!raw) return [];
@@ -59,24 +46,18 @@ function getWalletTransaksi() {
     }
 }
 
-/**
- * Menyimpan transaksi ke localStorage
- */
+
 function setWalletTransaksi(transaksi) {
     localStorage.setItem(WALLET_TRANSAKSI_KEY, JSON.stringify(transaksi));
 }
 
-/**
- * Membuat ID transaksi unik (TRX + timestamp)
- */
+
 function generateTransaksiId() {
     const timestamp = Date.now().toString().slice(-8);
     return 'TRX' + timestamp;
 }
 
-/**
- * Mendapatkan tanggal dan jam sekarang
- */
+
 function getTanggalJamSekarang() {
     const now = new Date();
 
@@ -98,7 +79,7 @@ function getTanggalJamSekarang() {
 }
 
 /**
- * Mencatat transaksi wallet (TOP UP atau TARIK SALDO)
+
  * @param {string} tipe - 'masuk' atau 'keluar'
  * @param {string} keterangan - Deskripsi transaksi
  * @param {number} nominal - Jumlah nominal
@@ -108,12 +89,12 @@ function catatTransaksiWallet(tipe, keterangan, nominal, metode) {
     const saldoSebelum = getWalletSaldo();
     let saldoSesudah;
 
-    // Update saldo berdasarkan tipe transaksi
+    
     if (tipe === 'masuk') {
         saldoSesudah = saldoSebelum + nominal;
     } else if (tipe === 'keluar') {
         saldoSesudah = saldoSebelum - nominal;
-        // Validasi saldo tidak boleh negatif
+      
         if (saldoSesudah < 0) {
             alert('Saldo tidak cukup!');
             return null;
@@ -122,7 +103,7 @@ function catatTransaksiWallet(tipe, keterangan, nominal, metode) {
         return null;
     }
 
-    // Buat object transaksi
+
     const { tanggal, jam } = getTanggalJamSekarang();
     const transaksi = {
         id: generateTransaksiId(),
@@ -136,31 +117,24 @@ function catatTransaksiWallet(tipe, keterangan, nominal, metode) {
         saldoSesudah: saldoSesudah
     };
 
-    // Simpan saldo baru
+  
     setWalletSaldo(saldoSesudah);
 
-    // Tambahkan transaksi ke daftar
+  
     const daftarTransaksi = getWalletTransaksi();
-    daftarTransaksi.unshift(transaksi); // Tambah ke depan (paling baru)
+    daftarTransaksi.unshift(transaksi); 
     setWalletTransaksi(daftarTransaksi);
 
     return transaksi;
 }
 
-// ======================================================
-// FUNGSI NOTA / STRUK
-// ======================================================
 
-/**
- * Menampilkan modal nota untuk transaksi tertentu
- */
 function tampilkanNota(transaksi) {
     if (!transaksi) {
         alert('Data transaksi tidak ditemukan');
         return;
     }
 
-    // Update isi nota modal
     document.getElementById('nota-nominal').innerText =
         'Rp ' + Number(transaksi.nominal).toLocaleString('id-ID');
 
@@ -176,7 +150,6 @@ function tampilkanNota(transaksi) {
     document.getElementById('nota-saldo').innerText =
         'Rp ' + Number(transaksi.saldoSesudah).toLocaleString('id-ID');
 
-    // Update icon berdasarkan tipe transaksi
     const notaIcon = document.getElementById('nota-icon');
     if (notaIcon) {
         notaIcon.classList.remove('fa-circle-check', 'fa-circle-minus');
@@ -187,13 +160,11 @@ function tampilkanNota(transaksi) {
         }
     }
 
-    // Buka modal nota
     const notaModal = document.getElementById('notaModal');
     if (notaModal) {
         notaModal.style.display = 'flex';
     }
 
-    // Setup tombol close
     const closeButtons = document.querySelectorAll('.nota-close');
     closeButtons.forEach(btn => {
         btn.addEventListener('click', function () {
@@ -201,7 +172,6 @@ function tampilkanNota(transaksi) {
         });
     });
 
-    // Setup tombol print
     const printBtn = document.getElementById('nota-print-btn');
     if (printBtn) {
         printBtn.onclick = function () {
@@ -209,7 +179,6 @@ function tampilkanNota(transaksi) {
         };
     }
 
-    // Close modal ketika klik di luar
     notaModal.addEventListener('click', function (e) {
         if (e.target === notaModal) {
             notaModal.style.display = 'none';
@@ -217,9 +186,7 @@ function tampilkanNota(transaksi) {
     });
 }
 
-/**
- * Menampilkan nota berdasarkan ID transaksi
- */
+
 function tampilkanNotaById(transaksiId) {
     const daftarTransaksi = getWalletTransaksi();
     const transaksi = daftarTransaksi.find(t => t.id === transaksiId);
@@ -231,9 +198,7 @@ function tampilkanNotaById(transaksiId) {
     }
 }
 
-/**
- * Fungsi cetak nota (print browser)
- */
+
 function cetakNota(transaksi) {
     const printWindow = window.open('', '', 'height=400,width=600');
 
@@ -338,7 +303,4 @@ function cetakNota(transaksi) {
     printWindow.print();
 }
 
-// ======================================================
-// EXPORT UNTUK DEBUGGING (Optional)
-// ======================================================
 console.log('✅ nota.js loaded - Wallet System Ready');

@@ -1,11 +1,9 @@
 // ======================================================
 // SMART LAUNDRY
-// LANDING.JS (Horizontal / Page-Swipe Mode)
 // ======================================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ================= NAVBAR SCROLL EFFECT =================
     const header = document.querySelector("header");
 
     window.addEventListener("scroll", function () {
@@ -18,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // ================= SMOOTH HORIZONTAL SCROLL =================
     const menuLinks = document.querySelectorAll('nav a[href^="#"], .btn-order[href^="#"]');
 
     menuLinks.forEach(link => {
@@ -34,14 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     inline: "start"
                 });
 
-                // Perbarui kelas active secara manual saat diklik agar instan
                 menuLinks.forEach(item => item.classList.remove("active"));
                 this.classList.add("active");
             }
         });
     });
 
-    // ================= ANIMASI HERO (FADE-IN) =================
     const heroText = document.querySelector(".hero-text");
     const heroImage = document.querySelector(".hero-image");
 
@@ -53,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
         heroImage.classList.add("zoom-in");
     }
 
-    // ================= BUTTON ORDER ALERT =================
     const orderButton = document.querySelector(".btn-order");
 
     if (orderButton && !orderButton.getAttribute("href").startsWith("#")) {
@@ -63,14 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ================= SOLUSI BUG: DETEKSI SEKSI AKTIF YANG AKURAT =================
-    // Menggunakan IntersectionObserver untuk memantau seksi mana yang sedang dominan tampil di layar
     const sections = document.querySelectorAll(".hero, #layanan, #harga, #faq");
     const navLinks = document.querySelectorAll("nav a");
 
     const observerOptions = {
-        root: null, // Menggunakan viewport browser
-        threshold: 0.6, // Seksi dianggap aktif jika 60% areanya terlihat di layar
+        root: null, 
+        threshold: 0.6, 
         rootMargin: "0px"
     };
 
@@ -79,12 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute("id");
                 
-                // Hapus semua kelas active terlebih dahulu
                 navLinks.forEach(link => link.classList.remove("active"));
 
-                // Tambahkan kelas active hanya pada menu yang sesuai seksi aktif
                 if (!id) {
-                    // Jika tidak ada ID (berarti section Hero), aktifkan Beranda
                     const homeLink = document.querySelector('nav a[href="#"]');
                     if (homeLink) homeLink.classList.add("active");
                 } else {
@@ -99,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // ================= HERO IMAGE EFFECT =================
     const heroImg = document.querySelector(".hero-image img");
 
     if (heroImg) {

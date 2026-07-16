@@ -1,6 +1,3 @@
-// ===========================================
-// SMART LAUNDRY - REGISTER.JS (OPTIMIZED)
-// ===========================================
 
 document.addEventListener("DOMContentLoaded", function(){
     const form = document.getElementById("registerForm");
@@ -10,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const confirmPassword = document.getElementById("confirmPassword");
     const btn = document.querySelector(".auth-btn");
 
-    // ================= SHOW / HIDE PASSWORD =================
+    
     function toggle(input, icon){
         if(input && icon) {
             icon.addEventListener("click", function(){
@@ -28,13 +25,13 @@ document.addEventListener("DOMContentLoaded", function(){
     toggle(password, document.getElementById("togglePassword"));
     toggle(confirmPassword, document.getElementById("toggleConfirm"));
 
-    // ================= VALIDASI FORMAT EMAIL =================
+
     function validEmail(email){
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     }
 
-    // ================= PROSES REGISTRASI USER =================
+   
     if(form) {
         form.addEventListener("submit", function(e){
             e.preventDefault();
@@ -63,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 return;
             }
 
-            // Ubah Status Ke Animasi Loading
+         
             btn.disabled = true;
             btn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Membuat Akun...";
 
@@ -74,22 +71,22 @@ document.addEventListener("DOMContentLoaded", function(){
                     password: password.value
                 };
 
-                // Ambil data dari LocalStorage
+                
                 let daftarUser = JSON.parse(localStorage.getItem("users")) || [];
 
-                // Cek Validasi Email Duplikat
+              
                 const sudahAda = daftarUser.find(user => user.email === akunBaru.email);
 
                 if(sudahAda){
                     alert("Email sudah digunakan.");
-                    // Kembalikan tombol ke keadaan semula agar bisa dicoba lagi
+                
                     btn.disabled = false;
                     btn.innerHTML = "Daftar";
                     email.focus();
                     return;
                 }
 
-                // Masukkan Akun ke Array & Simpan
+          
                 daftarUser.push(akunBaru);
                 localStorage.setItem("users", JSON.stringify(daftarUser));
 
