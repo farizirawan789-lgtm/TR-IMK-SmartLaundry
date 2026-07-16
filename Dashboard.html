@@ -7,89 +7,41 @@
     <title>Dashboard | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Font & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
     <div class="dashboard-container">
-
-<<<<<<< HEAD
         <!-- ================= SIDEBAR ================= -->
         <aside class="sidebar">
             <div class="logo">
                 <i class="fa-solid fa-shirt"></i>
                 <h2>SmartLaundry</h2>
-=======
-    <!-- ================= SIDEBAR ================= -->
-    <aside class="sidebar">
-        <div class="logo">
-            <i class="fa-solid fa-shirt"></i>
-            <h2>SmartLaundry</h2>
-        </div>
-        <ul>
-            <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-            <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
-            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
-            <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Payment</a></li>
-            <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
-            <li><a href="#"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
-            <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
-        </ul>
-        <button class="logout-btn">
-            <i class="fa-solid fa-right-from-bracket"></i> Keluar
-        </button>
-    </aside>
-
-    <!-- ================= MAIN CONTENT ================= -->
-    <main class="main-content">
-        
-        <!-- TOPBAR -->
-        <header class="topbar">
-            <div>  
-                <h2 id="welcomeName">Halo!</h2>
-                <p>Selamat datang kembali.</p>
->>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
             </div>
             <ul>
                 <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Dashboard</a></li>
                 <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
                 <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
-                <li><a href="wallet.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+                <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Payment</a></li>
                 <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
-                <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
-                <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
             </ul>
             <button class="logout-btn">
                 <i class="fa-solid fa-right-from-bracket"></i> Keluar
             </button>
         </aside>
 
-<<<<<<< HEAD
         <!-- ================= MAIN CONTENT ================= -->
         <main class="main-content">
-
+            
             <!-- TOPBAR -->
             <header class="topbar">
-                <div>
+                <div>  
                     <h2 id="welcomeName">Halo!</h2>
                     <p>Selamat datang kembali.</p>
-=======
-        <!-- GRID SYSTEM (2 KOLOM KHUSUS DESKTOP ONE-PAGE) -->
-        <div class="dashboard-grid">
-            
-            <!-- KOLOM KIRI (Payment, Menu Cepat, Pesanan Aktif) -->
-            <div class="grid-left">
-                <!-- Payment CARD -->
-                <div class="payment-card">
-                    <div>
-                        <span>Saldo Smart Payment</span>
-                        <h2>Rp 150.000</h2>
-                    </div>
-                    <button class="btn-save" id="topupBtn">Top Up</button>
->>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
                 </div>
                 <div class="profile-top">
                     <i class="fa-regular fa-bell"></i>
@@ -116,9 +68,10 @@
                     <section class="dashboard-section">
                         <h3 class="section-title">Menu Cepat</h3>
                         <div class="quick-menu">
-                            <div class="menu-card"><i class="fa-solid fa-plus"></i>
+                            <a href="order.html" class="menu-card" style="text-decoration: none; color: inherit;">
+                                <i class="fa-solid fa-plus"></i>
                                 <h4>Buat Pesanan</h4>
-                            </div>
+                            </a>
                             <div class="menu-card"><i class="fa-solid fa-clock-rotate-left"></i>
                                 <h4>Riwayat</h4>
                             </div>
@@ -205,31 +158,11 @@
                 </div>
 
             </div>
-<<<<<<< HEAD
         </main>
-=======
-
-        </div>
-    </main>
-</div>
-
-<!-- MODAL TOP UP -->
-<div class="modal" id="topupModal">
-    <div class="modal-content">
-        <span class="close" id="closeTopup">&times;</span>
-        <h2>Top Up Smart Payment</h2>
-        <p>Pilih nominal top up.</p>
-        <div class="quick-menu text-dark">
-            <button class="btn-save nominal" data-value="50000">Rp 50.000</button>
-            <button class="btn-save nominal" data-value="100000">Rp 100.000</button>
-            <button class="btn-save nominal" data-value="150000">Rp 150.000</button>
-            <button class="btn-save nominal" data-value="200000">Rp 200.000</button>
-        </div>
-        <br>
-        <button class="auth-btn" id="confirmTopup">Konfirmasi Top Up</button>
->>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
     </div>
 
+    <!-- ================= MODAL REGION ================= -->
+    
     <!-- MODAL TOP UP -->
     <div class="modal" id="topupModal">
         <div class="modal-content">
@@ -284,6 +217,7 @@
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="Nota.js"></script>
     <script src="Dashboard.js"></script>
 </body>
