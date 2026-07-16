@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Font & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
 
-<div class="dashboard-container">
+    <div class="dashboard-container">
 
+<<<<<<< HEAD
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shirt"></i>
+                <h2>SmartLaundry</h2>
+=======
     <!-- ================= SIDEBAR ================= -->
     <aside class="sidebar">
         <div class="logo">
@@ -41,14 +51,32 @@
             <div>  
                 <h2 id="welcomeName">Halo!</h2>
                 <p>Selamat datang kembali.</p>
+>>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
             </div>
-            <div class="profile-top">
-                <i class="fa-regular fa-bell"></i>
-                <img src="Gambar/Jokowi.jpg" alt="Profile">
-                <span id="profileName"></span>
-            </div>
-        </header>
+            <ul>
+                <li class="active"><a href="#"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+                <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+                <li><a href="wallet.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="bantuan.html"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+                <li><a href="pengaturan.html"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+            </ul>
+            <button class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Keluar
+            </button>
+        </aside>
 
+<<<<<<< HEAD
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div>
+                    <h2 id="welcomeName">Halo!</h2>
+                    <p>Selamat datang kembali.</p>
+=======
         <!-- GRID SYSTEM (2 KOLOM KHUSUS DESKTOP ONE-PAGE) -->
         <div class="dashboard-grid">
             
@@ -61,91 +89,125 @@
                         <h2>Rp 150.000</h2>
                     </div>
                     <button class="btn-save" id="topupBtn">Top Up</button>
+>>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
                 </div>
+                <div class="profile-top">
+                    <i class="fa-regular fa-bell"></i>
+                    <img src="Gambar/Jokowi.jpg" alt="Profile">
+                    <span id="profileName"></span>
+                </div>
+            </header>
 
-                <!-- MENU CEPAT -->
-                <section class="dashboard-section">
-                    <h3 class="section-title">Menu Cepat</h3>
-                    <div class="quick-menu">
-                        <div class="menu-card"><i class="fa-solid fa-plus"></i><h4>Buat Pesanan</h4></div>
-                        <div class="menu-card"><i class="fa-solid fa-clock-rotate-left"></i><h4>Riwayat</h4></div>
-                        <div class="menu-card"><i class="fa-solid fa-location-dot"></i><h4>Alamat</h4></div>
-                        <div class="menu-card"><i class="fa-solid fa-percent"></i><h4>Promo</h4></div>
+            <!-- GRID SYSTEM (2 KOLOM KHUSUS DESKTOP ONE-PAGE) -->
+            <div class="dashboard-grid">
+
+                <!-- KOLOM KIRI (Wallet, Menu Cepat, Pesanan Aktif) -->
+                <div class="grid-left">
+                    <!-- WALLET CARD -->
+                    <div class="wallet-card">
+                        <div>
+                            <span>Saldo Smart Wallet</span>
+                            <h2>Rp 300.000</h2>
+                        </div>
+                        <button class="btn-save" id="topupBtn">Top Up</button>
                     </div>
-                </section>
 
-                <!-- PESANAN TERAKHIR -->
-                <section class="dashboard-section">
-                    <h3 class="section-title">Pesanan Terakhir</h3>
-                    <div class="detail-card">
-                        <div class="d-flex justify-between align-center">
-                            <div>
-                                <h4>#SL-240501</h4>
-                                <p>Regular • 5 Kg</p>
-                                <p class="text-muted"><i class="fa-regular fa-calendar"></i> Jumat, 3 Mei 2024</p>
+                    <!-- MENU CEPAT -->
+                    <section class="dashboard-section">
+                        <h3 class="section-title">Menu Cepat</h3>
+                        <div class="quick-menu">
+                            <div class="menu-card"><i class="fa-solid fa-plus"></i>
+                                <h4>Buat Pesanan</h4>
                             </div>
-                            <div><span class="badge badge-success">Dijemput</span></div>
+                            <div class="menu-card"><i class="fa-solid fa-clock-rotate-left"></i>
+                                <h4>Riwayat</h4>
+                            </div>
+                            <div class="menu-card"><i class="fa-solid fa-location-dot"></i>
+                                <h4>Alamat</h4>
+                            </div>
+                            <div class="menu-card"><i class="fa-solid fa-percent"></i>
+                                <h4>Promo</h4>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="d-flex justify-between align-center card-footer">
-                            <button class="btn-save" id="detailBtn">Lihat Detail</button>
-                            <img src="Gambar/Otw.jpg" alt="Kurir" class="delivery-img">
-                        </div>
-                    </div>
-                </section>
-            </div>
+                    </section>
 
-            <!-- KOLOM KANAN (Promo & Riwayat Terakhir) -->
-            <div class="grid-right">
-                <!-- BANNER PROMO COMPACT -->
-                <div class="promo-card">
-                    <div class="promo-text">
-                        <h3>Diskon 20%</h3>
-                        <p>Gunakan kode <strong>SMART20</strong></p>
-                    </div>
-                    <img src="Gambar/promo.png" alt="Promo">
+                    <!-- PESANAN TERAKHIR -->
+                    <section class="dashboard-section">
+                        <h3 class="section-title">Pesanan Terakhir</h3>
+                        <div class="detail-card">
+                            <div class="d-flex justify-between align-center">
+                                <div>
+                                    <h4>#SL-240501</h4>
+                                    <p>Regular • 5 Kg</p>
+                                    <p class="text-muted"><i class="fa-regular fa-calendar"></i> Jumat, 3 Mei 2024</p>
+                                </div>
+                                <div><span class="badge badge-success">Dijemput</span></div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-between align-center card-footer">
+                                <button class="btn-save" id="detailBtn">Lihat Detail</button>
+                                <img src="Gambar/Otw.jpg" alt="Kurir" class="delivery-img">
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
-                <!-- RIWAYAT TABEL COMPACT -->
-                <section class="dashboard-section flex-grow-section">
-                    <h3 class="section-title">Riwayat Terakhir</h3>
-                    <div class="detail-card table-card">
-                        <table class="history-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Layanan</th>
-                                    <th>Status</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#SL-240430</td>
-                                    <td>Regular • 3 Kg</td>
-                                    <td><span class="badge badge-success">Selesai</span></td>
-                                    <td><strong>Rp30.000</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>#SL-240427</td>
-                                    <td>Express • 4 Kg</td>
-                                    <td><span class="badge badge-success">Selesai</span></td>
-                                    <td><strong>Rp60.000</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>#SL-240420</td>
-                                    <td>Regular • 6 Kg</td>
-                                    <td><span class="badge badge-success">Selesai</span></td>
-                                    <td><strong>Rp60.000</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="text-center mt-3">
-                            <button class="btn-view-all" id="historyBtn">Lihat Semua Riwayat</button>
+                <!-- KOLOM KANAN (Promo & Riwayat Terakhir) -->
+                <div class="grid-right">
+                    <!-- BANNER PROMO COMPACT -->
+                    <div class="promo-card">
+                        <div class="promo-text">
+                            <h3>Diskon 20%</h3>
+                            <p>Gunakan kode <strong>SMART20</strong></p>
                         </div>
+                        <img src="Gambar/promo.png" alt="Promo">
                     </div>
-                </section>
+
+                    <!-- RIWAYAT TABEL COMPACT -->
+                    <section class="dashboard-section flex-grow-section">
+                        <h3 class="section-title">Riwayat Terakhir</h3>
+                        <div class="detail-card table-card">
+                            <table class="history-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Layanan</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#SL-240430</td>
+                                        <td>Regular • 3 Kg</td>
+                                        <td><span class="badge badge-success">Selesai</span></td>
+                                        <td><strong>Rp30.000</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SL-240427</td>
+                                        <td>Express • 4 Kg</td>
+                                        <td><span class="badge badge-success">Selesai</span></td>
+                                        <td><strong>Rp60.000</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#SL-240420</td>
+                                        <td>Regular • 6 Kg</td>
+                                        <td><span class="badge badge-success">Selesai</span></td>
+                                        <td><strong>Rp60.000</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center mt-3">
+                                <button class="btn-view-all" id="historyBtn">Lihat Semua Riwayat</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
             </div>
+<<<<<<< HEAD
+        </main>
+=======
 
         </div>
     </main>
@@ -165,21 +227,65 @@
         </div>
         <br>
         <button class="auth-btn" id="confirmTopup">Konfirmasi Top Up</button>
+>>>>>>> ed7cd93a48b6d3cfcad8d658056cde5c7782999f
     </div>
-</div>
 
-<!-- MODAL LOGOUT -->
-<div class="modal" id="logoutModal">
-    <div class="modal-content">
-        <h2>Keluar?</h2>
-        <p>Apakah Anda yakin ingin keluar dari akun?</p>
-        <div class="d-flex gap-20 justify-center">
-            <button class="btn-login-cancel" id="cancelLogout">Batal</button>
-            <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
+    <!-- MODAL TOP UP -->
+    <div class="modal" id="topupModal">
+        <div class="modal-content">
+            <span class="close" id="closeTopup">&times;</span>
+            <h2>Top Up Smart Wallet</h2>
+            <p>Pilih nominal top up.</p>
+            <div class="quick-menu text-dark">
+                <button class="btn-save nominal" data-value="50000">Rp 50.000</button>
+                <button class="btn-save nominal" data-value="100000">Rp 100.000</button>
+                <button class="btn-save nominal" data-value="150000">Rp 150.000</button>
+                <button class="btn-save nominal" data-value="200000">Rp 200.000</button>
+            </div>
+            <br>
+            <button class="auth-btn" id="confirmTopup">Konfirmasi Top Up</button>
         </div>
     </div>
-</div>
 
-<script src="Dashboard.js"></script>
+    <!-- MODAL LOGOUT -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <h2>Keluar?</h2>
+            <p>Apakah Anda yakin ingin keluar dari akun?</p>
+            <div class="d-flex gap-20 justify-center">
+                <button class="btn-login-cancel" id="cancelLogout">Batal</button>
+                <button class="btn-logout-confirm" id="confirmLogout">Keluar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NOTA / STRUK -->
+    <div class="modal" id="notaModal">
+        <div class="modal-content nota-content">
+            <div class="nota-header">
+                <span class="close nota-close">&times;</span>
+                <i class="fa-solid fa-circle-check" id="nota-icon"></i>
+                <h3>Total Transaksi</h3>
+                <span class="nota-nominal-value" id="nota-nominal">Rp 0</span>
+            </div>
+            <div class="nota-body">
+                <div class="nota-row"><span>ID Transaksi</span><strong id="nota-id">-</strong></div>
+                <div class="nota-row"><span>Waktu</span><span id="nota-tanggal">-</span></div>
+                <hr class="nota-dashed">
+                <div class="nota-row"><span>Keterangan</span><span id="nota-keterangan">-</span></div>
+                <div class="nota-row"><span>Metode</span><span id="nota-metode">-</span></div>
+                <hr class="nota-dashed">
+                <div class="nota-row"><span>Sisa Saldo Wallet</span><strong id="nota-saldo">-</strong></div>
+            </div>
+            <div class="nota-footer">
+                <button class="nota-btn-print" id="nota-print-btn"><i class="fa-solid fa-print"></i> Cetak</button>
+                <button class="nota-btn-close nota-close">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Nota.js"></script>
+    <script src="Dashboard.js"></script>
 </body>
+
 </html>
