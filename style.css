@@ -1633,3 +1633,220 @@ body.auth-page {
         display: none;
     }
 }
+
+
+/* ==========================================================================
+   SMART LAUNDRY - ORDER PAGE COMPACT CUSTOM STYLING
+   ========================================================================== */
+
+.order-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 25px;
+    align-items: start;
+    padding-bottom: 40px;
+}
+
+/* LIST BARIS LAYANAN YANG LEBIH RAMPING & SEDERHANA */
+.package-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.package-row-card {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    padding: 12px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.package-row-card:hover {
+    border-color: #0066ff;
+    background-color: #fafbfc;
+}
+
+.package-row-card.selected {
+    border-color: #0066ff;
+    background-color: #f0f5ff;
+    box-shadow: 0 2px 8px rgba(0, 102, 255, 0.05);
+}
+
+.p-row-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.p-icon-box {
+    width: 40px;
+    height: 40px;
+    background: #f4f7fe;
+    color: #0066ff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.package-row-card.selected .p-icon-box {
+    background: #0066ff;
+    color: #ffffff;
+}
+
+.p-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.package-row-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.p-row-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.p-row-badge.best-seller {
+    background-color: #34a853;
+}
+
+.p-row-badge.promo {
+    background-color: #f9ab00;
+}
+
+.package-row-desc {
+    font-size: 0.78rem;
+    color: #6b7280;
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.package-row-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0066ff;
+    text-align: right;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+/* LAYOUT FORM HORIZONTAL AGAR LEBIH COMPACT */
+.form-horizontal-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-order-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.form-order-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.form-order-group input, 
+.form-order-group select, 
+.form-order-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    background-color: #ffffff;
+    transition: 0.2s;
+    box-sizing: border-box;
+}
+
+.form-order-group input:focus, 
+.form-order-group select:focus, 
+.form-order-group textarea:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
+}
+
+/* RINGKASAN STYLING */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.font-semibold {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.summary-total {
+    border-top: 1px dashed #edf2f7;
+    padding-top: 12px;
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1f2937;
+}
+
+.summary-total #summaryTotalText {
+    color: #0066ff;
+    font-size: 1.15rem;
+}
+
+.btn-checkout {
+    width: 100%;
+    background: #0066ff;
+    color: #ffffff;
+    border: none;
+    padding: 11px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.btn-checkout:hover {
+    background: #0052cc;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 992px) {
+    .order-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-horizontal-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

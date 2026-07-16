@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Pesanan | SmartLaundry</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="order.css">
+    <!-- Google Font & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-shirt"></i>
+            <h2>SmartLaundry</h2>
+        </div>
+        <ul>
+            <li><a href="Dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li class="active"><a href="order.html"><i class="fa-solid fa-file-lines"></i> Pesanan</a></li>
+            <li><a href="riwayat.html"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat</a></li>
+            <li><a href="payment.html"><i class="fa-solid fa-wallet"></i> Wallet</a></li>
+            <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profil</a></li>
+            <li><a href="#"><i class="fa-solid fa-circle-question"></i> Bantuan</a></li>
+            <li><a href="#"><i class="fa-solid fa-gear"></i> Pengaturan</a></li>
+        </ul>
+        <button class="logout-btn" id="sidebarLogoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Keluar
+        </button>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>  
+                <h2>Buat Pesanan Baru</h2>
+                <p>Proses pemesanan cepat, pakaian bersih seketika.</p>
+            </div>
+            <div class="profile-top">
+                <i class="fa-regular fa-bell"></i>
+                <img src="Gambar/Jokowi.jpg" alt="Profile">
+                <span>Kris Tri Timotius</span>
+            </div>
+        </header>
+
+        <!-- FORM & LAYANAN GRID SYSTEM -->
+        <div class="order-grid">
+            
+            <!-- KOLOM KIRI: PILIH PAKET DAN DETAIL ALAMAT -->
+            <div class="grid-left">
+                
+                <!-- PILIH LAYANAN (SIMPLE ROW LIST VERSION) -->
+                <section class="dashboard-section">
+                    <h3 class="section-title">1. Pilih Layanan</h3>
+                    <div class="package-list-container">
+                        
+                        <!-- Paket 1 -->
+                        <div class="package-row-card selected" onclick="selectPackage(this, 'Laundry Cuci Komplit', 35000)">
+                            <div class="p-row-left">
+                                <div class="p-icon-box"><i class="fa-solid fa-soap"></i></div>
+                                <div>
+                                    <div class="p-title-wrapper">
+                                        <h4 class="package-row-title">Laundry Cuci Komplit</h4>
+                                        <span class="p-row-badge best-seller">BEST SELLER</span>
+                                    </div>
+                                    <p class="package-row-desc">Dicuci bersih, dikeringkan, disetrika rapi, + pewangi wangi maksimal.</p>
+                                </div>
+                            </div>
+                            <div class="package-row-price">Rp 35.000</div>
+                        </div>
+
+                        <!-- Paket 2 -->
+                        <div class="package-row-card" onclick="selectPackage(this, 'Laundry Express', 30000)">
+                            <div class="p-row-left">
+                                <div class="p-icon-box"><i class="fa-solid fa-bolt"></i></div>
+                                <div>
+                                    <div class="p-title-wrapper">
+                                        <h4 class="package-row-title">Laundry Express</h4>
+                                        <span class="p-row-badge best-seller">EXPRESS 24H</span>
+                                    </div>
+                                    <p class="package-row-desc">Layanan super cepat bersih kilat dalam waktu 24 jam selesai.</p>
+                                </div>
+                            </div>
+                            <div class="package-row-price">Rp 30.000</div>
+                        </div>
+
+                        <!-- Paket 3 -->
+                        <div class="package-row-card" onclick="selectPackage(this, 'Laundry Jaket Suede', 175000)">
+                            <div class="p-row-left">
+                                <div class="p-icon-box"><i class="fa-solid fa-vest"></i></div>
+                                <div>
+                                    <div class="p-title-wrapper">
+                                        <h4 class="package-row-title">Laundry Jaket Suede</h4>
+                                        <span class="p-row-badge promo">PROMO</span>
+                                    </div>
+                                    <p class="package-row-desc">Pencucian manual detail khusus jaket kesayangan oleh spesialis.</p>
+                                </div>
+                            </div>
+                            <div class="package-row-price">Rp 175.000</div>
+                        </div>
+
+                        <!-- Paket 4 -->
+                        <div class="package-row-card" onclick="selectPackage(this, 'Reparasi & Cuci Sepatu', 50000)">
+                            <div class="p-row-left">
+                                <div class="p-icon-box"><i class="fa-solid fa-shoe-prints"></i></div>
+                                <div>
+                                    <div class="p-title-wrapper">
+                                        <h4 class="package-row-title">Reparasi & Cuci Sepatu</h4>
+                                    </div>
+                                    <p class="package-row-desc">Deep clean menyeluruh untuk mengembalikan warna asli sepatu Anda.</p>
+                                </div>
+                            </div>
+                            <div class="package-row-price">Rp 50.000</div>
+                        </div>
+
+                        <!-- Paket 5 -->
+                        <div class="package-row-card" onclick="selectPackage(this, 'Penghilang Noda Spesialis', 50000)">
+                            <div class="p-row-left">
+                                <div class="p-icon-box"><i class="fa-solid fa-spray-can"></i></div>
+                                <div>
+                                    <div class="p-title-wrapper">
+                                        <h4 class="package-row-title">Penghilang Noda Spesialis</h4>
+                                        <span class="p-row-badge best-seller">SPESIALIS</span>
+                                    </div>
+                                    <p class="package-row-desc">Formula khusus membasmi karat, tinta, luntur membandel pada kain.</p>
+                                </div>
+                            </div>
+                            <div class="package-row-price">Rp 50.000</div>
+                        </div>
+
+                        <!-- Paket 6 -->
+                        <div class="package-row-card" onclick="selectPackage(this, 'Laundry Bedcover & Selimut', 60000)">
+                            <div class="p-row-left">
+                                <div class="p-icon-box"><i class="fa-solid fa-mattress-pillow"></i></div>
+                                <div>
+                                    <div class="p-title-wrapper">
+                                        <h4 class="package-row-title">Laundry Bedcover & Selimut</h4>
+                                    </div>
+                                    <p class="package-row-desc">Mesin kapasitas besar higienis untuk selimut dan bedcover jumbo.</p>
+                                </div>
+                            </div>
+                            <div class="package-row-price">Rp 60.000</div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- DETAIL ATRIBUT & ALAMAT -->
+                <section class="dashboard-section">
+                    <h3 class="section-title">2. Pengiriman & Alamat</h3>
+                    <div class="detail-card">
+                        <div class="form-horizontal-row">
+                            <div class="form-order-group">
+                                <label for="beratJumlah">Berat / Jumlah Unit</label>
+                                <input type="number" id="beratJumlah" min="1" value="1" oninput="calculateTotal()">
+                            </div>
+                            <div class="form-order-group">
+                                <label for="opsiAntarJemput">Metode Layanan</label>
+                                <select id="opsiAntarJemput" onchange="calculateTotal()">
+                                    <option value="antar-jemput">Antar Jemput (+Rp 10.000)</option>
+                                    <option value="self-drop">Drop di Outlet (Gratis)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-order-group">
+                            <label for="alamatLengkap">Alamat Penjemputan</label>
+                            <textarea id="alamatLengkap" rows="2" placeholder="Tulis alamat penjemputan lengkap..."></textarea>
+                        </div>
+                        <div class="form-order-group">
+                            <label for="catatanKhusus">Catatan Tambahan (Opsional)</label>
+                            <input type="text" id="catatanKhusus" placeholder="Contoh: Pisahkan baju luntur / wangi sakura">
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- KOLOM KANAN: RINGKASAN PEMBAYARAN & CHECKOUT -->
+            <div class="grid-right">
+                <section class="dashboard-section">
+                    <h3 class="section-title">3. Ringkasan Pesanan</h3>
+                    <div class="detail-card">
+                        <div class="summary-item">
+                            <span>Layanan</span>
+                            <span id="summaryPaket" class="font-semibold">Laundry Cuci Komplit</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Harga Paket</span>
+                            <span id="summaryHargaDasar">Rp 35.000</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Jumlah Qty</span>
+                            <span id="summaryQty">1</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Biaya Antar-Jemput</span>
+                            <span id="summaryOngkir">Rp 10.000</span>
+                        </div>
+                        
+                        <div class="summary-item summary-total">
+                            <span>Total Bayar</span>
+                            <span id="summaryTotalText">Rp 45.000</span>
+                        </div>
+
+                        <hr>
+                        
+                        <div class="form-order-group" style="margin-top: 10px;">
+                            <label for="metodeMetode">Metode Pembayaran</label>
+                            <select id="metodeMetode">
+                                <option value="wallet">Smart Wallet (Saldo: Rp 150.000)</option>
+                                <option value="cod">Cash on Delivery (COD)</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-checkout" onclick="prosesCheckout()">
+                            <i class="fa-solid fa-cart-shopping"></i> Konfirmasi & Pesan
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- MODAL CONFIRMATION SUCCESS -->
+<div class="modal" id="successModal">
+    <div class="modal-content">
+        <i class="fa-solid fa-circle-check" style="font-size: 3.5rem; color: #34a853; margin-bottom: 15px;"></i>
+        <h2>Pesanan Berhasil!</h2>
+        <p>Kurir kami akan segera menuju lokasi Anda untuk penjemputan.</p>
+        <button class="auth-btn" onclick="window.location.href='Dashboard.html'">Ke Dashboard</button>
+    </div>
+</div>
+
+<!-- MODAL LOGOUT -->
+<div class="modal" id="logoutModalOrder">
+    <div class="modal-content">
+        <h2>Keluar?</h2>
+        <p>Apakah Anda yakin ingin keluar dari akun?</p>
+        <div class="d-flex gap-20 justify-center">
+            <button class="btn-login-cancel" id="cancelLogoutOrder">Batal</button>
+            <button class="btn-logout-confirm" id="confirmLogoutOrder">Keluar</button>
+        </div>
+    </div>
+</div>
+
+<script src="order.js"></script>
+</body>
+</html>
