@@ -1850,3 +1850,250 @@ body.auth-page {
         gap: 0;
     }
 }
+
+/* ==========================================================================
+   SMART LAUNDRY - HISTORY PAGE STYLING
+   ========================================================================== */
+
+.history-page-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+/* SEARCH DAN FILTER CONTAINER */
+.filter-card-container {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 16px;
+    border: 1px solid #edf2f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 260px;
+}
+
+.search-box-wrapper input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-box-wrapper input:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.filter-buttons-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #f4f7fe;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #4b5563;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.2s;
+}
+
+.filter-btn:hover {
+    background: #e6f0ff;
+    color: #0066ff;
+}
+
+.filter-btn.active {
+    background: #0066ff;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* STYLING TABEL RIWAYAT HALAMAN */
+.history-table-wrapper {
+    overflow-x: auto;
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 16px;
+}
+
+.history-page-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.history-page-table th {
+    background: #f8fafc;
+    padding: 14px 18px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    border-bottom: 1px solid #edf2f7;
+    letter-spacing: 0.5px;
+}
+
+.history-page-table td {
+    padding: 15px 18px;
+    font-size: 0.88rem;
+    color: #4b5563;
+    border-bottom: 1px solid #f3f4f6;
+    white-space: nowrap;
+}
+
+.history-page-table tr:last-child td {
+    border-bottom: none;
+}
+
+.invoice-id {
+    font-family: monospace;
+    font-weight: 700;
+    color: #1f2937;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.amount-text {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* STATUS BADGES KUSTOMISASI */
+.badge-pickup {
+    background: #fffbeb;
+    color: #d97706;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-process {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-success-history {
+    background: #e6fdf5;
+    color: #10b981;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ACTION BUTTON */
+.btn-action-view {
+    background: #f0f5ff;
+    color: #0066ff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.2s;
+}
+
+.btn-action-view:hover {
+    background: #0066ff;
+    color: #ffffff;
+}
+
+/* NO DATA CONTAINER */
+.no-data-msg {
+    text-align: center;
+    padding: 40px 20px;
+    color: #9ca3af;
+}
+
+.no-data-msg i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.no-data-msg p {
+    font-size: 0.9rem;
+}
+
+/* DETAIL MODAL UTILITY */
+.text-left-modal {
+    text-align: left !important;
+    max-width: 460px !important;
+}
+
+.text-blue {
+    color: #0066ff !important;
+}
+
+.modal-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.md-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    color: #4b5563;
+}
+
+.md-item span {
+    color: #6b7280;
+}
+
+.modal-divider {
+    border: none;
+    border-top: 1px dashed #e2e8f0;
+    margin: 5px 0;
+}
+
+.total-highlight {
+    font-size: 1.05rem;
+    padding-top: 8px;
+    border-top: 1px solid #edf2f7;
+}
+
+@media (max-width: 768px) {
+    .filter-card-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
