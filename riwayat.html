@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Pesanan | SmartLaundry</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="riwayat.css">
     <!-- Google Font & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -97,43 +96,41 @@
 
             </div>
         </main>
-    </div>
 
-    <!-- MODAL DETAIL TRANSAKSI -->
-    <div class="modal" id="historyDetailModal">
-        <div class="modal-content text-left-modal">
-            <span class="close" id="closeDetailModal">&times;</span>
-            <h2 style="font-size: 1.2rem; margin-bottom: 15px;"><i class="fa-solid fa-receipt text-blue"></i> Rincian
-                Nota Transaksi</h2>
+        <div class="modal" id="historyDetailModal">
+            <div class="modal-content text-left-modal">
+                <span class="close" id="closeDetailModal">&times;</span>
+                <h2 style="font-size: 1.2rem; margin-bottom: 15px;"><i class="fa-solid fa-receipt text-blue"></i>
+                    Rincian Nota Transaksi</h2>
 
-            <div class="modal-detail-list">
-                <div class="md-item"><span>ID Transaksi</span><strong id="m-id">-</strong></div>
-                <div class="md-item"><span>Tanggal Transaksi</span><span id="m-tgl">-</span></div>
-                <hr class="modal-divider">
-                <div class="md-item"><span>Layanan</span><strong id="m-paket">-</strong></div>
-                <div class="md-item"><span>Volume Muatan</span><span id="m-qty">-</span></div>
-                <div class="md-item"><span>Metode Pengiriman</span><span id="m-kurir">-</span></div>
-                <div class="md-item"><span>Metode Bayar</span><span id="m-payment">-</span></div>
-                <hr class="modal-divider">
-                <div class="md-item"><span>Status Pengerjaan</span><span id="m-status">-</span></div>
-                <div class="md-item total-highlight"><span>Total Biaya</span><strong id="m-total"
-                        class="text-blue">-</strong></div>
+                <div class="modal-detail-list">
+                    <div class="md-item"><span>ID Transaksi</span><strong id="m-id">-</strong></div>
+                    <div class="md-item"><span>Tanggal Transaksi</span><span id="m-tgl">-</span></div>
+                    <hr class="modal-divider">
+                    <div class="md-item"><span>Layanan</span><strong id="m-paket">-</strong></div>
+                    <div class="md-item"><span>Volume Muatan</span><span id="m-qty">-</span></div>
+                    <div class="md-item"><span>Metode Pengiriman</span><span id="m-kurir">-</span></div>
+                    <div class="md-item"><span>Metode Bayar</span><span id="m-payment">-</span></div>
+                    <hr class="modal-divider">
+                    <div class="md-item"><span>Status Pengerjaan</span><span id="m-status">-</span></div>
+                    <div class="md-item total-highlight"><span>Total Biaya</span><strong id="m-total"
+                            class="text-blue">-</strong></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- MODAL LOGOUT -->
-    <div class="modal" id="logoutModalHistory">
-        <div class="modal-content">
-            <h2>Keluar?</h2>
-            <p>Apakah Anda yakin ingin keluar dari akun?</p>
-            <div class="d-flex gap-20 justify-center">
-                <button class="btn-login-cancel" id="cancelLogoutHistory">Batal</button>
-                <button class="btn-logout-confirm" id="confirmLogoutHistory">Keluar</button>
+        <div class="modal" id="logoutModalHistory">
+            <div class="modal-content">
+                <h2>Keluar?</h2>
+                <p>Apakah Anda yakin ingin keluar dari akun?</p>
+                <div class="d-flex gap-20 justify-center">
+                    <button class="btn-login-cancel" id="cancelLogoutHistory">Batal</button>
+                    <button class="btn-logout-confirm" id="confirmLogoutHistory">Keluar</button>
+                </div>
             </div>
         </div>
-    </div>
 
+    </div>
     <script src="riwayat.js"></script>
 </body>
 
