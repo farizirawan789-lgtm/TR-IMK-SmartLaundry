@@ -1,35 +1,50 @@
-// global.js - Taruh kode ini untuk sinkronisasi nama dan saldo di semua halaman
+// ======================================================
+// SMART LAUNDRY - GLOBAL.JS (SINKRONISASI & PROTEKSI)
+// ======================================================
 
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Cek apakah sudah ada data nama di storage, jika belum buat data default
-    if (!localStorage.getItem("laundry_user_name")) {
-        localStorage.setItem("laundry_user_name", "Kris Tri Timotius");
-    }
-    
-    // 2. Cek apakah sudah ada data saldo di storage, jika belum buat data default
-    if (!localStorage.getItem("laundry_user_wallet")) {
-        localStorage.setItem("laundry_user_wallet", "150000");
+    // 1. Dapatkan lokasi halaman saat ini untuk menghindari perulangan pengalihan (loop redirect)
+    const currentPath = window.location.pathname;
+    const isLoginPage = currentPath.includes("login.html") || currentPath.includes("register.html");
+
+    // 2. PROTEKSI HALAMAN: Jika tidak di halaman login dan belum masuk, tendang ke login.html
+    if (!isLoginPage && localStorage.getItem("is_logged_in") !== "true") {
+        alert("Silakan login terlebih dahulu untuk mengakses aplikasi!");
+        window.location.href = "login.html";
+        return;
     }
 
-    // Ambil data terbaru dari storage
+    // Jika sudah login, ambil data terbaru dari storage
     const currentName = localStorage.getItem("laundry_user_name");
-    const currentWallet = parseInt(localStorage.getItem("laundry_user_wallet"));
+    const currentEmail = localStorage.getItem("laundry_user_email");
+    const currentWallet = parseInt(localStorage.getItem("laundry_user_wallet")) || 0;
 
-    // --- SINKRONISASI NAMA ---
-    // Update nama di Topbar kanan (berlaku untuk semua halaman)
+    // --- SINKRONISASI NAMA DI TOPBAR KANAN (Semua Halaman) ---
     const topbarNameElement = document.querySelector(".profile-top span");
-    if (topbarNameElement) {
+    if (topbarNameElement && currentName) {
         topbarNameElement.innerText = currentName;
     }
 
-    // Update nama ucapan selamat datang di Dashboard (jika elemennya ada)
+    // --- SINKRONISASI DASHBOARD ---
+    // Update nama ucapan selamat datang (id="welcomeName")
     const welcomeElement = document.getElementById("welcomeName");
-    if (welcomeElement) {
+    if (welcomeElement && currentName) {
         welcomeElement.innerText = "Halo, " + currentName + "!";
     }
 
-    // --- SINKRONISASI SALDO WALLET ---
-    // Update saldo di halaman Dashboard atau Ringkasan Order (jika elemennya ada)
+    // Update nama di widget dashboard profil (id="profileName")
+    const profileNameEl = document.getElementById("profileName");
+    if (profileNameEl && currentName) {
+        profileNameEl.innerText = currentName;
+    }
+
+    // --- SINKRONISASI EMAIL (Khusus halaman profile.html jika ada) ---
+    const profileEmailInput = document.getElementById("pf-email");
+    if (profileEmailInput && currentEmail) {
+        profileEmailInput.value = currentEmail;
+    }
+
+    // --- SINKRONISASI SALDO WALLET (Semua Halaman) ---
     const walletElements = document.querySelectorAll(".wallet-card h2, #metodeMetode option[value='wallet']");
     walletElements.forEach(el => {
         if (el.tagName === "OPTION") {
